@@ -4,10 +4,45 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   initClipboardToast();
   initScrollSpy();
   initMobileMenu();
 });
+
+/**
+ * Dual theme: dark (default) + light enterprise. Persisted in localStorage
+ * under 'hn-theme' so index.html and diagram.html stay in sync.
+ */
+function initTheme() {
+  const root = document.documentElement;
+  const buttons = [document.getElementById('themeToggle'), document.getElementById('themeToggleMobile')].filter(Boolean);
+
+  const apply = (theme) => {
+    if (theme === 'light') {
+      root.setAttribute('data-theme', 'light');
+    } else {
+      root.removeAttribute('data-theme');
+    }
+    buttons.forEach((b) => b.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false'));
+  };
+
+  let current = 'dark';
+  try {
+    current = localStorage.getItem('hn-theme') === 'light' ? 'light' : 'dark';
+  } catch (e) {}
+  apply(current);
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      current = current === 'light' ? 'dark' : 'light';
+      try {
+        localStorage.setItem('hn-theme', current);
+      } catch (e) {}
+      apply(current);
+    });
+  });
+}
 
 /**
  * 1-Click Clipboard Copy with Dynamic Toast

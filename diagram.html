@@ -7,6 +7,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    try {
+      var t = localStorage.getItem('hn-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+  <style>
+    [data-theme="light"] body { background-color: #F8FAFC; color: #0F172A; }
+    [data-theme="light"] header { border-bottom-color: #E2E8F0; }
+    [data-theme="light"] .diagram-container { background: #FFFFFF; border-color: #E2E8F0; box-shadow: 0 8px 24px -12px rgba(15,23,42,0.15); }
+    [data-theme="light"] .meta-card { background: #FFFFFF; border-color: #E2E8F0; }
+    [data-theme="light"] .meta-card h3 { color: #64748B; }
+    [data-theme="light"] .meta-card p { color: #0F172A; }
+    [data-theme="light"] .disclaimer { background: #FFFFFF; border-color: #E2E8F0; color: #475569; }
+    [data-theme="light"] .sub { color: #475569; }
+    .theme-toggle-btn { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #c5ff41; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 9999px; cursor: pointer; margin-right: 8px; }
+    [data-theme="light"] .theme-toggle-btn { border-color: #CBD5E1; color: #2563EB; }
+  </style>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -109,9 +127,30 @@
       <p class="sub">Listen → clarify → investigate → act → confirm. Based on my Ibex vendor support and escalations work. Written in plain language, the way I'd explain it in an interview.</p>
     </div>
     <div style="text-align: right;">
+      <button id="themeToggleDiagram" class="theme-toggle-btn" aria-pressed="false">Light / Dark</button>
       <a href="index.html" style="color: #c5ff41; text-decoration: none; font-size: 13px; font-weight: 600;">← Back to Portfolio</a>
     </div>
   </header>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('themeToggleDiagram');
+      function apply(theme) {
+        if (theme === 'light') root.setAttribute('data-theme', 'light');
+        else root.removeAttribute('data-theme');
+        if (btn) btn.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+      }
+      var current = 'dark';
+      try { current = localStorage.getItem('hn-theme') === 'light' ? 'light' : 'dark'; } catch (e) {}
+      apply(current);
+      if (btn) btn.addEventListener('click', function () {
+        current = current === 'light' ? 'dark' : 'light';
+        try { localStorage.setItem('hn-theme', current); } catch (e) {}
+        apply(current);
+      });
+    })();
+  </script>
 
   <div class="diagram-container">
     <object type="image/svg+xml" data="assets/diagrams/portfolio-architecture.svg" style="width: 100%; height: auto;"></object>

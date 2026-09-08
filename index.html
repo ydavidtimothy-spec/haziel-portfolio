@@ -3,99 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Haziel Nablo — Customer Experience &amp; Vendor Escalations Lead</title>
-  <meta name="description" content="Official portfolio of Haziel Nablo — Customer Service Representative, Vendor Operations & Escalations Specialist based in Davao City. Top Agent & Chat Warrior Awardee.">
-  
-  <!-- Favicon -->
+  <title>Haziel Nablo — Customer Service Representative</title>
+  <meta name="description" content="Portfolio of Haziel Nablo, Customer Service Representative from Davao City. Ibex Global Solutions Chat Support and Vendor Escalations, Top Agent and Chat Warrior Awardee 2023.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23c5ff41'>HN</text></svg>">
-
-  <!-- OpenGraph Meta -->
-  <meta property="og:title" content="Haziel Nablo — Customer Experience &amp; Vendor Escalations Lead">
-  <meta property="og:description" content="Top Agent & Chat Warrior Awardee specializing in high-concurrency chat support, vendor retention, and critical issue de-escalation.">
-  <meta property="og:type" content="website">
-
-  <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .resume-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; }
+    .resume-list li { font-size: 13.5px; line-height: 1.6; color: var(--text-muted); padding-left: 22px; position: relative; }
+    .resume-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-lime); font-family: var(--font-mono); font-size: 12px; top: 2px; }
+    .resume-list li strong { color: #e8e8e8; font-weight: 600; }
+    .resume-note { margin-top: 16px; padding: 10px 14px; background: rgba(197,255,65,0.07); border: 1px solid rgba(197,255,65,0.22); border-radius: 8px; font-size: 12.5px; color: #d7d7d7; line-height: 1.55; }
+    .resume-note span { color: var(--accent-lime); font-weight: 700; font-family: var(--font-mono); font-size: 11.5px; display: block; margin-bottom: 2px; letter-spacing: 0.04em; }
+  </style>
 </head>
 <body>
 
-  <!-- ========================================================================= -->
-  <!-- FLOATING FROSTED NAVIGATION ISLAND                                       -->
-  <!-- ========================================================================= -->
   <header class="nav-island-wrapper">
     <nav class="nav-island" aria-label="Main Navigation">
       <a href="#hero" class="nav-brand" aria-label="Haziel Nablo Home">
         <span class="brand-monogram">HN</span>
         <span class="brand-name">Haziel Nablo</span>
       </a>
-
       <div class="nav-links" id="navLinks">
         <a href="#about" class="nav-link">About</a>
-        <a href="#operations" class="nav-link">Key Operations</a>
+        <a href="#experience-roles" class="nav-link">Experience</a>
         <a href="#skills" class="nav-link">Skills</a>
-        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#timeline" class="nav-link">Career</a>
         <a href="#awards" class="nav-link">Honors</a>
         <a href="diagram.html" class="nav-link nav-link-highlight">Escalation Flow ↗</a>
       </div>
-
       <div class="nav-actions">
-        <span class="status-pill" title="Ready for high-impact CX and Operations roles">
+        <span class="status-pill" title="Open to Customer Service and Vendor Support roles">
           <span class="status-dot"></span> Open to Work
         </span>
         <a href="#contact" class="btn btn-sm btn-primary">Get in Touch</a>
-        
-        <!-- Mobile Menu Toggle Button -->
         <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
       </div>
     </nav>
-
-    <!-- Mobile Drawer -->
     <div id="mobileDrawer" class="mobile-drawer">
       <a href="#about" class="mobile-link">About</a>
-      <a href="#operations" class="mobile-link">Key Operations</a>
+      <a href="#experience-roles" class="mobile-link">Experience</a>
       <a href="#skills" class="mobile-link">Skills &amp; Toolkit</a>
-      <a href="#experience" class="mobile-link">Career Milestones</a>
+      <a href="#timeline" class="mobile-link">Career Milestones</a>
       <a href="#awards" class="mobile-link">Honors &amp; Awards</a>
       <a href="diagram.html" class="mobile-link mobile-link-highlight">Escalation Architecture ↗</a>
       <a href="#contact" class="mobile-link btn btn-primary" style="margin-top: 12px;">Contact Haziel</a>
     </div>
   </header>
 
-  <!-- Interactive Floating Toast -->
   <div id="toast" class="toast-notification" role="status" aria-live="polite">Email copied to clipboard!</div>
 
   <main>
-    <!-- ======================================================================= -->
-    <!-- HERO SECTION                                                            -->
-    <!-- ======================================================================= -->
+    <!-- HERO -->
     <section id="hero" class="section hero-section">
       <div class="hero-container">
         <div class="hero-content">
           <div class="hero-eyebrow">
-            <span class="eyebrow-tag">TOP AGENT &amp; CHAT WARRIOR '23</span>
+            <span class="eyebrow-tag">CUSTOMER SERVICE REPRESENTATIVE</span>
             <span class="eyebrow-location">📍 Agdao, Davao City, Philippines</span>
           </div>
-
           <h1 class="hero-title">
-            Delivering calm, <br>
-            high-velocity <span class="text-gradient">vendor</span> <br>
-            &amp; customer resolutions.
+            Calm, high-velocity<br>
+            support for <span class="text-gradient">vendors</span><br>
+            &amp; customers.
           </h1>
-
           <p class="hero-subtitle">
-            I am Haziel Nablo — Customer Experience Specialist and Escalations Lead with a proven track record of sustaining 4+ concurrent live chats, saving critical merchant accounts from churn, and maintaining empathy under high pressure.
+            I am <strong style="color:#fff;">Haziel Nablo</strong> — Customer Service Representative and Ibex Global Solutions alum.
+            I stay flexible across a range of clients, balance multiple tasks at once, respond in a timely manner,
+            and keep a positive demeanor in challenging situations.
           </p>
-
           <div class="hero-cta-group">
-            <a href="#operations" class="btn btn-primary">
-              View Key Operations
+            <a href="#experience-roles" class="btn btn-primary">
+              View Experience
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
             </a>
             <button id="copyEmailBtn" class="btn btn-outline" data-email="hazielnablo19@gmail.com" title="Click to copy email address">
@@ -103,415 +87,271 @@
               hazielnablo19@gmail.com
             </button>
           </div>
-
-          <!-- Verified Resume Metrics -->
           <div class="hero-metrics">
             <div class="metric-item">
-              <span class="metric-value">4+ Chats</span>
-              <span class="metric-label">Concurrent Live Queue</span>
+              <span class="metric-value">4+ live chats</span>
+              <span class="metric-label">Concurrent support queue</span>
             </div>
             <div class="metric-divider"></div>
             <div class="metric-item">
-              <span class="metric-value">Top Agent</span>
-              <span class="metric-label">Ibex Global '23</span>
+              <span class="metric-value">Top Agent '23</span>
+              <span class="metric-label">Ibex Global Solutions</span>
             </div>
             <div class="metric-divider"></div>
             <div class="metric-item">
               <span class="metric-value">BSBA HRDM</span>
-              <span class="metric-label">Holy Cross of Davao</span>
+              <span class="metric-label">Holy Cross of Davao '19–'21</span>
             </div>
           </div>
         </div>
 
-        <!-- Hero Portrait with Crisp White Studio Background - Zero Cutout Friction -->
         <div class="hero-portrait-wrapper">
           <div class="portrait-glow"></div>
           <div class="portrait-card">
             <div class="portrait-media">
-              <img src="assets/images/haziel-nablo.png" alt="Haziel Nablo Portrait" class="portrait-img" loading="eager" width="360" height="390">
+              <img src="assets/images/haziel-nablo.png" alt="Studio portrait of Haziel Nablo" class="portrait-img" loading="eager" width="360" height="390">
             </div>
             <div class="portrait-badge">
               <div>
                 <span class="badge-title">Haziel Nablo</span>
-                <span class="badge-sub">Customer Experience &amp; Escalations</span>
+                <span class="badge-sub">Customer Service Representative</span>
               </div>
-              <span class="badge-pill">Ibex Global Alum</span>
+              <span class="badge-pill">Ibex Alum</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- ABOUT SECTION (DIRECTLY FROM RESUME SUMMARY)                            -->
-    <!-- ======================================================================= -->
+    <!-- ABOUT -->
     <section id="about" class="section about-section">
       <div class="section-header">
-        <span class="section-label">01 / PROFESSIONAL CREED</span>
+        <span class="section-label">01 / PROFESSIONAL SUMMARY</span>
         <h2 class="section-title">Composure under pressure, precision in execution</h2>
         <p class="section-desc">
-          "Being flexible enough to deal with a range of clients and customers. Balancing multiple tasks and responding to customers in a timely manner. Maintaining a positive demeanor even in challenging situations to provide excellent service."
+          “Being flexible enough to deal with a range of clients and customers. Balancing multiple tasks and
+          responding to customers in a timely manner. Maintaining a positive demeanor even in challenging
+          situations to provide excellent service.” — from Haziel's resume.
         </p>
       </div>
-
       <div class="about-grid">
         <div class="about-card">
           <div class="about-card-number">01</div>
-          <h3 class="about-card-title">High-Velocity Multitasking</h3>
-          <p class="about-card-text">
-            Operating efficiently across 4+ live chat streams simultaneously, synthesizing complex merchant inquiries, dispatch updates, and delivery rider coordinates with zero loss of accuracy.
-          </p>
+          <h3 class="about-card-title">Flexible across clients</h3>
+          <p class="about-card-text">Comfortable shifting between different vendors, customers, tones, and request types without losing patience or clarity.</p>
         </div>
-
         <div class="about-card">
           <div class="about-card-number">02</div>
-          <h3 class="about-card-title">Account Retention &amp; De-Escalation</h3>
-          <p class="about-card-text">
-            Specialized in retaining high-value vendors threatening account termination by actively listening, uncovering root frustrations, and solving hardware or financial disputes on the spot.
-          </p>
+          <h3 class="about-card-title">Balanced multitasking</h3>
+          <p class="about-card-text">Proven while handling four simultaneous chats — tracking orders, cancellations, breakdowns, and rider follow-ups in a timely manner.</p>
         </div>
-
         <div class="about-card">
           <div class="about-card-number">03</div>
-          <h3 class="about-card-title">Business &amp; HR Discipline</h3>
-          <p class="about-card-text">
-            Holding a BSBA degree in Human Resource Development Management from Holy Cross of Davao College, pairing operational customer acumen with formal organizational management rigor.
-          </p>
+          <h3 class="about-card-title">Positive under challenge</h3>
+          <p class="about-card-text">Keeps a steady, empathetic demeanor during disputes, termination risks, and device or billing frustrations.</p>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- KEY OPERATIONS (BENTO GRID WITH AUTHENTIC CX INTERFACES)                -->
-    <!-- ======================================================================= -->
-    <section id="operations" class="section">
+    <!-- EXPERIENCE ROLES -->
+    <section id="experience-roles" class="section">
       <div class="section-header">
-        <span class="section-label">02 / CORE OPERATIONS</span>
-        <h2 class="section-title">Field experience &amp; high-stakes workflows</h2>
-        <p class="section-desc">Proven execution across vendor support, hardware troubleshooting, and retention desks at Ibex Global Solutions.</p>
+        <span class="section-label">02 / PROFESSIONAL EXPERIENCE</span>
+        <h2 class="section-title">What Haziel actually did at Ibex</h2>
+        <p class="section-desc">Two progressive assignments at Ibex Global Solutions, described in her own resume terms. No invented clients or figures.</p>
       </div>
 
       <div class="bento-grid">
-        <!-- Operation 1 (Large Bento Span - Real Multi-Chat Interface) -->
         <div class="bento-card bento-card-large">
-          <div class="card-media">
-            <div class="cx-terminal">
-              <div class="terminal-topbar">
-                <div class="dots">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-green"></span>
-                </div>
-                <span class="terminal-title">ibex.omnichannel // queue-active</span>
-                <span class="terminal-badge">SLA: 0:14s</span>
-              </div>
-              <div class="chat-queue-list">
-                <div class="chat-row">
-                  <span class="chat-vendor">#4829 Café Bistro</span>
-                  <span class="chat-status status-dispatch">Rider Reassigned • In Transit</span>
-                </div>
-                <div class="chat-row">
-                  <span class="chat-vendor">#3104 Davao Gourmet</span>
-                  <span class="chat-status status-cancel">Order #9021 Cancelled • Refunded</span>
-                </div>
-                <div class="chat-row">
-                  <span class="chat-vendor">#7219 Fresh Mart Express</span>
-                  <span class="chat-status status-active">Live Chat Active • ETA Verified</span>
-                </div>
-                <div class="chat-row">
-                  <span class="chat-vendor">#5591 Seaside Kitchen</span>
-                  <span class="chat-status status-active">Invoice Breakdown Provided</span>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="card-details">
             <div class="card-meta">
-              <span class="card-tag">Vendor Support Desk</span>
+              <span class="card-tag">Ibex Global Solutions — Chat Support</span>
               <span class="card-year">2022 — 2023</span>
             </div>
-            <h3 class="card-title">Concurrent Live Chat &amp; Dispatch Coordination</h3>
-            <p class="card-description">
-              Managed real-time vendor communications while operating four simultaneous chats. Handled immediate order cancellations, broken-down invoice inquiries, and direct coordination with assigned delivery riders to ensure strict SLA compliance.
-            </p>
-            <div class="card-stack">
-              <span class="stack-pill">4-Chat Concurrency</span>
-              <span class="stack-pill">Order Cancellation</span>
-              <span class="stack-pill">Rider Tracking</span>
-              <span class="stack-pill">CSAT Excellence</span>
+            <h3 class="card-title">Vendor chat support, 4 concurrent conversations</h3>
+            <ul class="resume-list">
+              <li><strong>Assisted vendors</strong> with their concerns and day-to-day order issues.</li>
+              <li><strong>Cancelled orders</strong> as per vendor request.</li>
+              <li><strong>Explained order breakdowns</strong> so vendors understood totals and status.</li>
+              <li><strong>Followed up with the assigned rider</strong> to move each order through to delivery.</li>
+            </ul>
+            <div class="resume-note"><span>RECOGNITION BASIS</span>Sustained 4-chat concurrency here led to 2023 Chat Warrior and Top Agent awards.</div>
+            <div class="card-stack" style="margin-top:16px;">
+              <span class="stack-pill">4-chat concurrency</span>
+              <span class="stack-pill">Order cancellation</span>
+              <span class="stack-pill">Rider follow-up</span>
+              <span class="stack-pill">Timely response</span>
             </div>
           </div>
-        </div>
-
-        <!-- Operation 2 (Hardware & Churn Diagnostics Widget) -->
-        <div class="bento-card">
-          <div class="card-media">
-            <div class="cx-terminal">
-              <div class="terminal-topbar">
-                <div class="dots">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-green"></span>
-                </div>
-                <span class="terminal-title">escalations // retention-desk</span>
-                <span class="terminal-badge" style="color: #27c93f; background: rgba(39,201,63,0.15);">RETAINED</span>
-              </div>
-              <div class="stat-summary-box">
-                <div class="stat-line">
-                  <span class="stat-key">Merchant:</span>
-                  <span class="stat-val">Grill House Davao</span>
-                </div>
-                <div class="stat-line">
-                  <span class="stat-key">Risk Level:</span>
-                  <span class="stat-val" style="color: #ff5f56;">High (Account Termination)</span>
-                </div>
-                <div class="stat-line">
-                  <span class="stat-key">Issue:</span>
-                  <span class="stat-val">POS Tablet Bluetooth Fault</span>
-                </div>
-                <div class="stat-line">
-                  <span class="stat-key">Action:</span>
-                  <span class="stat-val-green">Firmware Diagnostic + Replacement</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-details">
+          <div class="card-details" style="border-left: 1px solid var(--border-subtle);">
             <div class="card-meta">
-              <span class="card-tag">Tier-2 Escalations</span>
+              <span class="card-tag">Ibex Global Solutions — Escalations &amp; Retention</span>
               <span class="card-year">2023 — 2024</span>
             </div>
-            <h3 class="card-title">Merchant Retention &amp; Hardware Support</h3>
-            <p class="card-description">
-              Successfully retained high-risk vendors requesting termination. Provided technical device troubleshooting, hardware replacement dispatch, and store profile modifications.
-            </p>
-            <div class="card-stack">
-              <span class="stack-pill">Churn Mitigation</span>
-              <span class="stack-pill">Device Troubleshooting</span>
-              <span class="stack-pill">POS Hardware</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Operation 3 (Financial & Audit Ledger Widget) -->
-        <div class="bento-card">
-          <div class="card-media">
-            <div class="cx-terminal">
-              <div class="terminal-topbar">
-                <div class="dots">
-                  <span class="dot dot-red"></span>
-                  <span class="dot dot-yellow"></span>
-                  <span class="dot dot-green"></span>
-                </div>
-                <span class="terminal-title">finance // ledger-audit</span>
-                <span class="terminal-badge" style="color: #38bdf8; background: rgba(56,189,248,0.15);">VERIFIED</span>
-              </div>
-              <div class="stat-summary-box">
-                <div class="stat-line">
-                  <span class="stat-key">Gross Revenue:</span>
-                  <span class="stat-val">₱148,200.00</span>
-                </div>
-                <div class="stat-line">
-                  <span class="stat-key">VAT &amp; Fee (-12%):</span>
-                  <span class="stat-val" style="color: #f46c38;">-₱17,784.00</span>
-                </div>
-                <div class="stat-line">
-                  <span class="stat-key">Net Disbursed:</span>
-                  <span class="stat-val-green">₱130,416.00</span>
-                </div>
-                <div class="stat-line">
-                  <span class="stat-key">Bank Auth:</span>
-                  <span class="stat-val">BDO Unibank (Confirmed)</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-details">
-            <div class="card-meta">
-              <span class="card-tag">Data &amp; Billing Security</span>
-              <span class="card-year">2023 — 2024</span>
-            </div>
-            <h3 class="card-title">Invoice Breakdown &amp; Secure Data Updates</h3>
-            <p class="card-description">
-              Audited complex merchant payouts (gross revenue, deductions, VAT, processing charges) and verified confidential banking credentials and ownership updates.
-            </p>
-            <div class="card-stack">
-              <span class="stack-pill">VAT &amp; Billing Audits</span>
-              <span class="stack-pill">Bank Detail Verification</span>
-              <span class="stack-pill">Security Compliance</span>
+            <h3 class="card-title">Sensitive cases, retention &amp; account accuracy</h3>
+            <ul class="resume-list">
+              <li><strong>Updated private vendor data</strong> — bank details, contact person, and registered info.</li>
+              <li><strong>Explained invoices</strong> — total revenue, VAT, charges, and deductions.</li>
+              <li><strong>Troubleshot or replaced</strong> the device vendors used.</li>
+              <li><strong>Retained vendors</strong> considering account termination.</li>
+              <li><strong>Terminated or activated</strong> accounts upon verified request.</li>
+              <li><strong>Updated restaurant / store</strong> address or name changes.</li>
+            </ul>
+            <div class="card-stack" style="margin-top:16px;">
+              <span class="stack-pill">Retention</span>
+              <span class="stack-pill">Invoice clarity</span>
+              <span class="stack-pill">Device support</span>
+              <span class="stack-pill">Data accuracy</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- CORE SKILLS & CAPABILITIES                                              -->
-    <!-- ======================================================================= -->
+    <!-- SKILLS -->
     <section id="skills" class="section">
       <div class="section-header">
-        <span class="section-label">03 / COMPETENCY MATRIX</span>
-        <h2 class="section-title">Verified skills &amp; core proficiencies</h2>
-        <p class="section-desc">Grounded in front-line operational delivery and customer success benchmarks.</p>
+        <span class="section-label">03 / SKILLS MATRIX</span>
+        <h2 class="section-title">Resume-verified capabilities</h2>
+        <p class="section-desc">Grouped from Haziel's listed hard skills, soft skills, and day-to-day responsibilities.</p>
       </div>
-
       <div class="skills-grid">
         <div class="skill-category-card">
           <div class="skill-icon-header">
             <span class="skill-cat-badge">01</span>
-            <h3 class="skill-cat-title">Operational Competencies</h3>
+            <h3 class="skill-cat-title">Vendor operations</h3>
           </div>
-          <p class="skill-cat-desc">High-volume multi-channel tools and real-time conflict de-escalation.</p>
+          <p class="skill-cat-desc">Front-line tasks performed daily at Ibex.</p>
           <div class="skill-tags">
-            <span class="chip">Multi-Chat Concurrency (4+)</span>
-            <span class="chip">Escalation De-escalation</span>
-            <span class="chip">Vendor Account Retention</span>
-            <span class="chip">Hardware &amp; POS Troubleshooting</span>
-            <span class="chip">Rider Dispatch Follow-up</span>
-            <span class="chip">Order Life-Cycle Management</span>
+            <span class="chip">Multi-chat support (4+)</span>
+            <span class="chip">Order cancellation</span>
+            <span class="chip">Order breakdown explanation</span>
+            <span class="chip">Rider coordination</span>
+            <span class="chip">Retention &amp; de-escalation</span>
+            <span class="chip">Account activation / termination</span>
           </div>
         </div>
-
         <div class="skill-category-card">
           <div class="skill-icon-header">
             <span class="skill-cat-badge">02</span>
-            <h3 class="skill-cat-title">Financial &amp; Account Security</h3>
+            <h3 class="skill-cat-title">Accuracy &amp; care</h3>
           </div>
-          <p class="skill-cat-desc">Auditing sensitive merchant credentials and financial ledger breakdowns.</p>
+          <p class="skill-cat-desc">Sensitive data, billing clarity, and device help.</p>
           <div class="skill-tags">
-            <span class="chip">Invoice Breakdown &amp; Analysis</span>
-            <span class="chip">VAT &amp; Fee Auditing</span>
-            <span class="chip">Bank Detail Re-registration</span>
-            <span class="chip">Account Activation / Termination</span>
-            <span class="chip">Sensitive Data Security</span>
-            <span class="chip">CRM Navigation &amp; Ticketing</span>
+            <span class="chip">Private data updates</span>
+            <span class="chip">Bank detail changes</span>
+            <span class="chip">Invoice / VAT walkthrough</span>
+            <span class="chip">Device troubleshooting</span>
+            <span class="chip">Store profile updates</span>
+            <span class="chip">Product knowledge</span>
           </div>
         </div>
-
         <div class="skill-category-card">
           <div class="skill-icon-header">
             <span class="skill-cat-badge">03</span>
-            <h3 class="skill-cat-title">Interpersonal &amp; Soft Strengths</h3>
+            <h3 class="skill-cat-title">Soft strengths</h3>
           </div>
-          <p class="skill-cat-desc">High-stress composure and customer empathy that protects company reputation.</p>
+          <p class="skill-cat-desc">How Haziel describes herself on the resume.</p>
           <div class="skill-tags">
-            <span class="chip">Work Under Pressure</span>
-            <span class="chip">Empathy &amp; Active Listening</span>
-            <span class="chip">Patience in Conflict</span>
-            <span class="chip">Time Management</span>
-            <span class="chip">High Adaptability</span>
-            <span class="chip">Positive Professional Demeanor</span>
+            <span class="chip">Work under pressure</span>
+            <span class="chip">Multi-tasking</span>
+            <span class="chip">Empathy &amp; patience</span>
+            <span class="chip">Adaptability</span>
+            <span class="chip">Time management</span>
+            <span class="chip">Positive attitude</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- EXPERIENCE & TIMELINE                                                   -->
-    <!-- ======================================================================= -->
-    <section id="experience" class="section">
+    <!-- TIMELINE -->
+    <section id="timeline" class="section">
       <div class="section-header">
-        <span class="section-label">04 / CAREER TIMELINE</span>
-        <h2 class="section-title">Professional Experience</h2>
-        <p class="section-desc">Consistent track record of reliability and performance recognition.</p>
+        <span class="section-label">04 / CAREER &amp; EDUCATION</span>
+        <h2 class="section-title">Milestones in order</h2>
+        <p class="section-desc">Work history and schooling exactly as listed on the resume.</p>
       </div>
-
       <div class="timeline-container">
-        <!-- Milestone 1 -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-header">
-              <span class="timeline-role">Vendor Escalations &amp; Care Specialist</span>
+              <span class="timeline-role">Vendor Escalations &amp; Retention Support</span>
               <span class="timeline-date">2023 — 2024</span>
             </div>
             <div class="timeline-company">Ibex Global Solutions</div>
-            <p class="timeline-summary">
-              Handled Tier-2 merchant escalations, verified confidential banking details, resolved invoice and deduction inquiries, performed hardware troubleshooting, and spearheaded merchant retention efforts.
-            </p>
+            <p class="timeline-summary">Handled sensitive updates, invoice walkthroughs, device issues, retention saves, and account or store-profile changes.</p>
           </div>
         </div>
-
-        <!-- Milestone 2 -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-header">
-              <span class="timeline-role">Real-Time Chat Support Specialist</span>
+              <span class="timeline-role">Chat Support Specialist</span>
               <span class="timeline-date">2022 — 2023</span>
             </div>
             <div class="timeline-company">Ibex Global Solutions</div>
-            <p class="timeline-summary">
-              Maintained an active 4-chat queue aiding merchants with live order adjustments, cancellations, payment breakdown clarification, and rapid dispatch coordination with assigned delivery drivers.
-            </p>
+            <p class="timeline-summary">Supported vendors across 4 concurrent chats — cancellations, breakdowns, and rider follow-ups for delivery.</p>
           </div>
         </div>
-
-        <!-- Education Milestone -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-header">
-              <span class="timeline-role">Bachelor of Science in Business Administration</span>
+              <span class="timeline-role">BS Business Administration, HR Development Management</span>
               <span class="timeline-date">AY 2019 — 2021</span>
             </div>
             <div class="timeline-company">Holy Cross of Davao College</div>
-            <p class="timeline-summary">
-              Major in Human Resource Development Management (HRDM). Developed foundational expertise in organizational behavior, labor relations, operational workflow, and talent retention.
-            </p>
+            <p class="timeline-summary">Degree foundation in people management and organizational processes.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-role">TVL — Beauty Care, Nail Care &amp; Massage</span>
+              <span class="timeline-date">SY 2017 — 2018</span>
+            </div>
+            <div class="timeline-company">Francisco Bangoy Senior High School, Sasa, Davao City</div>
+            <p class="timeline-summary">Technical-vocational track; basis for TESDA NCII certifications and Best in TVL recognition.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- AWARDS & HONORS                                                         -->
-    <!-- ======================================================================= -->
+    <!-- AWARDS -->
     <section id="awards" class="section">
       <div class="section-header">
         <span class="section-label">05 / RECOGNITION</span>
-        <h2 class="section-title">Official Honors &amp; Certifications</h2>
-        <p class="section-desc">Recognized for top performance, high volume handling, and leadership.</p>
+        <h2 class="section-title">Honors &amp; certifications</h2>
+        <p class="section-desc">Awards and NCII holdings transcribed from the resume — nothing added.</p>
       </div>
-
       <div class="about-grid">
         <div class="about-card">
-          <div class="about-card-number">2023</div>
+          <div class="about-card-number">2023 · IBEX</div>
           <h3 class="about-card-title">🏆 Top Agent &amp; Chat Warrior</h3>
-          <p class="about-card-text">
-            Awarded <strong>Top Agent</strong> and honored as <strong>Chat Warrior Awardee</strong> at Ibex Global Solutions for exemplary customer satisfaction, rapid response rates, and sustaining 4-chat concurrency under peak loads.
-          </p>
+          <p class="about-card-text"><strong>Top Agent</strong> and <strong>Chat Warrior Awardee</strong> at Ibex Global Solutions for high-volume, high-quality concurrent chat delivery.</p>
         </div>
-
         <div class="about-card">
-          <div class="about-card-number">2018</div>
-          <h3 class="about-card-title">🎖️ Leadership Awardee</h3>
-          <p class="about-card-text">
-            Recognized as <strong>Leadership Awardee</strong> and <strong>Best in TVL</strong> at Francisco Bangoy Senior High School for demonstrated team governance and execution excellence.
-          </p>
+          <div class="about-card-number">2018 · SHS</div>
+          <h3 class="about-card-title">🎖️ Leadership &amp; Best in TVL</h3>
+          <p class="about-card-text"><strong>Leadership Awardee</strong> and <strong>Best in TVL</strong> at Francisco Bangoy Senior High School. Also <strong>Best in OJT</strong> for Massage and <strong>Best in OJT</strong> for Beauty Care.</p>
         </div>
-
         <div class="about-card">
-          <div class="about-card-number">TESDA</div>
-          <h3 class="about-card-title">📜 National Certifications (NCII)</h3>
-          <p class="about-card-text">
-            Certified NCII Holder across Beauty Care, Massage Therapy, and Housekeeping with <strong>Best in OJT</strong> distinction, illustrating dedication to quality and discipline across disciplines.
-          </p>
+          <div class="about-card-number">TESDA · NCII</div>
+          <h3 class="about-card-title">📜 NCII Holder — 3 tracks</h3>
+          <p class="about-card-text">Certified in <strong>Beauty Care / Nail Care</strong>, <strong>Massage Therapy</strong>, and <strong>Housekeeping</strong>.</p>
         </div>
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- ARCHITECTURE CALLOUT (LAVISH AXI 2.7 ESCALATION WORKFLOW)               -->
-    <!-- ======================================================================= -->
+    <!-- CALLOUT -->
     <section class="section section-callout">
       <div class="callout-card">
         <div class="callout-content">
           <span class="callout-badge">System Workflow</span>
-          <h2 class="callout-title">Vendor Escalation &amp; Resolution Pipeline</h2>
-          <p class="callout-desc">
-            Explore the Lavish AXI 2.7 architectural breakdown documenting the 4-stage lifecycle: Inbound Triage, Concurrency Chat Engine, Risk Mitigation, and Final Resolution.
-          </p>
+          <h2 class="callout-title">Vendor escalation &amp; resolution pipeline</h2>
+          <p class="callout-desc">Visual map of Haziel's triage → concurrency → retention → resolution flow, based on her Ibex responsibilities.</p>
           <a href="diagram.html" class="btn btn-primary">
             Explore System Architecture Map
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -520,17 +360,12 @@
       </div>
     </section>
 
-    <!-- ======================================================================= -->
-    <!-- CONTACT SECTION                                                         -->
-    <!-- ======================================================================= -->
+    <!-- CONTACT -->
     <section id="contact" class="section contact-section">
       <div class="contact-card">
         <span class="section-label">06 / LET'S CONNECT</span>
-        <h2 class="contact-title">Ready to strengthen your <br><span class="text-gradient">customer &amp; vendor operations?</span></h2>
-        <p class="contact-desc">
-          Available for Customer Experience, Vendor Operations, Escalations, and Leadership positions.
-        </p>
-        
+        <h2 class="contact-title">Ready to strengthen your <br><span class="text-gradient">vendor &amp; customer support?</span></h2>
+        <p class="contact-desc">Available for Customer Service, Vendor Support, Escalations, and Retention roles.</p>
         <div class="contact-actions">
           <a href="mailto:hazielnablo19@gmail.com" class="btn btn-primary btn-lg">
             Send Email Directly
@@ -539,24 +374,18 @@
           <button class="btn btn-outline btn-lg" onclick="copyToClipboard('hazielnablo19@gmail.com', 'hazielnablo19@gmail.com copied to clipboard!');">
             Copy Email Address
           </button>
-          <a href="tel:+639351980042" class="btn btn-outline btn-lg">
-            📞 +63 935 198 0042
-          </a>
+          <a href="tel:+639351980042" class="btn btn-outline btn-lg">📞 +63 935 198 0042</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ========================================================================= -->
-  <!-- FOOTER                                                                    -->
-  <!-- ========================================================================= -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-brand">
         <span class="brand-monogram">HN</span>
-        <p class="footer-copy">© 2026 Haziel Nablo • Agdao, Davao City. Built with CommandCode &amp; Lavish AXI standards.</p>
+        <p class="footer-copy">© 2026 Haziel Nablo • Agdao, Davao City. Content grounded in resume.</p>
       </div>
-
       <div class="footer-links">
         <a href="mailto:hazielnablo19@gmail.com" class="footer-link">hazielnablo19@gmail.com</a>
         <a href="tel:+639351980042" class="footer-link">+63 935 198 0042</a>

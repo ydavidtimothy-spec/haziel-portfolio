@@ -1285,3 +1285,42 @@ body {
 [data-theme="light"] {
   --spot: rgba(23, 23, 23, 0.06);
 }
+
+/* Upstream StarBorder pill adapter (geometry only; colors pass as props).
+   Higher specificity than StarBorder.css so it wins regardless of order. */
+.star-btn.star-border-container {
+  border-radius: 9999px;
+}
+
+.star-btn .inner-content {
+  border-radius: 9999px;
+  padding: 13px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+/* Upstream SpotlightCard dual-theme adapter. Upstream CSS is dark-only, so
+   the card surfaces follow the theme tokens here. */
+.info-card.card-spotlight,
+.credential.card-spotlight {
+  background-color: var(--card);
+  border-color: var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.info-card.card-spotlight {
+  padding: 32px 28px;
+}
+
+.credential.card-spotlight {
+  padding: 36px 30px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .border-gradient-top,
+  .border-gradient-bottom {
+    animation: none !important;
+  }
+}

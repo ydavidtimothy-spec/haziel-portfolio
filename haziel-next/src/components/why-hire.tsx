@@ -1,5 +1,5 @@
 import Reveal from "@/components/reveal";
-import Spot from "@/components/bits/spot";
+import SpotlightCard from "@/components/bits/SpotlightCard";
 
 const CARDS = [
   {
@@ -38,11 +38,11 @@ export default function WhyHire() {
             </p>
             <div className="card-grid-2">
               {CARDS.map((c) => (
-                <Spot key={c.index} className="info-card">
+                <SpotlightCard key={c.index} className="info-card" spotlightColor="rgba(132, 204, 22, 0.14)">
                   <div className="card-index mono">{c.index}</div>
                   <h3 className="card-title">{c.title}</h3>
                   <p className="card-text">{c.text}</p>
-                </Spot>
+                </SpotlightCard>
               ))}
             </div>
           </div>

@@ -1,5 +1,5 @@
 import Reveal from "@/components/reveal";
-import Spot from "@/components/bits/spot";
+import SpotlightCard from "@/components/bits/SpotlightCard";
 
 const CREDENTIALS: { year: string; org: string; items: string[] }[] = [
   {
@@ -31,7 +31,7 @@ export default function Recognition() {
         <div className="card-grid-3">
           {CREDENTIALS.map((c, i) => (
             <Reveal key={c.year + c.org} delay={i * 0.08}>
-              <Spot className="credential">
+              <SpotlightCard className="credential" spotlightColor="rgba(132, 204, 22, 0.14)">
                 <div className="credential-year mono">{c.year}</div>
                 <div className="credential-org">{c.org}</div>
                 <ul className="credential-list">
@@ -41,7 +41,7 @@ export default function Recognition() {
                     </li>
                   ))}
                 </ul>
-              </Spot>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>

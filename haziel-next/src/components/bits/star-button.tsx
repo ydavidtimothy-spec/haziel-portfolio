@@ -1,9 +1,10 @@
-// Adapted from React Bits (https://reactbits.dev — StarBorder, MIT-licensed).
-// A filled accent pill with a slow rotating 1px accent edge. Used sparingly:
-// primary CTAs only. Degrades to a plain pill where @property is unsupported.
+// Project adapter over upstream React Bits StarBorder
+// (src/components/bits/StarBorder.tsx). Keeps Next.js client-side navigation
+// via Link and the dual-theme tokens; geometry tuned to the pill buttons.
 
 import Link from "next/link";
 import type { ReactNode } from "react";
+import StarBorder from "@/components/bits/StarBorder";
 
 type Props = {
   href: string;
@@ -12,8 +13,18 @@ type Props = {
 
 export default function StarButton({ href, children }: Props) {
   return (
-    <Link href={href} className="star-btn">
-      <span className="star-btn-inner">{children}</span>
-    </Link>
+    <StarBorder
+      as={Link}
+      href={href}
+      className="star-btn"
+      color="var(--accent)"
+      speed="5s"
+      thickness={2}
+      backgroundColor="var(--accent)"
+      textColor="var(--accent-ink)"
+      borderColor="transparent"
+    >
+      {children}
+    </StarBorder>
   );
 }

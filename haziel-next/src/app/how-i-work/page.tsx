@@ -6,7 +6,7 @@ import Workflow from "@/components/workflow";
 export const metadata: Metadata = {
   title: "How I Work — Haziel Nablo",
   description:
-    "How Haziel Nablo handles difficult customer and vendor issues: listen, clarify, investigate, act, confirm.",
+    "How Haziel Nablo handles difficult customer, vendor, and moderation cases: listen, clarify, investigate, act, confirm.",
 };
 
 export default function HowIWorkPage() {
@@ -20,8 +20,8 @@ export default function HowIWorkPage() {
           <span className="eyebrow mono">How I work — sample flow</span>
           <h1 className="h-section">How I handle difficult customer &amp; vendor issues</h1>
           <p className="lede">
-            Listen → clarify → investigate → act → confirm. Based on Ibex vendor support
-            and escalations work — written the way I&rsquo;d explain it in an interview.
+            Listen → clarify → investigate → act → confirm. Based on vendor support,
+            escalations, and Threads moderation work — written the way I&rsquo;d explain it in an interview.
           </p>
         </div>
       </section>

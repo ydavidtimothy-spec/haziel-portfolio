@@ -30,15 +30,15 @@ export default function Hero() {
           <p className="hero-name">
             <ShinyText text="HAZIEL NABLO" />
           </p>
-          <span className="eyebrow mono">Customer Service Representative</span>
+          <span className="eyebrow mono">Customer Service & Content Moderation</span>
           <h1 className="hero-title">
             <SplitText text="Customer Support &" delay={0.15} />
             <br />
-            <SplitText text="Vendor Escalations Specialist" delay={0.3} />
+            <SplitText text="Trust & Safety Moderation" delay={0.3} />
           </h1>
           <p className="hero-sub">
             Experienced in high-volume chat support, vendor operations, escalations,
-            troubleshooting, and retention — with a focus on staying clear, calm, and
+            and content moderation — with a focus on staying clear, calm, and
             helpful under pressure.
           </p>
           <div className="hero-cta">
@@ -64,6 +64,11 @@ export default function Hero() {
               <span className="proof-value mono accent">Chat Warrior &rsquo;23</span>
               <span className="proof-label">Ibex Global Solutions</span>
             </div>
+            <div className="proof-divider" />
+            <div className="proof-item">
+              <span className="proof-value mono accent">Threads moderation</span>
+              <span className="proof-label">Conectys · Concentrix · &rsquo;24–&rsquo;26</span>
+            </div>
           </div>
         </motion.div>
 
@@ -75,7 +80,7 @@ export default function Hero() {
         >
           <motion.div
             className="float-card float-left"
-            animate={{ y: [0, -10, 0] }}
+            animate={prefersReduced ? {} : { y: [0, -6, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
             <div className="fc-value mono">4 concurrent</div>
@@ -83,7 +88,7 @@ export default function Hero() {
           </motion.div>
           <motion.div
             className="float-card float-right"
-            animate={{ y: [0, 10, 0] }}
+            animate={prefersReduced ? {} : { y: [0, 6, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
           >
             <div className="fc-value mono">Top Agent</div>
@@ -91,7 +96,7 @@ export default function Hero() {
           </motion.div>
           <ProfileCard
             name="Haziel Nablo"
-            title="Customer Service Representative"
+            title="Customer Service & Content Moderation"
             handle="hazielnablo"
             status="Open to Work · Davao City"
             contactText="Contact Me"

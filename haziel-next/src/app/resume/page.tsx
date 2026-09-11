@@ -4,7 +4,7 @@ import PrintButton from "@/components/print-button";
 
 export const metadata: Metadata = {
   title: "Resume — Haziel Nablo",
-  description: "Resume of Haziel Nablo, Customer Service Representative, Davao City.",
+  description: "Resume of Haziel Nablo, Customer Service & Content Moderation, Davao City.",
 };
 
 export default function ResumePage() {
@@ -19,12 +19,15 @@ export default function ResumePage() {
           </div>
           <h1 className="h-section">Haziel Nablo</h1>
           <p className="lede" style={{ marginBottom: 24 }}>
-            Customer Service Representative · Agdao, Davao City, Philippines
+            Customer Service &amp; Content Moderation · Agdao, Davao City, Philippines
             <br />
             hazielnablo19@gmail.com · +63 935 198 0042
           </p>
-          <div className="no-print">
+          <div className="no-print" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <PrintButton />
+            <Link href="/Haziel-Nablo-Resume.pdf" className="btn btn-secondary">
+              Download PDF with Photo
+            </Link>
           </div>
         </div>
       </section>
@@ -36,6 +39,10 @@ export default function ResumePage() {
               <li>Flexible enough to deal with a range of clients and customers.</li>
               <li>Balancing multiple tasks and responding to customers in a timely manner.</li>
               <li>Maintaining a positive demeanor even in challenging situations to provide excellent service.</li>
+            </ul>
+            <h2>Professional Experience — Conectys · Concentrix</h2>
+            <ul>
+              <li><strong>Content moderation, Threads (2024 — Jun 2026):</strong> reviewed uploaded videos and decided allow, restrict, age-gate, or remove; checked profile pictures, thumbnails, and photo posts for nudity, graphic violence, hateful imagery, and prohibited symbols; judged context, not just individual elements; handled abusive, threatening, and sexually explicit comments; handled sensitive cases including graphic violence, self-harm, abuse, and sexual exploitation; recognized new spam, scams, and harmful challenges; applied Community Guidelines consistently and objectively.</li>
             </ul>
             <h2>Professional Experience — Ibex Global Solutions</h2>
             <ul>
@@ -57,6 +64,7 @@ export default function ResumePage() {
             <ul>
               <li><strong>Vendor operations:</strong> multi-chat support, order cancellation, rider coordination, retention &amp; de-escalation.</li>
               <li><strong>Billing &amp; accounts:</strong> invoice / VAT explanations, private data updates, device troubleshooting, CRM &amp; ticketing.</li>
+              <li><strong>Trust &amp; safety:</strong> review queues, allow / restrict / age-gate / remove, spam &amp; scam detection, guideline consistency.</li>
               <li><strong>Soft strengths:</strong> work under pressure, multi-tasking, empathy &amp; patience, adaptability, time management.</li>
             </ul>
           </div>

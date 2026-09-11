@@ -14,6 +14,7 @@
   --accent-soft: rgba(197, 255, 65, 0.08);
   --shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.55);
   --nav-bg: rgba(11, 11, 11, 0.78);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   color-scheme: dark;
 }
 
@@ -62,7 +63,7 @@ body {
 }
 
 .section {
-  padding: 160px 0;
+  padding: 96px 0;
   scroll-margin-top: 88px;
 }
 
@@ -115,6 +116,27 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.copy-label {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 180ms var(--ease-out);
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+@media (hover: none) {
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: none;
+  }
 }
 
 .btn-secondary {
@@ -385,7 +407,7 @@ body {
   border-radius: 22px;
   padding: 14px;
   box-shadow: var(--shadow);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background-color 0.3s ease;
+  transition: transform 0.35s var(--ease-out), border-color 0.35s ease, background-color 0.3s ease;
 }
 
 .portrait-frame:hover {
@@ -508,17 +530,39 @@ body {
   border-radius: 18px;
   padding: 32px 28px;
   box-shadow: var(--shadow);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background-color 0.3s ease;
+  transition: transform 0.35s var(--ease-out), border-color 0.35s ease, background-color 0.3s ease;
 }
 
 .info-card:hover {
   transform: translateY(-3px);
 }
 
+@media (hover: none) {
+  .info-card:hover,
+  .exp-card:hover,
+  .credential:hover,
+  .scope-item:hover,
+  .step-btn:hover {
+    transform: none;
+  }
+}
+
+.info-card:active,
+.exp-card:active,
+.credential:active {
+  transform: scale(0.99);
+}
+
+.btn:active,
+.step-btn:active {
+  transform: scale(0.98);
+}
+
 .card-index {
   font-size: 12px;
   color: var(--accent);
   font-weight: 700;
+  letter-spacing: 0.08em;
   margin-bottom: 14px;
 }
 
@@ -596,7 +640,7 @@ body {
   border-radius: 18px;
   padding: 36px 34px;
   box-shadow: var(--shadow);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.35s var(--ease-out), background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .exp-card:hover {
@@ -792,7 +836,7 @@ body {
   border-radius: 18px;
   padding: 36px 30px;
   box-shadow: var(--shadow);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+  transition: transform 0.35s var(--ease-out), background-color 0.3s ease;
 }
 
 .credential:hover {
@@ -837,7 +881,7 @@ body {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   gap: 24px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .step-list {
@@ -866,6 +910,12 @@ body {
   transform: translateX(4px);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .step-btn:hover {
+    transform: none;
+  }
+}
+
 .step-btn.active {
   border-color: var(--accent);
 }
@@ -889,14 +939,24 @@ body {
   border-radius: 18px;
   padding: 40px 36px;
   box-shadow: var(--shadow);
-  min-height: 320px;
+  /* Fixed reserve: fits the tallest step (Investigate, 5 bullets) on desktop
+     so switching steps never moves content below. Mobile keeps auto. */
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
   transition: background-color 0.3s ease;
+}
+
+.step-panel > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .step-panel-title {
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: var(--accent);
   margin-bottom: 10px;
 }
@@ -917,6 +977,7 @@ body {
 
 .sim-label {
   display: inline-block;
+  align-self: flex-start;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -924,7 +985,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 4px 10px;
-  margin-top: 20px;
+  margin-top: auto;
 }
 
 /* ---------- Contact / footer ---------- */
@@ -937,7 +998,7 @@ body {
 .contact-title {
   font-size: clamp(30px, 4.4vw, 48px);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1.12;
   margin: 0 0 16px;
 }

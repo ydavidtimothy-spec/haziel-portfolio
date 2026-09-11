@@ -12,10 +12,11 @@ export default function Contact() {
             <span className="eyebrow mono">08 / Contact</span>
             <h2 className="contact-title">Looking for steady customer &amp; vendor support?</h2>
             <p className="lede" style={{ margin: "0 auto" }}>
-              Available for Customer Service, Vendor Support, Escalations, and Retention roles.
+              Available for Customer Service, Vendor Support, Escalations, Retention,
+              and Content Moderation roles.
             </p>
             <div className="contact-actions">
-              <StarButton href="/resume">Download Resume</StarButton>
+              <StarButton href="/resume" plain>Download Resume</StarButton>
               <Link href="mailto:hazielnablo19@gmail.com" className="btn btn-secondary">
                 Send Email
               </Link>

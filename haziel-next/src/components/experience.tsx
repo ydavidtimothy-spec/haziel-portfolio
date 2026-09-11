@@ -11,7 +11,7 @@ function Check({ children }: { children: React.ReactNode }) {
   );
 }
 
-const SCOPES = ["Vendors", "Orders", "Billing", "Accounts", "Devices", "Retention"];
+const SCOPES = ["Vendors", "Orders", "Billing", "Accounts", "Devices", "Retention", "Moderation", "Policy Enforcement", "Spam & Scams"];
 
 export default function Experience() {
   return (
@@ -19,10 +19,11 @@ export default function Experience() {
       <div className="container">
         <Reveal>
           <span className="eyebrow mono">02 / Experience</span>
-          <h2 className="h-section">Chat support → escalations &amp; retention</h2>
+          <h2 className="h-section">Chat support → escalations → content moderation</h2>
           <p className="lede">
-            Two support roles at Ibex Global Solutions, described in plain terms from the
-            resume. The progression matters: frontline volume first, then complex cases.
+            Three chapters, described in plain terms from the
+            resume. The progression matters: frontline volume first, then complex cases,
+            then trust &amp; safety review queues.
           </p>
         </Reveal>
 
@@ -77,6 +78,32 @@ export default function Experience() {
         </Reveal>
 
         <Reveal>
+          <div className="exp-row">
+            <div>
+              <div className="exp-dates mono">2024 — 2026</div>
+              <div className="exp-role">CONTENT MODERATION</div>
+              <h3 className="exp-title">Trust &amp; safety review on Threads</h3>
+              <div className="exp-tags">
+                <span className="tag mono">Conectys</span>
+                <span className="tag mono">Concentrix</span>
+                <span className="tag mono">Policy enforcement</span>
+                <span className="tag mono">Review queues</span>
+              </div>
+            </div>
+            <div className="exp-card">
+              <ul className="check-list">
+                <Check><strong>Reviewed uploaded videos</strong>&nbsp;and decided: allow, restrict, age-gate, or remove.</Check>
+                <Check><strong>Checked visual content</strong>&nbsp;— profile pictures, thumbnails, photo posts — for nudity, graphic violence, hateful imagery, and prohibited symbols.</Check>
+                <Check><strong>Read for context</strong>,&nbsp;not just individual elements, before judging a post or comment.</Check>
+                <Check><strong>Handled abusive comments</strong>&nbsp;— threats, hate, sexual content, harassment — plus sensitive cases like self-harm and exploitation.</Check>
+                <Check><strong>Spotted new spam, scams,</strong>&nbsp;and harmful challenges as patterns emerged.</Check>
+                <Check><strong>Applied Community Guidelines</strong>&nbsp;consistently and objectively across user posts, images, and interactions.</Check>
+              </ul>
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal>
           <div className="progress-rail" aria-label="Career progression">
             <div className="progress-step">
               <div className="progress-year mono">2022</div>
@@ -90,8 +117,8 @@ export default function Experience() {
             </div>
             <div className="progress-step">
               <div className="progress-year mono">2024</div>
-              <p className="progress-name">Expanded responsibilities</p>
-              <p className="progress-desc">Retention saves · Sensitive cases</p>
+              <p className="progress-name">Content moderation</p>
+              <p className="progress-desc">Threads · Policy · Review queues</p>
             </div>
           </div>
         </Reveal>

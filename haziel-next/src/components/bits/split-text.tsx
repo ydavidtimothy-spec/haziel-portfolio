@@ -13,7 +13,7 @@ type Props = {
   stagger?: number;
 };
 
-export default function SplitText({ text, className = "", delay = 0, stagger = 0.022 }: Props) {
+export default function SplitText({ text, className = "", delay = 0, stagger = 0.018 }: Props) {
   return (
     <motion.span
       className={className}
@@ -31,7 +31,7 @@ export default function SplitText({ text, className = "", delay = 0, stagger = 0
             hidden: { opacity: 0, y: "0.4em" },
             visible: { opacity: 1, y: "0em" },
           }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           style={{ display: "inline-block", whiteSpace: "pre" }}
         >
           {ch === " " ? "\u00A0" : ch}

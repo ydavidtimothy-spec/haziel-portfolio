@@ -60,13 +60,14 @@ export default function Workflow() {
           ))}
         </div>
         <div className="step-panel">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={step.name}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              style={{ flex: 1 }}
             >
               <div className="step-panel-title mono">0{active + 1} / {step.name.toUpperCase()}</div>
               <h3 className="step-panel-name">{step.name}</h3>
@@ -105,7 +106,8 @@ export function WorkflowSection() {
             customer &amp; vendor issues
           </h2>
           <p className="lede">
-            Listen → clarify → investigate → act → confirm. Select a step to see what I
+            Listen → clarify → investigate → act → confirm. The same method behind
+            vendor escalations and content review queues — select a step to see what I
             actually do at each stage.
           </p>
         </Reveal>

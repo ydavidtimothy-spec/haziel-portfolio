@@ -9,9 +9,18 @@ import StarBorder from "@/components/bits/StarBorder";
 type Props = {
   href: string;
   children: ReactNode;
+  /** Render a flat accent pill with no orbit (for secondary CTAs). */
+  plain?: boolean;
 };
 
-export default function StarButton({ href, children }: Props) {
+export default function StarButton({ href, children, plain = false }: Props) {
+  if (plain) {
+    return (
+      <Link href={href} className="btn btn-primary">
+        {children}
+      </Link>
+    );
+  }
   return (
     <StarBorder
       as={Link}

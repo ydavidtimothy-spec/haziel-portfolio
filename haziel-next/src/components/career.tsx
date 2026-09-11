@@ -2,6 +2,11 @@ import Reveal from "@/components/reveal";
 
 const ITEMS = [
   {
+    role: "Content moderation — Threads",
+    meta: "Conectys · Concentrix, Davao · 2024 — Jun 2026",
+    text: "Trust & safety review: allow, restrict, age-gate, or remove violating videos, images, and comments per Community Guidelines.",
+  },
+  {
     role: "Vendor escalations & retention support",
     meta: "Ibex Global Solutions · 2023 — 2024",
     text: "Sensitive updates, invoice walkthroughs, device issues, retention saves, and account or store-profile changes.",

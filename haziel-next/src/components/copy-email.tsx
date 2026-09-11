@@ -22,8 +22,10 @@ export default function CopyEmail() {
   }
 
   return (
-    <button type="button" className="btn btn-secondary" onClick={copy}>
-      {copied ? "Copied to clipboard" : "Copy Email Address"}
+    <button type="button" className="btn btn-secondary" onClick={copy} aria-live="polite">
+      <span key={copied ? "copied" : "copy"} className="copy-label">
+        {copied ? "Copied to clipboard" : "Copy Email Address"}
+      </span>
     </button>
   );
 }

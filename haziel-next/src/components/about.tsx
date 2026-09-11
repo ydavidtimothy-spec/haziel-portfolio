@@ -1,4 +1,5 @@
 import Reveal from "@/components/reveal";
+import SpotlightCard from "@/components/bits/SpotlightCard";
 
 const CARDS = [
   {
@@ -35,11 +36,11 @@ export default function About() {
         <div className="card-grid-3">
           {CARDS.map((c, i) => (
             <Reveal key={c.index} delay={i * 0.08}>
-              <div className="info-card">
+              <SpotlightCard className="info-card" spotlightColor="rgba(132, 204, 22, 0.14)">
                 <div className="card-index mono">{c.index}</div>
                 <h3 className="card-title">{c.title}</h3>
                 <p className="card-text">{c.text}</p>
-              </div>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>

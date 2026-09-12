@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Haziel Nablo logo">
+  <title>HN disc mark</title>
+  <defs>
+    <radialGradient id="hnDisc" cx="35%" cy="28%" r="85%">
+      <stop offset="0%" stop-color="#c4b5fd"/>
+      <stop offset="55%" stop-color="#7a3cff"/>
+      <stop offset="100%" stop-color="#4c1d95"/>
+    </radialGradient>
+    <filter id="hnHalo" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="hnLift" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <!-- Soft halo (large sizes only) -->
+  <circle cx="48" cy="48" r="30" fill="#7a3cff" opacity="0.45" filter="url(#hnHalo)"/>
+  <!-- Filled disc: light catches top-left, weight settles bottom-right -->
+  <circle cx="48" cy="48" r="30" fill="url(#hnDisc)"/>
+  <!-- Serif N in ink, casting the shadow -->
+  <text x="48" y="62" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="38"
+        fill="#ffffff" filter="url(#hnLift)">N</text>
+</svg>

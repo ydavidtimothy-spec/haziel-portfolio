@@ -259,8 +259,13 @@
     scaleY(calc(1 + (var(--pointer-from-top) - 0.5) * 0.02)) scaleX(calc(1 + (var(--pointer-from-left) - 0.5) * 0.01));
   bottom: -1px;
   backface-visibility: hidden;
-  will-change: transform;
   transition: transform 120ms ease-out;
+}
+
+/* will-change only while tilt is engaged (hover/active), never permanently. */
+.pc-card-wrapper:hover .pc-avatar-content .avatar,
+.pc-card-wrapper.active .pc-avatar-content .avatar {
+  will-change: transform;
 }
 
 .pc-avatar-content::before {
@@ -341,14 +346,13 @@
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
   backdrop-filter: blur(10px);
 }
 
 .pc-contact-btn:hover {
   border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
-  transition: all 0.2s ease;
 }
 
 .pc-content:not(.pc-avatar-content) {
@@ -568,6 +572,18 @@
   width: 100%;
   max-width: 380px;
   margin: 0 auto;
+}
+
+/* Face card stays dark-styled in both themes: pin the contact button's
+   dark glass background so light mode's color-scheme never paints the
+   native white button face over it. */
+.profile-card .pc-contact-btn {
+  background: rgba(17, 17, 17, 0.55);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.profile-card .pc-contact-btn:hover {
+  background: rgba(17, 17, 17, 0.7);
 }
 
 @media (max-width: 1024px) {

@@ -14,6 +14,8 @@
   --accent-soft: rgba(197, 255, 65, 0.08);
   --shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.55);
   --nav-bg: rgba(11, 11, 11, 0.78);
+  --violet: #7a3cff;
+  --violet-soft: rgba(122, 60, 255, 0.12);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   color-scheme: dark;
 }
@@ -29,6 +31,8 @@
   --accent-soft: rgba(77, 124, 15, 0.08);
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px -16px rgba(0, 0, 0, 0.12);
   --nav-bg: rgba(255, 255, 255, 0.82);
+  --violet: #5b21b6;
+  --violet-soft: rgba(91, 33, 182, 0.08);
   color-scheme: light;
 }
 
@@ -93,6 +97,10 @@ body {
 }
 
 /* ---------- Buttons ---------- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 .btn {
   display: inline-flex;
   align-items: center;
@@ -187,6 +195,14 @@ body {
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: block;
   flex-shrink: 0;
 }
 
@@ -315,6 +331,35 @@ body {
 .hero {
   padding: 168px 0 120px;
   scroll-margin-top: 88px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Token backdrop (static texture: lime aura + faint dot grid). Pure CSS,
+   theme-aware via tokens, no motion so reduced-motion needs no kill-switch. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 45% at 22% 0%, var(--accent-soft), transparent 65%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--border) 1px, transparent 1.5px);
+  background-size: 26px 26px;
+  opacity: 0.5;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 75%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-grid {
@@ -378,6 +423,10 @@ body {
 
 .proof-value.accent {
   color: var(--accent);
+}
+
+.proof-value.violet {
+  color: var(--violet);
 }
 
 .proof-label {
@@ -524,6 +573,19 @@ body {
   gap: 20px;
 }
 
+/* Equal-height rule: Reveal wrappers stretch, cards fill their cell. */
+.card-grid-2 > *,
+.card-grid-3 > * {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.card-grid-2 > * > *,
+.card-grid-3 > * > * {
+  flex: 1;
+}
+
 .info-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -566,6 +628,17 @@ body {
   margin-bottom: 14px;
 }
 
+/* Violet voice: trust & safety tiles only (moderation storyline). */
+.info-card.mod .card-index {
+  color: var(--violet);
+}
+
+/* Inline check color comes from the component; scoped override keeps the
+   mod card single-voice. */
+.info-card.mod .skill-row svg {
+  color: var(--violet) !important;
+}
+
 .card-title {
   font-size: 18px;
   font-weight: 700;
@@ -599,6 +672,10 @@ body {
   font-weight: 700;
   letter-spacing: 0.06em;
   margin-bottom: 12px;
+}
+
+.exp-row.mod .exp-dates {
+  color: var(--violet);
 }
 
 .exp-role {
@@ -740,6 +817,14 @@ body {
 .scope-item:hover {
   border-color: var(--accent);
   transform: translateY(-2px);
+}
+
+.scope-item.violet {
+  color: var(--violet);
+}
+
+.scope-item.violet:hover {
+  border-color: var(--violet);
 }
 
 /* ---------- Skills ---------- */

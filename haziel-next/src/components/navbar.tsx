@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeToggle from "@/components/theme-toggle";
 
@@ -10,14 +11,16 @@ const LINKS = [
   { href: "/#experience", id: "experience", label: "Experience" },
   { href: "/#skills", id: "skills", label: "Skills" },
   { href: "/#career", id: "career", label: "Career" },
+  { href: "/#why-hire", id: "why-hire", label: "Why Hire" },
   { href: "/#recognition", id: "recognition", label: "Honors" },
-  { href: "/#why-hire", id: "why-hire", label: "Why Me" },
   { href: "/how-i-work", id: "how-i-work", label: "How I Work" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
+  const pathname = usePathname();
+  const effectiveActive = pathname === "/how-i-work" ? "how-i-work" : active;
 
   useEffect(() => {
     const sections = LINKS.filter((l) => l.id !== "how-i-work")
@@ -42,7 +45,7 @@ export default function Navbar() {
       <div style={{ width: "100%", maxWidth: 1040, display: "flex", flexDirection: "column", alignItems: "center" }}>
         <nav className="nav-island" aria-label="Main navigation" style={{ maxWidth: "100%" }}>
           <Link href="/" className="nav-brand" aria-label="Haziel Nablo home">
-            <span className="nav-monogram">HN</span>
+            <img src="/logo-hn-sm.svg" alt="" width={30} height={30} className="nav-logo" />
             Haziel Nablo
           </Link>
           <div className="nav-links">
@@ -50,7 +53,7 @@ export default function Navbar() {
               <Link
                 key={l.id}
                 href={l.href}
-                className={`nav-link${active === l.id ? " active" : ""}`}
+                className={`nav-link${effectiveActive === l.id ? " active" : ""}`}
               >
                 {l.label}
               </Link>

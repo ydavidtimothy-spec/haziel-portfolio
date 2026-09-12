@@ -1,5 +1,4 @@
 import Reveal from "@/components/reveal";
-import SpotlightCard from "@/components/bits/SpotlightCard";
 
 const GROUPS: { title: string; desc: string; items: string[] }[] = [
   {
@@ -51,11 +50,10 @@ export default function Skills() {
         </Reveal>
         <div className="card-grid-3">
           {GROUPS.map((g, i) => (
-            <Reveal key={g.title} delay={i * 0.08}>
-              <SpotlightCard className="info-card" spotlightColor="rgba(132, 204, 22, 0.14)">
-                <div className="card-index mono">0{i + 1}</div>
-                <h3 className="card-title">{g.title}</h3>
-                <p className="card-text">{g.desc}</p>
+            <div key={g.title} className={`info-card${i === 2 ? " mod" : ""}`}>
+              <div className="card-index mono">0{i + 1}</div>
+              <h3 className="card-title">{g.title}</h3>
+              <p className="card-text">{g.desc}</p>
                 <div className="skill-rows">
                   {g.items.map((item) => (
                     <div key={item} className="skill-row">
@@ -66,8 +64,7 @@ export default function Skills() {
                     </div>
                   ))}
                 </div>
-              </SpotlightCard>
-            </Reveal>
+              </div>
           ))}
         </div>
       </div>

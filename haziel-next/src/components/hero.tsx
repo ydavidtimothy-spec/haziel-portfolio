@@ -66,7 +66,7 @@ export default function Hero() {
             </div>
             <div className="proof-divider" />
             <div className="proof-item">
-              <span className="proof-value mono accent">Threads moderation</span>
+              <span className="proof-value mono violet">Threads moderation</span>
               <span className="proof-label">Conectys · Concentrix · &rsquo;24–&rsquo;26</span>
             </div>
           </div>
@@ -78,22 +78,14 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.12, ease }}
         >
-          <motion.div
-            className="float-card float-left"
-            animate={prefersReduced ? {} : { y: [0, -6, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          >
+          <div className="float-card float-left">
             <div className="fc-value mono">4 concurrent</div>
             <div className="fc-label">Live chats</div>
-          </motion.div>
-          <motion.div
-            className="float-card float-right"
-            animate={prefersReduced ? {} : { y: [0, 6, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-          >
+          </div>
+          <div className="float-card float-right">
             <div className="fc-value mono">Top Agent</div>
             <div className="fc-label">Ibex · 2023</div>
-          </motion.div>
+          </div>
           <ProfileCard
             name="Haziel Nablo"
             title="Customer Service & Content Moderation"

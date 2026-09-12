@@ -27,7 +27,7 @@ const themeInit = `(function(){try{var t=localStorage.getItem('hn-theme');if(t==
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>

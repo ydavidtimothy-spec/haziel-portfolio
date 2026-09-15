@@ -1,0 +1,56 @@
+{
+  "cssGuard": {
+    "guardBlocks": 2,
+    "totalHoverSelectors": 16,
+    "guardedHoverSelectors": 14
+  },
+  "lightFilters": {
+    "plain": "invert(1)",
+    "glow": "none"
+  },
+  "hoverSupported": true,
+  "lightHoverGlowOpacity": "1",
+  "lightHoverMarkTransform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+  "lightFocus": {
+    "active": true,
+    "fv": true,
+    "outline": "2px solid"
+  },
+  "lightFocusGlowOpacity": "1",
+  "darkFilters": {
+    "plain": "none",
+    "glow": "none"
+  },
+  "darkHoverGlowOpacity": "1",
+  "hoverMediaEmulated": true,
+  "touchBrandHoverPseudo": true,
+  "touchHoverGlowOpacity": "0",
+  "touchHoverMarkTransform": "matrix(1, 0, 0, 1, 0, 0)",
+  "touchActiveGlowOpacity": "1",
+  "touchActiveMarkTransform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+  "hoverRestored": true,
+  "reduceMedia": true,
+  "reduceGlowOpacity": "1",
+  "reduceMarkTransform": "none",
+  "reduceFocusGlowOpacity": "1",
+  "reduceFocusMarkTransform": "none",
+  "workflowDebug": {
+    "gridClass": "workflow-grid reveal is-visible",
+    "gridOpacity": "1",
+    "innerW": 1400,
+    "innerH": 1000,
+    "scrollY": 8003,
+    "rect": {
+      "x": 85,
+      "y": 343,
+      "w": 479,
+      "h": 282
+    }
+  },
+  "stepFocus": {
+    "active": true,
+    "fv": true,
+    "outline": "2px solid off -2px",
+    "listOverflow": "hidden"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "themeBefore": "{\"theme\":null,\"pressed\":\"true\"}",
+  "themeAfterDark": "{\"theme\":\"dark\",\"pressed\":\"false\"}",
+  "themeAfterLight": "{\"theme\":null,\"pressed\":\"true\"}",
+  "themeStored": "light",
+  "copyButtonPresent": true,
+  "copyLabelBefore": "Copy Email Address",
+  "copyLabelAfter": "Copied to clipboard",
+  "wfBefore": "{\"p3hidden\":false,\"p2hidden\":true,\"tab2sel\":\"false\"}",
+  "wfAfterClickTab2": "{\"p2hidden\":false,\"p3hidden\":true,\"tab2sel\":\"true\",\"tab3sel\":\"false\",\"focusIsTab2\":true}",
+  "scrollspyCareer": "{\"active\":\"Career\",\"href\":\"#career\",\"aria\":\"true\"}",
+  "scrollspySkills": "Skills",
+  "drawerBefore": "{\"open\":false,\"expanded\":\"false\",\"menuVisible\":\"flex\"}",
+  "drawerAfterOpen": "{\"open\":true,\"expanded\":\"true\"}",
+  "drawerAfterEscape": "{\"open\":false,\"expanded\":\"false\",\"focusOnBtn\":true}",
+  "printMedia": true,
+  "printChromeHidden": "none",
+  "printBodyHeight": 1283
+}

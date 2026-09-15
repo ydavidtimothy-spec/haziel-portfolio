@@ -278,6 +278,14 @@
         if (!b.hasAttribute("hidden")) active = i;
       });
 
+      /* Match the CSS exit duration (--dur-exit) so the incoming panel starts
+         as the outgoing one finishes, instead of after the longer enter. */
+      var exitMs = parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue("--dur-exit"),
+        10
+      );
+      if (isNaN(exitMs)) exitMs = 100;
+
       function select(next, focus) {
         if (next === active) {
           if (focus) btns[next].focus();
@@ -312,7 +320,7 @@
           swap();
         } else {
           outgoing.classList.add("is-swapping");
-          setTimeout(swap, 180);
+          setTimeout(swap, exitMs);
         }
       }
 

@@ -63,9 +63,14 @@
   --shadow-2: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-3: 0 8px 16px 0 rgba(51, 51, 51, 0.04);
 
-  /* Motion — one default transition, named properties only */
+  /* Motion — named properties only. Two curves on purpose: --ease leans in at
+     the start (fine for hover/colour, where the eye already waits), while
+     --ease-out front-loads motion so an entrance is legible in its first frame. */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --dur: 150ms;
+  --dur-glow: 170ms; /* brand hover/tap glow cross-fade + scale */
+  --dur-exit: 100ms; /* outgoing panels leave faster than they arrive */
 
   /* Rhythm (4px base unit) */
   --py-band: 128px;
@@ -147,8 +152,8 @@ body {
   font-family: var(--font-sans);
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.2; /* body = 120% */
-  letter-spacing: -0.02em;
+  line-height: 1.5; /* 120% cramped wrapped prose; body copy needs air */
+  letter-spacing: 0; /* negative tracking belongs to display type, not body */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
@@ -343,10 +348,6 @@ img {
   transition: color var(--dur) var(--ease);
 }
 
-.announce-link:hover {
-  color: #fcfcfc;
-}
-
 /* ---------- Header bar: opaque, 56px, hairline bottom ---------- */
 .nav-bar {
   background: var(--page-bg);
@@ -380,20 +381,77 @@ img {
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   white-space: nowrap;
+  transition: color var(--dur) var(--ease);
 }
 
-.nav-logo {
+/* Brand mark — the plain teardrop with the "lit" glow mark stacked on top of
+   it. Both marks share one fixed 26px box, so nothing can shift; the wrapper
+   carries the scale so the two marks move and cross-fade as a single object. */
+.brand-mark {
+  position: relative;
   display: block;
   width: 26px;
   height: 26px;
   flex-shrink: 0;
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform var(--dur-glow) var(--ease-out);
 }
 
-/* The supplied mark is light (#F8F8F8); flip it so it reads on the paper theme. */
-html:not([data-theme="dark"]) .nav-logo {
+.nav-logo,
+.nav-logo-glow {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* The glow mark sits over the plain mark and cross-fades in — never a hard swap. */
+.nav-logo-glow {
+  opacity: 0;
+  transition: opacity var(--dur-glow) var(--ease-out);
+}
+
+/* The supplied mark is light (#F8F8F8); flip it so it reads on the paper theme.
+   Scoped to the plain mark ONLY — the glow asset carries its own purple
+   gradient and neon-blue glow, so inverting it would wreck the colours. */
+html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
   filter: invert(1);
+}
+
+/* Tap and keyboard light the brand up independently of hover. :focus-visible
+   keeps the global focus ring, so these rules only add the glow. */
+.nav-brand:active,
+.nav-brand:focus-visible {
+  color: var(--accent);
+}
+
+.nav-brand:active .brand-mark,
+.nav-brand:focus-visible .brand-mark {
+  transform: scale(1.04);
+}
+
+.nav-brand:active .nav-logo-glow,
+.nav-brand:focus-visible .nav-logo-glow {
+  opacity: 1;
+}
+
+/* Real pointers only: touch fires :hover on tap and would leave the glow stuck. */
+@media (hover: hover) and (pointer: fine) {
+  .nav-brand:hover {
+    color: var(--accent);
+  }
+
+  .nav-brand:hover .brand-mark {
+    transform: scale(1.04);
+  }
+
+  .nav-brand:hover .nav-logo-glow {
+    opacity: 1;
+  }
 }
 
 .nav-links {
@@ -416,14 +474,9 @@ html:not([data-theme="dark"]) .nav-logo {
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   white-space: nowrap;
   transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
-}
-
-.nav-link:hover {
-  color: var(--text-strong);
-  background: var(--hover-pill);
 }
 
 .nav-link.active {
@@ -469,11 +522,6 @@ html:not([data-theme="dark"]) .nav-logo {
     border-color var(--dur) var(--ease);
 }
 
-.theme-toggle:hover {
-  background: var(--surface-2);
-  border-color: var(--border);
-}
-
 .theme-toggle:active {
   transform: scale(0.98);
 }
@@ -506,11 +554,6 @@ html:not([data-theme="dark"]) .nav-logo {
   box-shadow: var(--shadow-1);
   transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease),
     border-color var(--dur) var(--ease);
-}
-
-.menu-btn:hover {
-  background: var(--surface-2);
-  border-color: var(--border);
 }
 
 /* Mobile drawer — overlays below the header, transform + opacity only */
@@ -554,13 +597,8 @@ html:not([data-theme="dark"]) .nav-logo {
   text-decoration: none;
   font-size: 16px;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
-}
-
-.mobile-link:hover {
-  background: var(--hover-pill);
-  color: var(--text-strong);
 }
 
 .mobile-drawer-inner .btn {
@@ -594,20 +632,11 @@ html:not([data-theme="dark"]) .nav-logo {
   color: var(--btn-primary-fg);
 }
 
-.btn-primary:hover {
-  background: var(--btn-primary-hover);
-}
-
 .btn-secondary {
   background: var(--btn-secondary-bg);
   color: var(--btn-secondary-fg);
   border-color: var(--btn-secondary-border);
   box-shadow: var(--shadow-1);
-}
-
-.btn-secondary:hover {
-  background: var(--base-200);
-  border-color: var(--border);
 }
 
 .btn:active {
@@ -681,8 +710,8 @@ html:not([data-theme="dark"]) .nav-logo {
 
 .hero-sub {
   font-size: 18px;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  line-height: 1.5;
+  letter-spacing: 0;
   color: var(--muted);
   max-width: var(--measure-hero);
   margin: 0 0 32px;
@@ -783,7 +812,7 @@ html:not([data-theme="dark"]) .nav-logo {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1;
   color: var(--text-strong);
 }
@@ -843,8 +872,8 @@ html:not([data-theme="dark"]) .nav-logo {
 
 .lede {
   font-size: 16px;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  line-height: 1.5;
+  letter-spacing: 0;
   color: var(--muted);
   max-width: var(--measure-cta);
   margin: 0;
@@ -882,14 +911,14 @@ html:not([data-theme="dark"]) .nav-logo {
 .point-title {
   font-size: 24px;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1;
   margin: 0 0 8px;
 }
 
 .point-text {
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--muted);
   max-width: var(--measure-card);
   margin: 0;
@@ -985,7 +1014,7 @@ html:not([data-theme="dark"]) .nav-logo {
   gap: 12px;
   align-items: flex-start;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--text);
   max-width: 620px;
 }
@@ -1105,7 +1134,7 @@ html:not([data-theme="dark"]) .nav-logo {
 .skill-group-title {
   font-size: 24px;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1;
   margin: 0;
 }
@@ -1116,7 +1145,7 @@ html:not([data-theme="dark"]) .nav-logo {
 
 .skill-group-desc {
   font-size: 14px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--muted);
   margin: 0;
 }
@@ -1171,7 +1200,7 @@ html:not([data-theme="dark"]) .nav-logo {
 .timeline-role {
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1;
   margin: 0 0 6px;
 }
@@ -1187,7 +1216,7 @@ html:not([data-theme="dark"]) .nav-logo {
 
 .timeline-text {
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--muted);
   margin: 0;
   max-width: 640px;
@@ -1248,14 +1277,14 @@ html:not([data-theme="dark"]) .nav-logo {
 .why-title {
   font-size: 18px;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   line-height: 1;
   margin: 0 0 6px;
 }
 
 .why-text {
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--muted);
   margin: 0;
 }
@@ -1306,7 +1335,7 @@ html:not([data-theme="dark"]) .nav-logo {
   flex-direction: column;
   gap: 10px;
   font-size: 15px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--text);
 }
 
@@ -1376,16 +1405,18 @@ html:not([data-theme="dark"]) .nav-logo {
   background: transparent;
 }
 
-.step-btn:hover {
-  background: var(--surface-2);
-}
-
 .step-btn.active {
   background: var(--surface-2);
 }
 
 .step-btn.active::before {
   background: var(--text-strong);
+}
+
+/* .step-list has overflow:hidden, which clips the outer focus ring down to two
+   horizontal lines. Pull the ring inside the button so the full rectangle shows. */
+.step-btn:focus-visible {
+  outline-offset: -2px;
 }
 
 .step-num {
@@ -1425,11 +1456,13 @@ html:not([data-theme="dark"]) .nav-logo {
   flex-direction: column;
   flex: 1;
   opacity: 1;
-  transition: opacity var(--dur) var(--ease);
+  transition: opacity var(--dur) var(--ease-out); /* enter ~150ms */
 }
 
+/* Exit is deliberately quicker than the enter — the panel is already leaving. */
 .step-panel-body.is-swapping {
   opacity: 0;
+  transition-duration: var(--dur-exit); /* exit ~100ms */
 }
 
 /* display:flex above would otherwise beat the UA [hidden] rule */
@@ -1457,7 +1490,7 @@ html:not([data-theme="dark"]) .nav-logo {
 
 .step-panel-desc {
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--muted);
   margin: 0 0 22px;
   max-width: 520px;
@@ -1469,7 +1502,7 @@ html:not([data-theme="dark"]) .nav-logo {
 
 .step-goal {
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--muted);
   margin: 22px 0 0;
   max-width: 520px;
@@ -1563,19 +1596,13 @@ html:not([data-theme="dark"]) .nav-logo {
   color: var(--text-strong);
   font-size: 16px;
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   text-decoration: none;
   word-break: break-word;
 }
 
 .contact-line a {
   transition: color var(--dur) var(--ease);
-}
-
-.contact-line a:hover {
-  text-decoration: underline dotted;
-  text-decoration-color: var(--accent);
-  text-underline-offset: 3px;
 }
 
 /* ==========================================================================
@@ -1604,7 +1631,7 @@ html:not([data-theme="dark"]) .nav-logo {
   max-width: 46ch;
   font-family: var(--font-mono);
   font-size: 12px;
-  line-height: 1.2;
+  line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--muted-2);
 }
@@ -1623,12 +1650,6 @@ html:not([data-theme="dark"]) .nav-logo {
   color: var(--muted);
   text-decoration: none;
   transition: color var(--dur) var(--ease);
-}
-
-.footer-links a:hover {
-  color: var(--text-strong);
-  text-decoration: underline dotted;
-  text-underline-offset: 3px;
 }
 
 /* ==========================================================================
@@ -1660,11 +1681,69 @@ html:not([data-theme="dark"]) .nav-logo {
   transition: color var(--dur) var(--ease);
 }
 
-.back-link:hover {
-  color: var(--text-strong);
-  text-decoration: underline dotted;
-  text-decoration-color: var(--accent);
-  text-underline-offset: 3px;
+/* ==========================================================================
+   Hover affordances — real pointers only
+
+   A touch device fires :hover on tap and the styling then sticks after the
+   finger lifts. Every hover state lives behind this one guard; touch keeps its
+   feedback from :active, keyboard from :focus-visible.
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  .announce-link:hover {
+    color: #fcfcfc;
+  }
+
+  .nav-link:hover {
+    color: var(--text-strong);
+    background: var(--hover-pill);
+  }
+
+  .theme-toggle:hover {
+    background: var(--surface-2);
+    border-color: var(--border);
+  }
+
+  .menu-btn:hover {
+    background: var(--surface-2);
+    border-color: var(--border);
+  }
+
+  .mobile-link:hover {
+    background: var(--hover-pill);
+    color: var(--text-strong);
+  }
+
+  .btn-primary:hover {
+    background: var(--btn-primary-hover);
+  }
+
+  .btn-secondary:hover {
+    background: var(--base-200);
+    border-color: var(--border);
+  }
+
+  .step-btn:hover {
+    background: var(--surface-2);
+  }
+
+  .contact-line a:hover {
+    text-decoration: underline dotted;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+  }
+
+  .footer-links a:hover {
+    color: var(--text-strong);
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+  }
+
+  .back-link:hover {
+    color: var(--text-strong);
+    text-decoration: underline dotted;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+  }
 }
 
 .resume-actions {
@@ -1707,7 +1786,7 @@ html:not([data-theme="dark"]) .nav-logo {
   flex-direction: column;
   gap: 9px;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--text);
 }
 
@@ -1719,7 +1798,7 @@ html:not([data-theme="dark"]) .nav-logo {
 .resume-lede {
   margin: 0;
   font-size: 16px;
-  line-height: 1.2;
+  line-height: 1.5;
   color: var(--muted);
 }
 
@@ -1757,7 +1836,7 @@ html:not([data-theme="dark"]) .nav-logo {
 }
 
 .reveal {
-  transition: opacity 300ms var(--ease), transform 300ms var(--ease);
+  transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -1947,12 +2026,20 @@ html:not([data-theme="dark"]) .nav-logo {
   .nav-link,
   .step-btn,
   .theme-toggle,
-  .menu-btn {
+  .menu-btn,
+  .nav-brand,
+  .brand-mark,
+  .nav-logo-glow {
     transition: none !important;
   }
 
   .mobile-drawer {
     transform: none;
+  }
+
+  /* Brand: swap straight to the glow — no fade, no scale. */
+  .brand-mark {
+    transform: none !important;
   }
 
   *,

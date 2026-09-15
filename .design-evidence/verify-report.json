@@ -1,0 +1,128 @@
+{
+  "homeInitial": {
+    "title": "Haziel Nablo — Customer Support & Vendor Escalations Specialist",
+    "fonts": 9,
+    "revealTotal": 33,
+    "revealVisibleTop": 0,
+    "heroLines": "Customer\nSupport &\nTrust & Safety\nModeration",
+    "announce": "OPEN TO WORK · DAVAO CITY GET IN TOUCH →",
+    "navLinks": [
+      "About",
+      "Experience",
+      "Skills",
+      "Career",
+      "Why Hire",
+      "Honors",
+      "How I Work"
+    ],
+    "statValue": "4",
+    "themeAttr": null,
+    "toggleAria": "true",
+    "sections": [
+      "about",
+      "experience",
+      "skills",
+      "career",
+      "why-hire",
+      "recognition",
+      "how-i-work",
+      "contact"
+    ]
+  },
+  "headerLine": [
+    "96:A.nav-link",
+    "120:NAV.nav-island",
+    "134:DIV.nav-bar",
+    "136:DIV.nav-bar",
+    "150:SECTION.hero"
+  ],
+  "countUp": {
+    "value": "4",
+    "visible": null,
+    "statVisible": true
+  },
+  "afterSkillsScroll": {
+    "skillsGroupVisible": true,
+    "activeNav": "Skills",
+    "activeNavAria": "true"
+  },
+  "scrollspyCareer": "Career",
+  "scrollspyContact": "Honors",
+  "copy": {
+    "before": "Copy Email Address",
+    "after": "Copied to clipboard",
+    "restored": "Copy Email Address"
+  },
+  "workflow": true,
+  "workflowState": {
+    "activeBtn": "01LISTEN",
+    "btn1Aria": "true",
+    "visiblePanel": "wf-panel-1",
+    "hiddenCount": 4,
+    "bodyHasSwappingClass": false
+  },
+  "themeDark": {
+    "attr": "dark",
+    "stored": "dark",
+    "aria": "false",
+    "canvas": "rgb(22, 18, 12)"
+  },
+  "themePersist": "dark",
+  "themeLight": null,
+  "mobile": {
+    "menuBtnVisible": "flex",
+    "navLinksHidden": "none",
+    "announceLinkHidden": "none"
+  },
+  "drawerOpen": {
+    "open": true,
+    "aria": "true",
+    "visibility": "visible",
+    "opacity": "1"
+  },
+  "drawerClosed": {
+    "open": false,
+    "aria": "false"
+  },
+  "reducedMotion": {
+    "mediaMatches": true,
+    "revealVisibleWithoutScroll": true,
+    "statValue": "4",
+    "revealOpacity": "1"
+  },
+  "resume": {
+    "h1": "Haziel Nablo",
+    "printBtn": "Print / Save as PDF",
+    "pdfHref": "Haziel-Nablo-Resume.pdf",
+    "headings": [
+      "Professional Summary",
+      "Professional Experience — Conectys · Concentrix",
+      "Professional Experience — Ibex Global Solutions",
+      "Education",
+      "Honors & Certifications",
+      "Skills"
+    ],
+    "hasNoPrint": true
+  },
+  "howIWork": {
+    "h1": "How I handle difficult customer & vendor issues",
+    "activeNav": "How I Work",
+    "steps": [
+      "01LISTEN",
+      "02CLARIFY",
+      "03INVESTIGATE",
+      "04ACT",
+      "05CONFIRM"
+    ]
+  },
+  "fileProtocol": {
+    "title": "Haziel Nablo — Customer Support & Vendor Escalations Specialist",
+    "heroLines": "Customer\nSupport &\nTrust & Safety\nModeration",
+    "stylesheetApplied": "rgb(255, 90, 78)",
+    "navLinks": 7,
+    "revealVisibleAtLoad": 2,
+    "jsFlag": true,
+    "portraitLoaded": true
+  },
+  "consoleErrors": []
+}

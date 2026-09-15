@@ -1,441 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Haziel Nablo — Customer Service Representative</title>
-  <meta name="description" content="Portfolio of Haziel Nablo, Customer Service Representative from Davao City. Ibex Global Solutions Chat Support and Vendor Escalations, Top Agent and Chat Warrior Awardee 2023.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23c5ff41'>HN</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    try {
-      var t = localStorage.getItem('hn-theme');
-      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {}
-  </script>
-  <style>
-    .resume-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; }
-    .resume-list li { font-size: 13.5px; line-height: 1.6; color: var(--text-muted); padding-left: 22px; position: relative; }
-    .resume-list li::before { content: '→'; position: absolute; left: 0; color: var(--accent-lime); font-family: var(--font-mono); font-size: 12px; top: 2px; }
-    .resume-list li strong { color: #e8e8e8; font-weight: 600; }
-    .resume-note { margin-top: 16px; padding: 10px 14px; background: rgba(197,255,65,0.07); border: 1px solid rgba(197,255,65,0.22); border-radius: 8px; font-size: 12.5px; color: #d7d7d7; line-height: 1.55; }
-    .resume-note span { color: var(--accent-lime); font-weight: 700; font-family: var(--font-mono); font-size: 11.5px; display: block; margin-bottom: 2px; letter-spacing: 0.04em; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haziel Nablo — Customer Support &amp; Vendor Escalations Specialist</title>
+<meta name="description" content="Portfolio of Haziel Nablo, customer experience specialist from Davao City. High-volume chat support, vendor escalations, and Threads content moderation. Top Agent and Chat Warrior Awardee 2023.">
+<meta name="theme-color" content="#FAF6EF">
+<link rel="icon" href="logo-hn.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Pre-paint: apply the stored theme before first paint (no flash) and flag JS. */
+(function () {
+  try {
+    if (localStorage.getItem('hn-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+  document.documentElement.className += ' js';
+})();
+</script>
 </head>
 <body>
 
-  <header class="nav-island-wrapper">
-    <nav class="nav-island" aria-label="Main Navigation">
-      <a href="#hero" class="nav-brand" aria-label="Haziel Nablo Home">
-        <span class="brand-monogram">HN</span>
-        <span class="brand-name">Haziel Nablo</span>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-top">
+  <div class="announce">
+    <div class="container announce-inner">
+      <span class="announce-status"><span class="announce-dot" aria-hidden="true"></span>Open to work · Davao City</span>
+      <a class="announce-link" href="#contact">Get in touch →</a>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <nav class="nav-island" aria-label="Main navigation">
+      <a class="nav-brand" href="index.html" aria-label="Haziel Nablo — home">
+        <img class="nav-logo" src="logo-hn.svg" alt="" width="30" height="30">
+        Haziel Nablo
       </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#experience-roles" class="nav-link">Experience</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#timeline" class="nav-link">Career</a>
-        <a href="#awards" class="nav-link">Honors</a>
-        <a href="#why-hire" class="nav-link">Why me</a>
-        <a href="diagram.html" class="nav-link nav-link-highlight">How I Work ↗</a>
+      <div class="nav-links">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#career">Career</a>
+        <a class="nav-link" href="#why-hire">Why Hire</a>
+        <a class="nav-link" href="#recognition">Honors</a>
+        <a class="nav-link" href="how-i-work.html">How I Work</a>
       </div>
       <div class="nav-actions">
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme" aria-pressed="false">
-          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle light and dark theme" aria-pressed="true" title="Switch to dark theme">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
-        <span class="status-pill" title="Open to Customer Service and Vendor Support roles">
-          <span class="status-dot"></span> Open to Work
-        </span>
-        <a href="#contact" class="btn btn-sm btn-primary">Get in Touch</a>
-        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <a class="btn btn-primary nav-cta" href="#contact">Get in Touch</a>
+        <button class="menu-btn" type="button" data-menu-btn aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileDrawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
       </div>
     </nav>
-    <div id="mobileDrawer" class="mobile-drawer">
-      <a href="#about" class="mobile-link">About</a>
-      <a href="#experience-roles" class="mobile-link">Experience</a>
-      <a href="#skills" class="mobile-link">Skills &amp; Toolkit</a>
-      <a href="#timeline" class="mobile-link">Career Milestones</a>
-      <a href="#why-hire" class="mobile-link">Why Hire Me</a>
-      <a href="#awards" class="mobile-link">Honors &amp; Awards</a>
-      <a href="diagram.html" class="mobile-link mobile-link-highlight">How I Work ↗</a>
-      <button id="themeToggleMobile" class="btn btn-outline" style="margin-top: 12px; width: 100%;" aria-pressed="false">Toggle Light / Dark Theme</button>
-      <a href="#contact" class="mobile-link btn btn-primary" style="margin-top: 12px;">Contact Haziel</a>
-    </div>
-  </header>
 
-  <div id="toast" class="toast-notification" role="status" aria-live="polite">Email copied to clipboard!</div>
-
-  <main>
-    <!-- HERO -->
-    <section id="hero" class="section hero-section">
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span class="eyebrow-tag">CUSTOMER SERVICE REPRESENTATIVE</span>
-            <span class="eyebrow-location">📍 Agdao, Davao City, Philippines</span>
-          </div>
-          <h1 class="hero-title">
-            Customer support &amp;<br>
-            vendor <span class="text-gradient">escalations</span><br>
-            specialist.
-          </h1>
-          <p class="hero-subtitle">
-            I am <strong style="color:#fff;">Haziel Nablo</strong> — experienced in high-volume customer and merchant support:
-            high-volume chats, escalations, troubleshooting, and account help — while keeping conversations professional under pressure.
-          </p>
-          <div class="hero-cta-group">
-            <a href="#experience-roles" class="btn btn-primary">
-              View Experience
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-            </a>
-            <button id="copyEmailBtn" class="btn btn-outline" data-email="hazielnablo19@gmail.com" title="Click to copy email address">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-              hazielnablo19@gmail.com
-            </button>
-          </div>
-          <div class="hero-metrics">
-            <div class="metric-item">
-              <span class="metric-value">Up to 4 chats</span>
-              <span class="metric-label">At once — with research &amp; rider coordination</span>
-            </div>
-            <div class="metric-divider"></div>
-            <div class="metric-item">
-              <span class="metric-value">Top Agent '23</span>
-              <span class="metric-label">Ibex Global Solutions</span>
-            </div>
-            <div class="metric-divider"></div>
-            <div class="metric-item">
-              <span class="metric-value">BSBA HRDM</span>
-              <span class="metric-label">Holy Cross of Davao '19–'21</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-portrait-wrapper">
-          <div class="portrait-glow"></div>
-          <div class="portrait-card">
-            <div class="portrait-media">
-              <img src="assets/images/haziel-nablo.png" alt="Studio portrait of Haziel Nablo" class="portrait-img" loading="eager" width="360" height="390">
-            </div>
-            <div class="portrait-badge">
-              <div>
-                <span class="badge-title">Haziel Nablo</span>
-                <span class="badge-sub">Customer Service Representative</span>
-              </div>
-              <span class="badge-pill">Ibex Alum</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section about-section">
-      <div class="section-header">
-        <span class="section-label">01 / ABOUT</span>
-        <h2 class="section-title">Steady, flexible, and easy to work with</h2>
-        <p class="section-desc">
-          “Being flexible enough to deal with a range of clients and customers. Balancing multiple tasks and
-          responding to customers in a timely manner. Maintaining a positive demeanor even in challenging
-          situations to provide excellent service.” — from Haziel's resume.
-        </p>
-      </div>
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="about-card-number">01</div>
-          <h3 class="about-card-title">Flexible across clients</h3>
-          <p class="about-card-text">Comfortable shifting between different vendors, customers, tones, and request types without losing patience or clarity.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-number">02</div>
-          <h3 class="about-card-title">Balanced multitasking</h3>
-          <p class="about-card-text">Handled up to 4 live conversations at once while researching issues, coordinating with riders, and keeping replies accurate.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-number">03</div>
-          <h3 class="about-card-title">Positive under challenge</h3>
-          <p class="about-card-text">Keeps a steady, empathetic demeanor during disputes, termination risks, and device or billing frustrations.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE ROLES -->
-    <section id="experience-roles" class="section">
-      <div class="section-header">
-        <span class="section-label">02 / EXPERIENCE</span>
-        <h2 class="section-title">Experience at Ibex Global Solutions</h2>
-        <p class="section-desc">Two support roles, described in plain terms from my resume.</p>
-      </div>
-
-      <div class="bento-grid">
-        <div class="bento-card bento-card-large">
-          <div class="card-details">
-            <div class="card-meta">
-              <span class="card-tag">Ibex Global Solutions — Chat Support</span>
-              <span class="card-year">2022 — 2023</span>
-            </div>
-            <h3 class="card-title">Chat support — vendors &amp; orders</h3>
-            <ul class="resume-list">
-              <li><strong>Assisted vendors</strong> with their concerns and day-to-day order issues.</li>
-              <li><strong>Cancelled orders</strong> as per vendor request.</li>
-              <li><strong>Explained order breakdowns</strong> so vendors understood totals and status.</li>
-              <li><strong>Followed up with the assigned rider</strong> to move each order through to delivery.</li>
-            </ul>
-            <div class="card-stack" style="margin-top:16px;">
-              <span class="stack-pill">Timely replies</span>
-              <span class="stack-pill">Order cancellation</span>
-              <span class="stack-pill">Rider follow-up</span>
-            </div>
-          </div>
-          <div class="card-details" style="border-left: 1px solid var(--border-subtle);">
-            <div class="card-meta">
-              <span class="card-tag">Ibex Global Solutions — Escalations &amp; Retention</span>
-              <span class="card-year">2023 — 2024</span>
-            </div>
-            <h3 class="card-title">Escalations, retention &amp; account help</h3>
-            <ul class="resume-list">
-              <li><strong>Updated private vendor data</strong> — bank details, contact person, and registered info.</li>
-              <li><strong>Explained invoices</strong> — total revenue, VAT, charges, and deductions.</li>
-              <li><strong>Troubleshot or replaced</strong> the device vendors used.</li>
-              <li><strong>Retained vendors</strong> considering account termination.</li>
-              <li><strong>Terminated or activated</strong> accounts upon verified request.</li>
-              <li><strong>Updated restaurant / store</strong> address or name changes.</li>
-            </ul>
-            <div class="card-stack" style="margin-top:16px;">
-              <span class="stack-pill">Retention</span>
-              <span class="stack-pill">Invoice clarity</span>
-              <span class="stack-pill">Device support</span>
-              <span class="stack-pill">Data accuracy</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="section-header">
-        <span class="section-label">03 / SKILLS</span>
-        <h2 class="section-title">What I'm good at</h2>
-        <p class="section-desc">From my resume and day-to-day support work.</p>
-      </div>
-      <div class="skills-grid">
-        <div class="skill-category-card">
-          <div class="skill-icon-header">
-            <span class="skill-cat-badge">01</span>
-            <h3 class="skill-cat-title">Vendor operations</h3>
-          </div>
-          <p class="skill-cat-desc">Front-line tasks performed daily at Ibex.</p>
-          <div class="skill-tags">
-            <span class="chip">Managing multiple live chats</span>
-            <span class="chip">Order cancellation</span>
-            <span class="chip">Order breakdown explanation</span>
-            <span class="chip">Rider coordination</span>
-            <span class="chip">Calming frustrated customers</span>
-            <span class="chip">Account activation / termination</span>
-          </div>
-        </div>
-        <div class="skill-category-card">
-          <div class="skill-icon-header">
-            <span class="skill-cat-badge">02</span>
-            <h3 class="skill-cat-title">Billing &amp; account support</h3>
-          </div>
-          <p class="skill-cat-desc">Careful with sensitive details and clear explanations.</p>
-          <div class="skill-tags">
-            <span class="chip">Private data updates</span>
-            <span class="chip">Bank detail changes</span>
-            <span class="chip">Invoice / VAT explanations</span>
-            <span class="chip">Device troubleshooting</span>
-            <span class="chip">Store profile updates</span>
-            <span class="chip">CRM &amp; ticketing</span>
-          </div>
-        </div>
-        <div class="skill-category-card">
-          <div class="skill-icon-header">
-            <span class="skill-cat-badge">03</span>
-            <h3 class="skill-cat-title">Soft strengths</h3>
-          </div>
-          <p class="skill-cat-desc">How Haziel describes herself on the resume.</p>
-          <div class="skill-tags">
-            <span class="chip">Work under pressure</span>
-            <span class="chip">Multi-tasking</span>
-            <span class="chip">Empathy &amp; patience</span>
-            <span class="chip">Adaptability</span>
-            <span class="chip">Time management</span>
-            <span class="chip">Positive attitude</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section id="timeline" class="section">
-      <div class="section-header">
-        <span class="section-label">04 / WORK &amp; EDUCATION</span>
-        <h2 class="section-title">Work and education</h2>
-        <p class="section-desc">Work history and schooling exactly as listed on the resume.</p>
-      </div>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <span class="timeline-role">Vendor Escalations &amp; Retention Support</span>
-              <span class="timeline-date">2023 — 2024</span>
-            </div>
-            <div class="timeline-company">Ibex Global Solutions</div>
-            <p class="timeline-summary">Handled sensitive updates, invoice walkthroughs, device issues, retention saves, and account or store-profile changes.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <span class="timeline-role">Chat Support Specialist</span>
-              <span class="timeline-date">2022 — 2023</span>
-            </div>
-            <div class="timeline-company">Ibex Global Solutions</div>
-            <p class="timeline-summary">Supported vendors across 4 concurrent chats — cancellations, breakdowns, and rider follow-ups for delivery.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <span class="timeline-role">BS Business Administration, HR Development Management</span>
-              <span class="timeline-date">AY 2019 — 2021</span>
-            </div>
-            <div class="timeline-company">Holy Cross of Davao College</div>
-            <p class="timeline-summary">Degree foundation in people management and organizational processes.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <span class="timeline-role">TVL — Beauty Care, Nail Care &amp; Massage</span>
-              <span class="timeline-date">SY 2017 — 2018</span>
-            </div>
-            <div class="timeline-company">Francisco Bangoy Senior High School, Sasa, Davao City</div>
-            <p class="timeline-summary">Technical-vocational track; basis for TESDA NCII certifications and Best in TVL recognition.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY HIRE ME -->
-    <section id="why-hire" class="section about-section">
-      <div class="section-header">
-        <span class="section-label">05 / WHY HIRE ME</span>
-        <h2 class="section-title">What I bring to your support team</h2>
-        <p class="section-desc">Beyond the resume bullets — how I actually work with customers and teammates.</p>
-      </div>
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="about-card-number">01</div>
-          <h3 class="about-card-title">Calm under pressure</h3>
-          <p class="about-card-text">Comfortable with frustrated customers and escalations. I listen first and keep the conversation from becoming confrontational.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-number">02</div>
-          <h3 class="about-card-title">Clear written communication</h3>
-          <p class="about-card-text">Used to explaining orders, invoices, and next steps simply — even while juggling several conversations at once.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-number">03</div>
-          <h3 class="about-card-title">Fast learner</h3>
-          <p class="about-card-text">Quick to pick up new systems, products, policies, and workflows. I take notes and follow procedures carefully.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-number">04</div>
-          <h3 class="about-card-title">Ownership mindset</h3>
-          <p class="about-card-text">I don't just answer the immediate question — I check what caused the issue and make sure the customer knows what happens next.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- AWARDS -->
-    <section id="awards" class="section">
-      <div class="section-header">
-        <span class="section-label">06 / RECOGNITION</span>
-        <h2 class="section-title">Honors &amp; certifications</h2>
-        <p class="section-desc">Awards and NCII holdings transcribed from the resume — nothing added.</p>
-      </div>
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="about-card-number">2023 · IBEX</div>
-          <h3 class="about-card-title">🏆 Top Agent &amp; Chat Warrior</h3>
-          <p class="about-card-text"><strong>Top Agent</strong> and <strong>Chat Warrior Awardee</strong> at Ibex Global Solutions for high-volume, high-quality concurrent chat delivery.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-number">2018 · SHS</div>
-          <h3 class="about-card-title">🎖️ Leadership &amp; Best in TVL</h3>
-          <p class="about-card-text"><strong>Leadership Awardee</strong> and <strong>Best in TVL</strong> at Francisco Bangoy Senior High School. Also <strong>Best in OJT</strong> for Massage and <strong>Best in OJT</strong> for Beauty Care.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-card-number">TESDA · NCII</div>
-          <h3 class="about-card-title">📜 NCII Holder — 3 tracks</h3>
-          <p class="about-card-text">Certified in <strong>Beauty Care / Nail Care</strong>, <strong>Massage Therapy</strong>, and <strong>Housekeeping</strong>.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CALLOUT -->
-    <section class="section section-callout">
-      <div class="callout-card">
-        <div class="callout-content">
-          <span class="callout-badge">How I work</span>
-          <h2 class="callout-title">How I handle difficult customer &amp; vendor issues</h2>
-          <p class="callout-desc">Listen → clarify → investigate → act → confirm. A simple step-by-step example from my Ibex work. Illustrative sample — no real customer data.</p>
-          <a href="diagram.html" class="btn btn-primary">
-            See my approach
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact-section">
-      <div class="contact-card">
-        <span class="section-label">07 / LET'S CONNECT</span>
-        <h2 class="contact-title">Looking for steady <br><span class="text-gradient">customer &amp; vendor support?</span></h2>
-        <p class="contact-desc">Available for Customer Service, Vendor Support, Escalations, and Retention roles.</p>
-        <div class="contact-actions">
-          <a href="mailto:hazielnablo19@gmail.com" class="btn btn-primary btn-lg">
-            Send Email Directly
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          </a>
-          <button class="btn btn-outline btn-lg" onclick="copyToClipboard('hazielnablo19@gmail.com', 'hazielnablo19@gmail.com copied to clipboard!');">
-            Copy Email Address
-          </button>
-          <a href="tel:+639351980042" class="btn btn-outline btn-lg">📞 +63 935 198 0042</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <span class="brand-monogram">HN</span>
-        <p class="footer-copy">© 2026 Haziel Nablo • Agdao, Davao City. Content grounded in resume.</p>
-      </div>
-      <div class="footer-links">
-        <a href="mailto:hazielnablo19@gmail.com" class="footer-link">hazielnablo19@gmail.com</a>
-        <a href="tel:+639351980042" class="footer-link">+63 935 198 0042</a>
-        <a href="diagram.html" class="footer-link">How I Work</a>
-        <a href="#hero" class="footer-link back-to-top">↑ Top</a>
+    <div class="mobile-drawer" id="mobileDrawer" data-drawer>
+      <div class="mobile-drawer-inner">
+        <a class="mobile-link" href="#about">About</a>
+        <a class="mobile-link" href="#experience">Experience</a>
+        <a class="mobile-link" href="#skills">Skills</a>
+        <a class="mobile-link" href="#career">Career</a>
+        <a class="mobile-link" href="#why-hire">Why Hire</a>
+        <a class="mobile-link" href="#recognition">Honors</a>
+        <a class="mobile-link" href="how-i-work.html">How I Work</a>
+        <a class="btn btn-primary" href="#contact">Contact Haziel</a>
       </div>
     </div>
-  </footer>
+  </div>
+</header>
 
-  <script src="script.js"></script>
+<main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <p class="hero-label">Haziel Nablo</p>
+        <span class="eyebrow mono">Customer Service &amp; Content Moderation</span>
+        <h1 class="hero-title">
+          Customer<br>
+          <span class="display-em accent">Support &amp;</span><br>
+          Trust &amp; Safety<br>
+          <span class="display-em mod">Moderation</span>
+        </h1>
+        <p class="hero-sub">Experienced in high-volume chat support, vendor operations, escalations, and content moderation — with a focus on staying clear, calm, and helpful under pressure.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#experience">View Experience</a>
+          <a class="btn btn-secondary" href="resume.html">Download Resume</a>
+        </div>
+      </div>
+
+      <div class="hero-portrait reveal" style="--reveal-delay:120ms">
+        <div class="portrait-frame">
+          <img class="portrait-photo" src="assets/images/haziel-nablo.png" alt="Studio portrait of Haziel Nablo" width="720" height="900">
+        </div>
+        <p class="portrait-meta"><span class="status-dot" aria-hidden="true"></span>Open to Work · Davao City</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== STATS RAIL ========================= -->
+  <div class="stats-rail">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat">
+          <span class="stat-value" data-count-to="4">4</span>
+          <span class="stat-label">Concurrent chats</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value accent">Top Agent ’23</span>
+          <span class="stat-label">Ibex Global Solutions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value accent">Chat Warrior ’23</span>
+          <span class="stat-label">Ibex Global Solutions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value mod">Threads moderation</span>
+          <span class="stat-label">Conectys · Concentrix · ’24–’26</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================ ABOUT ========================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">01 / About</span>
+        <h2 class="h-section">Steady, flexible, and easy to work with</h2>
+        <p class="lede">“Being flexible enough to deal with a range of clients and customers. Balancing multiple tasks and responding to customers in a timely manner. Maintaining a positive demeanor even in challenging situations to provide excellent service.” — from Haziel.</p>
+      </div>
+      <div class="points">
+        <div class="point reveal">
+          <span class="point-index">01</span>
+          <div>
+            <h3 class="point-title">Flexible across clients</h3>
+            <p class="point-text">Comfortable shifting between different vendors, customers, tones, and request types without losing patience or clarity.</p>
+          </div>
+        </div>
+        <div class="point reveal" style="--reveal-delay:80ms">
+          <span class="point-index">02</span>
+          <div>
+            <h3 class="point-title">Balanced multitasking</h3>
+            <p class="point-text">Handled up to 4 live conversations at once while researching issues, coordinating with riders, and keeping replies accurate.</p>
+          </div>
+        </div>
+        <div class="point reveal" style="--reveal-delay:160ms">
+          <span class="point-index">03</span>
+          <div>
+            <h3 class="point-title">Positive under challenge</h3>
+            <p class="point-text">Keeps a steady, empathetic demeanor during disputes, termination risks, and device or billing frustrations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== EXPERIENCE ======================= -->
+  <section id="experience" class="section section--flush">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">02 / Experience</span>
+        <h2 class="h-section">Content moderation → escalations → chat support</h2>
+        <p class="lede">Three chapters, newest first: trust &amp; safety review queues, then complex cases, then frontline volume.</p>
+      </div>
+
+      <div class="exp-row mod reveal">
+        <div class="exp-meta">
+          <div class="exp-dates">2024 — 2026</div>
+          <div class="exp-role">Content moderation</div>
+          <h3 class="exp-title">Trust &amp; safety review on Threads</h3>
+          <div class="exp-tags">
+            <span class="tag">Conectys</span>
+            <span class="tag">Concentrix</span>
+            <span class="tag">Policy enforcement</span>
+            <span class="tag">Review queues</span>
+          </div>
+        </div>
+        <ul class="check-list">
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Reviewed uploaded videos</strong>&nbsp;and decided: allow, restrict, age-gate, or remove.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Checked visual content</strong>&nbsp;— profile pictures, thumbnails, photo posts — for nudity, graphic violence, hateful imagery, and prohibited symbols.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Read for context</strong>,&nbsp;not just individual elements, before judging a post or comment.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Handled abusive comments</strong>&nbsp;— threats, hate, sexual content, harassment — plus sensitive cases like self-harm and exploitation.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Spotted new spam, scams,</strong>&nbsp;and harmful challenges as patterns emerged.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Applied Community Guidelines</strong>&nbsp;consistently and objectively across user posts, images, and interactions.</span></li>
+        </ul>
+      </div>
+
+      <div class="exp-row reveal">
+        <div class="exp-meta">
+          <div class="exp-dates">2022 — 2023</div>
+          <div class="exp-role">Chat support</div>
+          <h3 class="exp-title">Vendors &amp; orders</h3>
+          <div class="exp-tags">
+            <span class="tag">Multi-chat</span>
+            <span class="tag">Order support</span>
+            <span class="tag">Rider follow-up</span>
+            <span class="tag">Cancellation</span>
+          </div>
+        </div>
+        <ul class="check-list">
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Assisted vendors</strong>&nbsp;with their concerns and day-to-day order issues.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Cancelled orders</strong>&nbsp;as per vendor request.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Explained order breakdowns</strong>&nbsp;so vendors understood totals and status.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Followed up with the assigned rider</strong>&nbsp;to move each order through to delivery.</span></li>
+        </ul>
+      </div>
+
+      <div class="exp-row reveal">
+        <div class="exp-meta">
+          <div class="exp-dates">2023 — 2024</div>
+          <div class="exp-role">Escalations &amp; retention</div>
+          <h3 class="exp-title">Escalations, retention &amp; account help</h3>
+          <div class="exp-tags">
+            <span class="tag">Retention</span>
+            <span class="tag">Billing</span>
+            <span class="tag">Device support</span>
+            <span class="tag">Account support</span>
+          </div>
+        </div>
+        <ul class="check-list">
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Updated private vendor data</strong>&nbsp;— bank details, contact person, registered info.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Explained invoices</strong>&nbsp;— total revenue, VAT, charges, and deductions.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Troubleshot or replaced</strong>&nbsp;the device vendors used.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Retained vendors</strong>&nbsp;considering account termination.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Terminated or activated</strong>&nbsp;accounts upon verified request.</span></li>
+          <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><strong>Updated restaurant / store</strong>&nbsp;address or name changes.</span></li>
+        </ul>
+      </div>
+
+      <div class="progress-rail reveal" aria-label="Career progression">
+        <div class="progress-step">
+          <div class="progress-year">2024</div>
+          <p class="progress-name">Content moderation</p>
+          <p class="progress-desc">Threads · Policy · Review queues</p>
+        </div>
+        <div class="progress-step">
+          <div class="progress-year">2023</div>
+          <p class="progress-name">Escalations &amp; retention</p>
+          <p class="progress-desc">Billing · Devices · Accounts</p>
+        </div>
+        <div class="progress-step">
+          <div class="progress-year">2022</div>
+          <p class="progress-name">Chat support</p>
+          <p class="progress-desc">Vendors · Orders · Riders</p>
+        </div>
+      </div>
+
+      <div class="scope-rail reveal" aria-label="Support scope">
+        <span class="scope-item">Vendors</span>
+        <span class="scope-item">Orders</span>
+        <span class="scope-item">Billing</span>
+        <span class="scope-item">Accounts</span>
+        <span class="scope-item">Devices</span>
+        <span class="scope-item">Retention</span>
+        <span class="scope-item voice-mod">Moderation</span>
+        <span class="scope-item voice-mod">Policy Enforcement</span>
+        <span class="scope-item voice-mod">Spam &amp; Scams</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ SKILLS ========================= -->
+  <section id="skills" class="section section--flush">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">03 / Skills</span>
+        <h2 class="h-section">What I’m good at</h2>
+        <p class="lede">From the resume and day-to-day support work.</p>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-group reveal">
+          <div class="skill-group-head">
+            <span class="skill-group-index">01</span>
+            <h3 class="skill-group-title">Vendor operations</h3>
+            <p class="skill-group-desc">Front-line tasks performed daily at Ibex.</p>
+          </div>
+          <div class="skill-row">
+            <span class="skill-item">Managing multiple live chats</span>
+            <span class="skill-item">Order cancellation</span>
+            <span class="skill-item">Order breakdown explanations</span>
+            <span class="skill-item">Rider coordination</span>
+            <span class="skill-item">Calming frustrated customers</span>
+            <span class="skill-item">Account activation / termination</span>
+          </div>
+        </div>
+        <div class="skill-group reveal" style="--reveal-delay:80ms">
+          <div class="skill-group-head">
+            <span class="skill-group-index">02</span>
+            <h3 class="skill-group-title">Billing &amp; account support</h3>
+            <p class="skill-group-desc">Careful with sensitive details and clear explanations.</p>
+          </div>
+          <div class="skill-row">
+            <span class="skill-item">Private data updates</span>
+            <span class="skill-item">Bank detail changes</span>
+            <span class="skill-item">Invoice / VAT explanations</span>
+            <span class="skill-item">Device troubleshooting</span>
+            <span class="skill-item">Store profile updates</span>
+            <span class="skill-item">CRM &amp; ticketing</span>
+          </div>
+        </div>
+        <div class="skill-group mod reveal" style="--reveal-delay:160ms">
+          <div class="skill-group-head">
+            <span class="skill-group-index">03</span>
+            <h3 class="skill-group-title"><span class="mod-dot" aria-hidden="true"></span>Trust &amp; safety operations</h3>
+            <p class="skill-group-desc">Content moderation on Threads at Conectys and Concentrix.</p>
+          </div>
+          <div class="skill-row">
+            <span class="skill-item">Video &amp; image review</span>
+            <span class="skill-item">Allow / restrict / age-gate / remove</span>
+            <span class="skill-item">Harassment &amp; hate-speech detection</span>
+            <span class="skill-item">Spam, scams &amp; harmful challenges</span>
+            <span class="skill-item">Context-first judgment calls</span>
+            <span class="skill-item">Community Guidelines consistency</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CAREER ========================= -->
+  <section id="career" class="section section--flush">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">04 / Career</span>
+        <h2 class="h-section">Work and education</h2>
+        <p class="lede">Work history and schooling exactly as listed on the resume.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <h3 class="timeline-role">Content moderation — Threads</h3>
+          <div class="timeline-meta">Conectys · Concentrix, Davao · 2024 — Jun 2026</div>
+          <p class="timeline-text">Trust &amp; safety review: allow, restrict, age-gate, or remove violating videos, images, and comments per Community Guidelines.</p>
+        </div>
+        <div class="timeline-item reveal" style="--reveal-delay:60ms">
+          <h3 class="timeline-role">Vendor escalations &amp; retention support</h3>
+          <div class="timeline-meta">Ibex Global Solutions · 2023 — 2024</div>
+          <p class="timeline-text">Sensitive updates, invoice walkthroughs, device issues, retention saves, and account or store-profile changes.</p>
+        </div>
+        <div class="timeline-item reveal" style="--reveal-delay:120ms">
+          <h3 class="timeline-role">Chat support specialist</h3>
+          <div class="timeline-meta">Ibex Global Solutions · 2022 — 2023</div>
+          <p class="timeline-text">Vendor support across up to 4 concurrent chats — cancellations, breakdowns, and rider follow-ups for delivery.</p>
+        </div>
+        <div class="timeline-item reveal" style="--reveal-delay:180ms">
+          <h3 class="timeline-role">BS Business Administration, HR Development Management</h3>
+          <div class="timeline-meta">Holy Cross of Davao College · AY 2019 — 2021</div>
+          <p class="timeline-text">Degree foundation in people management and organizational processes.</p>
+        </div>
+        <div class="timeline-item reveal" style="--reveal-delay:240ms">
+          <h3 class="timeline-role">TVL — Beauty Care, Nail Care &amp; Massage</h3>
+          <div class="timeline-meta">Francisco Bangoy SHS, Sasa, Davao City · SY 2017 — 2018</div>
+          <p class="timeline-text">Technical-vocational track; basis for TESDA NCII certifications and Best in TVL recognition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== WHY HIRE ======================== -->
+  <section id="why-hire" class="section section--flush">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">05 / Why hire me</span>
+        <h2 class="h-section">What I bring to your support team</h2>
+      </div>
+      <div class="why-grid">
+        <p class="why-statement reveal">I don’t just close conversations. <em>I make sure the customer understands what happened and what happens next.</em></p>
+        <div class="why-points">
+          <div class="why-point reveal">
+            <span class="why-index">01</span>
+            <div>
+              <h3 class="why-title">Calm under pressure</h3>
+              <p class="why-text">Comfortable with frustrated customers and escalations. I listen first and keep the conversation from becoming confrontational.</p>
+            </div>
+          </div>
+          <div class="why-point reveal" style="--reveal-delay:60ms">
+            <span class="why-index">02</span>
+            <div>
+              <h3 class="why-title">Clear written communication</h3>
+              <p class="why-text">Used to explaining orders, invoices, and next steps simply — even while juggling several conversations at once.</p>
+            </div>
+          </div>
+          <div class="why-point reveal" style="--reveal-delay:120ms">
+            <span class="why-index">03</span>
+            <div>
+              <h3 class="why-title">Fast learner</h3>
+              <p class="why-text">Quick to pick up new systems, products, policies, and workflows. I take notes and follow procedures carefully.</p>
+            </div>
+          </div>
+          <div class="why-point reveal" style="--reveal-delay:180ms">
+            <span class="why-index">04</span>
+            <div>
+              <h3 class="why-title">Ownership mindset</h3>
+              <p class="why-text">I check what caused the issue and make sure the customer knows what happens next.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= RECOGNITION ======================= -->
+  <section id="recognition" class="section section--flush">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">06 / Recognition</span>
+        <h2 class="h-section">Honors &amp; certifications</h2>
+        <p class="lede">Awards and NCII holdings transcribed from the resume — nothing added.</p>
+      </div>
+      <div class="creds reveal">
+        <div class="cred">
+          <div class="cred-year">2023</div>
+          <div class="cred-org">Ibex Global Solutions</div>
+          <ul class="cred-list">
+            <li><strong>Top Agent</strong></li>
+            <li><strong>Chat Warrior Awardee</strong></li>
+          </ul>
+        </div>
+        <div class="cred">
+          <div class="cred-year">2018</div>
+          <div class="cred-org">Francisco Bangoy SHS</div>
+          <ul class="cred-list">
+            <li><strong>Leadership Awardee</strong></li>
+            <li><strong>Best in TVL</strong></li>
+            <li><strong>Best in OJT — Massage</strong></li>
+            <li><strong>Best in OJT — Beauty Care</strong></li>
+          </ul>
+        </div>
+        <div class="cred">
+          <div class="cred-year">NCII</div>
+          <div class="cred-org">TESDA Certified</div>
+          <ul class="cred-list">
+            <li><strong>Beauty Care / Nail Care</strong></li>
+            <li><strong>Massage Therapy</strong></li>
+            <li><strong>Housekeeping</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== WORKFLOW ======================== -->
+  <section id="how-i-work" class="section section--flush">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">07 / How I work</span>
+        <h2 class="h-section">How I handle difficult customer &amp; vendor issues</h2>
+        <p class="lede">Listen → clarify → investigate → act → confirm. The same method behind vendor escalations and content review queues — select a step to see what I actually do at each stage.</p>
+      </div>
+
+      <div class="workflow-grid reveal" data-workflow>
+        <div class="step-list" role="tablist" aria-label="Escalation handling steps" aria-orientation="vertical">
+          <button class="step-btn" type="button" role="tab" id="wf-tab-1" aria-controls="wf-panel-1" aria-selected="false" tabindex="-1" data-step-btn><span class="step-num">01</span><span class="step-name">LISTEN</span></button>
+          <button class="step-btn" type="button" role="tab" id="wf-tab-2" aria-controls="wf-panel-2" aria-selected="false" tabindex="-1" data-step-btn><span class="step-num">02</span><span class="step-name">CLARIFY</span></button>
+          <button class="step-btn active" type="button" role="tab" id="wf-tab-3" aria-controls="wf-panel-3" aria-selected="true" tabindex="0" data-step-btn><span class="step-num">03</span><span class="step-name">INVESTIGATE</span></button>
+          <button class="step-btn" type="button" role="tab" id="wf-tab-4" aria-controls="wf-panel-4" aria-selected="false" tabindex="-1" data-step-btn><span class="step-num">04</span><span class="step-name">ACT</span></button>
+          <button class="step-btn" type="button" role="tab" id="wf-tab-5" aria-controls="wf-panel-5" aria-selected="false" tabindex="-1" data-step-btn><span class="step-num">05</span><span class="step-name">CONFIRM</span></button>
+        </div>
+
+        <div class="step-panel">
+          <div class="step-panel-body" id="wf-panel-1" role="tabpanel" aria-labelledby="wf-tab-1" data-step-panel hidden>
+            <div class="step-panel-title">01 / LISTEN</div>
+            <h3 class="step-panel-name">Listen</h3>
+            <p class="step-panel-desc">Understand what the customer or vendor is actually trying to resolve before jumping into a solution.</p>
+            <ul class="check-list">
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Acknowledge the frustration first</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Let them explain fully</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Keep the tone calm and professional</span></li>
+            </ul>
+            <p class="step-goal"><strong>The goal:</strong> Start from what they need, not what is fastest to answer.</p>
+          </div>
+
+          <div class="step-panel-body" id="wf-panel-2" role="tabpanel" aria-labelledby="wf-tab-2" data-step-panel hidden>
+            <div class="step-panel-title">02 / CLARIFY</div>
+            <h3 class="step-panel-name">Clarify</h3>
+            <p class="step-panel-desc">Find the real issue with one clear question at a time.</p>
+            <ul class="check-list">
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Billing or invoice confusion</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Hardware or device problem</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Order, rider, or delivery status</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Account settings or store details</span></li>
+            </ul>
+            <p class="step-goal"><strong>The goal:</strong> Name the actual problem before offering a solution.</p>
+          </div>
+
+          <div class="step-panel-body" id="wf-panel-3" role="tabpanel" aria-labelledby="wf-tab-3" data-step-panel>
+            <div class="step-panel-title">03 / INVESTIGATE</div>
+            <h3 class="step-panel-name">Investigate</h3>
+            <p class="step-panel-desc">Look at the information available before deciding what action makes sense.</p>
+            <ul class="check-list">
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Account information</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Order status</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Billing details</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Previous interactions</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Device / technical issue</span></li>
+            </ul>
+            <p class="step-goal"><strong>The goal:</strong> Find the actual problem before offering a solution.</p>
+          </div>
+
+          <div class="step-panel-body" id="wf-panel-4" role="tabpanel" aria-labelledby="wf-tab-4" data-step-panel hidden>
+            <div class="step-panel-title">04 / ACT</div>
+            <h3 class="step-panel-name">Act</h3>
+            <p class="step-panel-desc">Fix what can be fixed now, and route the rest to the right place.</p>
+            <ul class="check-list">
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Resolve immediately when possible</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Cancel, correct, update, or retry</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Coordinate with the right team</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Follow security steps for sensitive data</span></li>
+            </ul>
+            <p class="step-goal"><strong>The goal:</strong> Own the case until it moves forward.</p>
+          </div>
+
+          <div class="step-panel-body" id="wf-panel-5" role="tabpanel" aria-labelledby="wf-tab-5" data-step-panel hidden>
+            <div class="step-panel-title">05 / CONFIRM</div>
+            <h3 class="step-panel-name">Confirm</h3>
+            <p class="step-panel-desc">Close the loop clearly so nothing is left ambiguous.</p>
+            <ul class="check-list">
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Explain what was done</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Explain what happens next</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Check the vendor understood</span></li>
+              <li><svg class="check-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Document the case</span></li>
+            </ul>
+            <p class="step-goal"><strong>The goal:</strong> The customer knows what happened and what happens next.</p>
+          </div>
+
+          <span class="sim-label">Simulated example · No customer data</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ CONTACT ======================== -->
+  <section id="contact" class="section section--flush">
+    <div class="container">
+      <div class="contact-grid reveal">
+        <div>
+          <span class="eyebrow">08 / Contact</span>
+          <h2 class="contact-title">Looking for steady customer &amp; vendor support?</h2>
+          <p class="lede">Available for Customer Service, Vendor Support, Escalations, Retention, and Content Moderation roles.</p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="resume.html">Download Resume</a>
+            <a class="btn btn-secondary" href="mailto:hazielnablo19@gmail.com">Send Email</a>
+            <button class="btn btn-secondary" type="button" data-copy-email="hazielnablo19@gmail.com" aria-live="polite"><span data-copy-label>Copy Email Address</span></button>
+          </div>
+        </div>
+        <div class="contact-details">
+          <div class="contact-line">
+            <span class="contact-line-label">Location</span>
+            <span>Agdao, Davao City</span>
+          </div>
+          <div class="contact-line">
+            <span class="contact-line-label">Email</span>
+            <a href="mailto:hazielnablo19@gmail.com">hazielnablo19@gmail.com</a>
+          </div>
+          <div class="contact-line">
+            <span class="contact-line-label">Phone</span>
+            <a href="tel:+639351980042">+63 935 198 0042</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span class="footer-meta">© 2026 Haziel Nablo · Agdao, Davao City. Content grounded in resume.</span>
+    <span class="footer-links">
+      <a href="mailto:hazielnablo19@gmail.com">hazielnablo19@gmail.com</a>
+      <a href="tel:+639351980042">+63 935 198 0042</a>
+      <a href="how-i-work.html">How I Work</a>
+    </span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

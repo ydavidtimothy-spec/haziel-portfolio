@@ -1,167 +1,347 @@
-/**
- * HAZIEL NABLO PORTFOLIO — INTERACTIVE ENGINE
- * CommandCode Design System & Sawad Framer Physics
- */
+/* ============================================================================
+   Haziel Nablo — "Paper & Signal" interaction engine (vanilla, no libraries)
 
-document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
-  initClipboardToast();
-  initScrollSpy();
-  initMobileMenu();
-});
+   Everything is progressive: with JS disabled the pages read perfectly. All
+   motion is transform / opacity only and is skipped under
+   prefers-reduced-motion: reduce.
+   ============================================================================ */
+(function () {
+  "use strict";
 
-/**
- * Dual theme: dark (default) + light enterprise. Persisted in localStorage
- * under 'hn-theme' so index.html and diagram.html stay in sync.
- */
-function initTheme() {
-  const root = document.documentElement;
-  const buttons = [document.getElementById('themeToggle'), document.getElementById('themeToggleMobile')].filter(Boolean);
+  var STORAGE_KEY = "hn-theme";
+  var reduceMotion =
+    window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const apply = (theme) => {
-    if (theme === 'light') {
-      root.setAttribute('data-theme', 'light');
-    } else {
-      root.removeAttribute('data-theme');
+  function each(list, fn) {
+    Array.prototype.forEach.call(list, fn);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initTheme();
+    initDrawer();
+    initReveal();
+    initCountUp();
+    initScrollSpy();
+    initCopyEmail();
+    initWorkflow();
+    initPrint();
+  });
+
+  /* ---------------------------------------------------------------- Theme ---
+     Writes 'hn-theme' to localStorage, sets data-theme on <html> and mirrors
+     the state onto every toggle button's aria-pressed (true === light, which is
+     the default). A tiny inline pre-paint script in <head> avoids the flash. */
+  function initTheme() {
+    var root = document.documentElement;
+    var toggles = document.querySelectorAll("[data-theme-toggle]");
+
+    function apply(theme) {
+      if (theme === "dark") {
+        root.setAttribute("data-theme", "dark");
+      } else {
+        root.removeAttribute("data-theme");
+      }
+      each(toggles, function (btn) {
+        btn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");
+        btn.setAttribute("title", theme === "light" ? "Switch to dark theme" : "Switch to light theme");
+      });
     }
-    buttons.forEach((b) => b.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false'));
-  };
 
-  let current = 'dark';
-  try {
-    current = localStorage.getItem('hn-theme') === 'light' ? 'light' : 'dark';
-  } catch (e) {}
-  apply(current);
+    var current = "light";
+    try {
+      current = localStorage.getItem(STORAGE_KEY) === "dark" ? "dark" : "light";
+    } catch (e) {}
+    apply(current);
 
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      current = current === 'light' ? 'dark' : 'light';
-      try {
-        localStorage.setItem('hn-theme', current);
-      } catch (e) {}
-      apply(current);
-    });
-  });
-}
-
-/**
- * 1-Click Clipboard Copy with Dynamic Toast
- */
-function initClipboardToast() {
-  const copyBtn = document.getElementById('copyEmailBtn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const email = copyBtn.getAttribute('data-email') || 'hazielnablo@gmail.com';
-      copyToClipboard(email, `${email} copied to clipboard!`);
+    each(toggles, function (btn) {
+      btn.addEventListener("click", function () {
+        current = current === "dark" ? "light" : "dark";
+        try {
+          localStorage.setItem(STORAGE_KEY, current);
+        } catch (e) {}
+        apply(current);
+      });
     });
   }
-}
 
-function copyToClipboard(text, message) {
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(text).then(() => {
-      showToast(message);
-    }).catch(() => {
-      fallbackCopy(text, message);
-    });
-  } else {
-    fallbackCopy(text, message);
-  }
-}
+  /* --------------------------------------------------------------- Drawer ---
+     Hamburger opens/closes the mobile drawer, toggles aria-expanded, closes on
+     link click and on Escape. */
+  function initDrawer() {
+    var btn = document.querySelector("[data-menu-btn]");
+    var drawer = document.querySelector("[data-drawer]");
+    if (!btn || !drawer) return;
 
-function fallbackCopy(text, message) {
-  const textArea = document.createElement('textarea');
-  textArea.value = text;
-  textArea.style.position = 'fixed';
-  textArea.style.opacity = '0';
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-  try {
-    document.execCommand('copy');
-    showToast(message);
-  } catch (err) {
-    console.error('Copy fallback failed', err);
-  }
-  document.body.removeChild(textArea);
-}
-
-let toastTimeout;
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
-
-  toast.textContent = message;
-  toast.classList.add('show');
-
-  clearTimeout(toastTimeout);
-  toastTimeout = setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2800);
-}
-
-window.showToast = showToast;
-window.copyToClipboard = copyToClipboard;
-
-/**
- * Mobile Drawer Menu
- */
-function initMobileMenu() {
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const drawer = document.getElementById('mobileDrawer');
-  if (!menuBtn || !drawer) return;
-
-  menuBtn.addEventListener('click', () => {
-    const isOpen = drawer.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', isOpen);
-  });
-
-  // Close when clicking any mobile link
-  drawer.querySelectorAll('.mobile-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && drawer.classList.contains('open')) {
-      drawer.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
+    function setOpen(open) {
+      drawer.classList.toggle("open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
     }
-  });
-}
 
-/**
- * Active Navigation ScrollSpy via IntersectionObserver
- */
-function initScrollSpy() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    btn.addEventListener("click", function () {
+      setOpen(!drawer.classList.contains("open"));
+    });
 
-  if (!sections.length || !navLinks.length) return;
+    each(drawer.querySelectorAll("a"), function (link) {
+      link.addEventListener("click", function () {
+        setOpen(false);
+      });
+    });
 
-  const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -65% 0px',
-    threshold: 0
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const currentId = entry.target.getAttribute('id');
-        navLinks.forEach((link) => {
-          if (link.getAttribute('href') === `#${currentId}`) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && drawer.classList.contains("open")) {
+        setOpen(false);
+        btn.focus();
       }
     });
-  }, observerOptions);
+  }
 
-  sections.forEach((sec) => observer.observe(sec));
-}
+  /* ---------------------------------------------------------------- Reveal ---
+     IntersectionObserver adds .is-visible; children stagger via the
+     --reveal-delay custom property set inline in the markup. */
+  function initReveal() {
+    var items = document.querySelectorAll(".reveal");
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      each(items, function (el) {
+        el.classList.add("is-visible");
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "-72px 0px -60px 0px", threshold: 0 }
+    );
+
+    each(items, function (el) {
+      observer.observe(el);
+    });
+  }
+
+  /* -------------------------------------------------------------- Count-up ---
+     Animates the hero stat from 0 to its data-count-to value once it scrolls
+     into view. Reduced motion jumps straight to the final number. */
+  function initCountUp() {
+    var counters = document.querySelectorAll("[data-count-to]");
+    if (!counters.length) return;
+
+    function run(el) {
+      var to = parseFloat(el.getAttribute("data-count-to")) || 0;
+      if (reduceMotion) {
+        el.textContent = String(to);
+        return;
+      }
+      var duration = 900;
+      var start = null;
+      function tick(ts) {
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = String(Math.round(to * eased));
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = String(to);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      each(counters, run);
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            run(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    each(counters, function (el) {
+      observer.observe(el);
+    });
+  }
+
+  /* ------------------------------------------------------------ Scrollspy ---
+     IntersectionObserver over the section ids drives the active nav underline. */
+  function initScrollSpy() {
+    var links = document.querySelectorAll('.nav-link[href^="#"]');
+    if (!links.length) return;
+
+    var ids = [];
+    each(links, function (link) {
+      ids.push(link.getAttribute("href").slice(1));
+    });
+
+    var sections = ids
+      .map(function (id) {
+        return document.getElementById(id);
+      })
+      .filter(Boolean);
+
+    if (!sections.length || !("IntersectionObserver" in window)) return;
+
+    function setActive(id) {
+      each(links, function (link) {
+        var on = link.getAttribute("href") === "#" + id;
+        link.classList.toggle("active", on);
+        if (on) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
+      });
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-25% 0px -60% 0px", threshold: 0 }
+    );
+
+    sections.forEach(function (s) {
+      observer.observe(s);
+    });
+  }
+
+  /* ---------------------------------------------------------- Copy email ---
+     Clipboard API with a textarea fallback; the label swaps to
+     "Copied to clipboard" and back. */
+  function initCopyEmail() {
+    var buttons = document.querySelectorAll("[data-copy-email]");
+    if (!buttons.length) return;
+
+    each(buttons, function (btn) {
+      var label = btn.querySelector("[data-copy-label]") || btn;
+      var original = label.textContent;
+      var timer;
+
+      btn.addEventListener("click", function () {
+        var email = btn.getAttribute("data-copy-email") || "hazielnablo19@gmail.com";
+
+        function done() {
+          label.textContent = "Copied to clipboard";
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            label.textContent = original;
+          }, 2400);
+        }
+
+        function fallback() {
+          var area = document.createElement("textarea");
+          area.value = email;
+          area.setAttribute("readonly", "");
+          area.style.position = "fixed";
+          area.style.opacity = "0";
+          document.body.appendChild(area);
+          area.select();
+          try {
+            document.execCommand("copy");
+            done();
+          } catch (err) {
+            /* nothing else to try — leave the label unchanged */
+          }
+          document.body.removeChild(area);
+        }
+
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(email).then(done).catch(fallback);
+        } else {
+          fallback();
+        }
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------- Workflow ---
+     Tab clicks switch the step panel with a fade-out / fade-in crossfade. */
+  function initWorkflow() {
+    each(document.querySelectorAll("[data-workflow]"), function (root) {
+      var btns = root.querySelectorAll("[data-step-btn]");
+      var bodies = root.querySelectorAll("[data-step-panel]");
+      if (!btns.length || btns.length !== bodies.length) return;
+
+      var active = 0;
+      each(bodies, function (b, i) {
+        if (!b.hasAttribute("hidden")) active = i;
+      });
+
+      function select(next, focus) {
+        if (next === active) {
+          if (focus) btns[next].focus();
+          return;
+        }
+        each(btns, function (b, i) {
+          var on = i === next;
+          b.classList.toggle("active", on);
+          b.setAttribute("aria-selected", on ? "true" : "false");
+          b.setAttribute("tabindex", on ? "0" : "-1");
+        });
+
+        var outgoing = bodies[active];
+        var incoming = bodies[next];
+
+        function swap() {
+          outgoing.setAttribute("hidden", "");
+          outgoing.classList.remove("is-swapping");
+          incoming.removeAttribute("hidden");
+          active = next;
+          if (focus) btns[next].focus();
+          if (reduceMotion) return;
+          incoming.classList.add("is-swapping");
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              incoming.classList.remove("is-swapping");
+            });
+          });
+        }
+
+        if (reduceMotion) {
+          swap();
+        } else {
+          outgoing.classList.add("is-swapping");
+          setTimeout(swap, 180);
+        }
+      }
+
+      each(btns, function (b, i) {
+        b.addEventListener("click", function () {
+          select(i, false);
+        });
+        b.addEventListener("keydown", function (e) {
+          var target = -1;
+          if (e.key === "ArrowDown" || e.key === "ArrowRight") target = (i + 1) % btns.length;
+          else if (e.key === "ArrowUp" || e.key === "ArrowLeft") target = (i - 1 + btns.length) % btns.length;
+          else if (e.key === "Home") target = 0;
+          else if (e.key === "End") target = btns.length - 1;
+          if (target >= 0) {
+            e.preventDefault();
+            select(target, true);
+          }
+        });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------- Printing ---
+     "Print / Save as PDF" control on the resume page. */
+  function initPrint() {
+    each(document.querySelectorAll("[data-print]"), function (btn) {
+      btn.addEventListener("click", function () {
+        window.print();
+      });
+    });
+  }
+})();

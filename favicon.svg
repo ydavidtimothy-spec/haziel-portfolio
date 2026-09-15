@@ -8,16 +8,46 @@
     />
   </g>
   <defs>
-    <mask id="n-knockout-small">
+    <!--
+      Knockout "N" cut out of the dark teardrop, so the light tile shows through.
+
+      These are the three cubic-Bezier paths that draw the N in logo-nablo-bubble.svg
+      (verbatim, character for character), inside a single <g> whose transform maps the
+      logo's 114.9 x 115 teardrop onto this file's 51 x 51 teardrop.
+
+      Alignment (measured with getBBox in headless Chrome, not estimated):
+        logo teardrop bbox   x 0.3      y 0.3903   w 114.2    h 114.1097
+        logo N bbox (union)  x 35.7     y 32.4417  w  41.8    h  50.5583
+        favicon teardrop     x 9.4941   y 9.4941   w  31.373  h  31.373
+        -> the logo's N sits at 31.00% / 28.09% of its teardrop, 36.60% x 44.31% in size
+        -> proportional scale (same relative size) would be 0.2747
+
+      At 0.2747 the knockout's stroke measures only 0.80 px at 16 px, and the letter
+      renders as a grey ghost (measured mean stroke luminance 141/255 vs 186/255 for the
+      icon this replaces) - a smudge in a browser tab. The scale was therefore raised to
+      the largest value that stays optically sane, chosen so the knockout keeps the exact
+      ink weight of the letterform it replaces: 9.3 logo units x 0.4032 = 3.75 units,
+      which is the stroke-width the old polyline N used. Measured at 16 px, the weakest
+      stroke now reads at parity with the shipped icon (146/255 vs 146/255).
+
+      Group centre is pinned to (24.9609, 25.2564) - the logo's own optical centre for
+      its N, mapped into this file's coordinates - so the letter keeps the logo's optical
+      placement, and enlarging the scale only grows it about that point.
+
+      Resulting N box: x 16.534..33.388, y 15.064..35.449, every corner of which lies
+      within radius 13.42 of the teardrop's centre, i.e. comfortably inside its 15.687
+      radius. The letterform is not distorted: one uniform scale, no per-axis stretch.
+
+      Default non-zero fill rule unions the three overlapping paths into one clean
+      silhouette - no internal seams, no artificial fill-rule tweaks.
+    -->
+    <mask id="n-knockout-small" maskUnits="userSpaceOnUse" x="0" y="0" width="51" height="51">
       <rect width="51" height="51" fill="white"/>
-      <path
-        d="M 19.3 32.6 L 19.3 17.7 L 31.1 32.6 L 31.1 17.7"
-        fill="none"
-        stroke="black"
-        stroke-width="3.75"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
+      <g transform="translate(2.1398 1.9834) scale(0.4032)" fill="#000000" fill-rule="nonzero">
+        <path d="m37.3 44.5 4.1-3 24.5 36.2c2 3.3 6.5 2.1 11.6 5.3v-13.2l-3.7 2.9-24.6-36.5c-1.4-2.1-5.6-3.6-9.2-3.6h-4.3c0.1 0.8 1.6 2.4 1.6 3.1v8.8z"/>
+        <path d="m46 54.4-4.8-7.3c-1.1-1.5-3.9-0.8-3.9 1.3v29.4c0.4 5.1 9.3 5.7 9.3-0.3v-20.7c0-0.9-0.2-1.7-0.6-2.4z"/>
+        <path d="m68.4 57.8c0 0.9 0.2 1.6 0.6 2.1l5 7.1c1.3 2 3.5 0.8 3.5-1v-29.5c-0.2-4.8-8-5.8-9.1-0.5v21.8z"/>
+      </g>
     </mask>
     <clipPath id="clip0_1_286">
       <rect width="50.2724" height="50.2724" rx="11.3755" fill="white"/>

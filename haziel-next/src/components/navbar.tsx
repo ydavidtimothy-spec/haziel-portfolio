@@ -41,67 +41,80 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="nav-fixed">
-      <div style={{ width: "100%", maxWidth: 1040, display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <nav className="nav-island" aria-label="Main navigation" style={{ maxWidth: "100%" }}>
-          <Link href="/" className="nav-brand" aria-label="Haziel Nablo home">
-            <img src="/logo-hn-sm.svg" alt="" width={30} height={30} className="nav-logo" />
-            Haziel Nablo
-          </Link>
-          <div className="nav-links">
-            {LINKS.map((l) => (
-              <Link
-                key={l.id}
-                href={l.href}
-                className={`nav-link${effectiveActive === l.id ? " active" : ""}`}
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-          <div className="nav-actions">
-            <ThemeToggle />
-            <Link href="/#contact" className="btn btn-primary nav-cta">
-              Get in Touch
+    <header className="nav-bar">
+      <div className="container nav-inner">
+        <Link href="/" className="nav-brand" aria-label="Haziel Nablo home">
+          <img src="/logo-hn-sm.svg" alt="" width={30} height={30} className="nav-logo" />
+          Haziel Nablo
+        </Link>
+
+        <nav className="nav-links" aria-label="Main navigation">
+          {LINKS.map((l) => (
+            <Link
+              key={l.id}
+              href={l.href}
+              className={`nav-link${effectiveActive === l.id ? " active" : ""}`}
+              aria-current={effectiveActive === l.id ? "true" : undefined}
+            >
+              {l.label}
             </Link>
-            <button
-              type="button"
-              className="menu-btn"
-              onClick={() => setOpen((v) => !v)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={open}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
-            </button>
-          </div>
+          ))}
         </nav>
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              className="mobile-drawer"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="mobile-drawer-inner">
-                {LINKS.map((l) => (
-                  <Link key={l.id} href={l.href} className="mobile-link" onClick={() => setOpen(false)}>
-                    {l.label}
-                  </Link>
-                ))}
-                <Link href="/#contact" className="btn btn-primary" style={{ marginTop: 12 }} onClick={() => setOpen(false)}>
-                  Contact Haziel
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
+        <div className="nav-actions">
+          <ThemeToggle />
+          <Link href="/#contact" className="btn btn-primary nav-cta">
+            Get in Touch
+          </Link>
+          <button
+            type="button"
+            className="menu-btn"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              {open ? (
+                <>
+                  <line x1="5" y1="5" x2="19" y2="19" />
+                  <line x1="19" y1="5" x2="5" y2="19" />
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-nav"
+            className="mobile-drawer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="mobile-drawer-inner">
+              {LINKS.map((l) => (
+                <Link key={l.id} href={l.href} className="mobile-link" onClick={() => setOpen(false)}>
+                  {l.label}
+                </Link>
+              ))}
+              <Link href="/#contact" className="btn btn-primary" onClick={() => setOpen(false)}>
+                Contact Haziel
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

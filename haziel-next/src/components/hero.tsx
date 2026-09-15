@@ -1,24 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
-import SplitText from "@/components/bits/split-text";
-import ShinyText from "@/components/bits/shiny-text";
+import { motion } from "framer-motion";
 import CountUp from "@/components/bits/count-up";
-import StarButton from "@/components/bits/star-button";
-import ProfileCard from "@/components/bits/profile-card";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
-  const prefersReduced = useReducedMotion();
-
-  function scrollToContact() {
-    document
-      .getElementById("contact")
-      ?.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth" });
-  }
-
   return (
     <section className="hero">
       <div className="container hero-grid">
@@ -27,14 +15,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <p className="hero-name">
-            <ShinyText text="HAZIEL NABLO" />
-          </p>
-          <span className="eyebrow mono">Customer Service & Content Moderation</span>
+          <p className="hero-label">HAZIEL NABLO</p>
+          <span className="eyebrow mono">Customer Service &amp; Content Moderation</span>
           <h1 className="hero-title">
-            <SplitText text="Customer Support &" delay={0.15} />
+            Customer <em className="display-em accent">Support</em> &amp;
             <br />
-            <SplitText text="Trust & Safety Moderation" delay={0.3} />
+            Trust &amp; Safety <em className="display-em mod">Moderation</em>
           </h1>
           <p className="hero-sub">
             Experienced in high-volume chat support, vendor operations, escalations,
@@ -42,69 +28,58 @@ export default function Hero() {
             helpful under pressure.
           </p>
           <div className="hero-cta">
-            <StarButton href="/#experience">View Experience</StarButton>
+            <Link href="/#experience" className="btn btn-primary">
+              View Experience
+            </Link>
             <Link href="/resume" className="btn btn-secondary">
               Download Resume
             </Link>
           </div>
-          <div className="proof-row">
-            <div className="proof-item">
-              <span className="proof-value mono">
-                <CountUp to={4} />
-              </span>
-              <span className="proof-label">Concurrent chats</span>
-            </div>
-            <div className="proof-divider" />
-            <div className="proof-item">
-              <span className="proof-value mono accent">Top Agent &rsquo;23</span>
-              <span className="proof-label">Ibex Global Solutions</span>
-            </div>
-            <div className="proof-divider" />
-            <div className="proof-item">
-              <span className="proof-value mono accent">Chat Warrior &rsquo;23</span>
-              <span className="proof-label">Ibex Global Solutions</span>
-            </div>
-            <div className="proof-divider" />
-            <div className="proof-item">
-              <span className="proof-value mono violet">Threads moderation</span>
-              <span className="proof-label">Conectys · Concentrix · &rsquo;24–&rsquo;26</span>
-            </div>
-          </div>
         </motion.div>
 
         <motion.div
-          className="portrait-wrap"
+          className="hero-portrait"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.12, ease }}
         >
-          <div className="float-card float-left">
-            <div className="fc-value mono">4 concurrent</div>
-            <div className="fc-label">Live chats</div>
+          <div className="portrait-frame">
+            <img
+              className="portrait-photo"
+              src="/images/haziel-nablo.png"
+              alt="Portrait of Haziel Nablo"
+              width={720}
+              height={900}
+            />
           </div>
-          <div className="float-card float-right">
-            <div className="fc-value mono">Top Agent</div>
-            <div className="fc-label">Ibex · 2023</div>
-          </div>
-          <ProfileCard
-            name="Haziel Nablo"
-            title="Customer Service & Content Moderation"
-            handle="hazielnablo"
-            status="Open to Work · Davao City"
-            contactText="Contact Me"
-            avatarUrl="/images/haziel-nablo.png"
-            showUserInfo
-            enableTilt={!prefersReduced}
-            enableMobileTilt={false}
-            onContactClick={scrollToContact}
-            behindGlowEnabled
-            behindGlowColor="rgba(132, 204, 22, 0.35)"
-            iconUrl=""
-            grainUrl=""
-            innerGradient="linear-gradient(145deg, rgba(17,17,17,0.55) 0%, rgba(132,204,22,0.16) 100%)"
-            className="profile-card"
-          />
+          <p className="portrait-meta">
+            <span className="status-dot" aria-hidden="true" />
+            Open to Work · Davao City
+          </p>
         </motion.div>
+      </div>
+
+      <div className="stats-rail">
+        <div className="container stats-inner">
+          <div className="stat">
+            <span className="stat-value mono">
+              <CountUp to={4} />
+            </span>
+            <span className="stat-label">Concurrent chats</span>
+          </div>
+          <div className="stat">
+            <span className="stat-value mono accent">Top Agent &rsquo;23</span>
+            <span className="stat-label">Ibex Global Solutions</span>
+          </div>
+          <div className="stat">
+            <span className="stat-value mono accent">Chat Warrior &rsquo;23</span>
+            <span className="stat-label">Ibex Global Solutions</span>
+          </div>
+          <div className="stat">
+            <span className="stat-value mono mod">Threads moderation</span>
+            <span className="stat-label">Conectys · Concentrix · &rsquo;24–&rsquo;26</span>
+          </div>
+        </div>
       </div>
     </section>
   );

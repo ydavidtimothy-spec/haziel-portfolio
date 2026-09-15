@@ -25,7 +25,7 @@ export default function HowIWorkPage() {
           </p>
         </div>
       </section>
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section">
         <div className="container">
           <Reveal>
             <Workflow />

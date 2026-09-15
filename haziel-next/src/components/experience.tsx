@@ -12,24 +12,26 @@ function Check({ children }: { children: React.ReactNode }) {
 }
 
 const SCOPES = ["Vendors", "Orders", "Billing", "Accounts", "Devices", "Retention", "Moderation", "Policy Enforcement", "Spam & Scams"];
-const VIOLET_SCOPES = new Set(["Moderation", "Policy Enforcement", "Spam & Scams"]);
+const MOD_SCOPES = new Set(["Moderation", "Policy Enforcement", "Spam & Scams"]);
 
 export default function Experience() {
   return (
-    <section id="experience" className="section" style={{ paddingTop: 0 }}>
+    <section id="experience" className="section">
       <div className="container">
         <Reveal>
-          <span className="eyebrow mono">02 / Experience</span>
-          <h2 className="h-section">Content moderation → escalations → chat support</h2>
-          <p className="lede">
-            Three chapters, newest first: trust &amp; safety review queues,
-            then complex cases, then frontline volume.
-          </p>
+          <div className="section-head">
+            <span className="eyebrow mono">02 / Experience</span>
+            <h2 className="h-section">Content moderation → escalations → chat support</h2>
+            <p className="lede">
+              Three chapters, newest first: trust &amp; safety review queues,
+              then complex cases, then frontline volume.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal>
           <div className="exp-row mod">
-            <div>
+            <div className="exp-meta">
               <div className="exp-dates mono">2024 — 2026</div>
               <div className="exp-role">CONTENT MODERATION</div>
               <h3 className="exp-title">Trust &amp; safety review on Threads</h3>
@@ -40,7 +42,7 @@ export default function Experience() {
                 <span className="tag mono">Review queues</span>
               </div>
             </div>
-            <div className="exp-card">
+            <div className="exp-body">
               <ul className="check-list">
                 <Check><strong>Reviewed uploaded videos</strong>&nbsp;and decided: allow, restrict, age-gate, or remove.</Check>
                 <Check><strong>Checked visual content</strong>&nbsp;— profile pictures, thumbnails, photo posts — for nudity, graphic violence, hateful imagery, and prohibited symbols.</Check>
@@ -55,7 +57,7 @@ export default function Experience() {
 
         <Reveal>
           <div className="exp-row">
-            <div>
+            <div className="exp-meta">
               <div className="exp-dates mono">2022 — 2023</div>
               <div className="exp-role">CHAT SUPPORT</div>
               <h3 className="exp-title">Vendors &amp; orders</h3>
@@ -66,7 +68,7 @@ export default function Experience() {
                 <span className="tag mono">Cancellation</span>
               </div>
             </div>
-            <div className="exp-card">
+            <div className="exp-body">
               <ul className="check-list">
                 <Check><strong>Assisted vendors</strong>&nbsp;with their concerns and day-to-day order issues.</Check>
                 <Check><strong>Cancelled orders</strong>&nbsp;as per vendor request.</Check>
@@ -79,7 +81,7 @@ export default function Experience() {
 
         <Reveal>
           <div className="exp-row">
-            <div>
+            <div className="exp-meta">
               <div className="exp-dates mono">2023 — 2024</div>
               <div className="exp-role">ESCALATIONS &amp; RETENTION</div>
               <h3 className="exp-title">Escalations, retention &amp; account help</h3>
@@ -90,7 +92,7 @@ export default function Experience() {
                 <span className="tag mono">Account support</span>
               </div>
             </div>
-            <div className="exp-card">
+            <div className="exp-body">
               <ul className="check-list">
                 <Check><strong>Updated private vendor data</strong>&nbsp;— bank details, contact person, registered info.</Check>
                 <Check><strong>Explained invoices</strong>&nbsp;— total revenue, VAT, charges, and deductions.</Check>
@@ -124,9 +126,9 @@ export default function Experience() {
         </Reveal>
 
         <Reveal>
-          <div className="scope-strip" aria-label="Support scope">
+          <div className="scope-rail" aria-label="Support scope">
             {SCOPES.map((s) => (
-              <span key={s} className={`scope-item${VIOLET_SCOPES.has(s) ? " violet" : ""}`}>{s}</span>
+              <span key={s} className={`scope-item${MOD_SCOPES.has(s) ? " voice-mod" : ""}`}>{s}</span>
             ))}
           </div>
         </Reveal>

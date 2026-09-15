@@ -1,6 +1,6 @@
 import Reveal from "@/components/reveal";
 
-const CARDS = [
+const POINTS = [
   {
     index: "01",
     title: "Flexible across clients",
@@ -23,24 +23,30 @@ export default function About() {
     <section id="about" className="section">
       <div className="container">
         <Reveal>
-          <span className="eyebrow mono">01 / About</span>
-          <h2 className="h-section">Steady, flexible, and easy to work with</h2>
-          <p className="lede">
-            “Being flexible enough to deal with a range of clients and customers. Balancing
-            multiple tasks and responding to customers in a timely manner. Maintaining a
-            positive demeanor even in challenging situations to provide excellent service.”
-            — from Haziel.
-          </p>
+          <div className="section-head">
+            <span className="eyebrow mono">01 / About</span>
+            <h2 className="h-section">Steady, flexible, and easy to work with</h2>
+            <p className="lede">
+              “Being flexible enough to deal with a range of clients and customers. Balancing
+              multiple tasks and responding to customers in a timely manner. Maintaining a
+              positive demeanor even in challenging situations to provide excellent service.”
+              — from Haziel.
+            </p>
+          </div>
         </Reveal>
-        <div className="card-grid-3">
-          {CARDS.map((c) => (
-            <div key={c.index} className="info-card">
-              <div className="card-index mono">{c.index}</div>
-              <h3 className="card-title">{c.title}</h3>
-              <p className="card-text">{c.text}</p>
-            </div>
-          ))}
-        </div>
+        <Reveal>
+          <div className="points">
+            {POINTS.map((c) => (
+              <article key={c.index} className="point">
+                <span className="point-index mono">{c.index}</span>
+                <div>
+                  <h3 className="point-title">{c.title}</h3>
+                  <p className="point-text">{c.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

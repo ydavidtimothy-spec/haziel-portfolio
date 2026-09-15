@@ -63,11 +63,11 @@ export default function Workflow() {
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={step.name}
+              className="step-panel-body"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              style={{ flex: 1 }}
             >
               <div className="step-panel-title mono">0{active + 1} / {step.name.toUpperCase()}</div>
               <h3 className="step-panel-name">{step.name}</h3>
@@ -83,7 +83,7 @@ export default function Workflow() {
                 ))}
               </ul>
               <p className="step-panel-desc" style={{ marginTop: 20 }}>
-                <strong style={{ color: "var(--foreground)" }}>The goal:</strong> {step.goal}
+                <strong style={{ color: "var(--ink)" }}>The goal:</strong> {step.goal}
               </p>
             </motion.div>
           </AnimatePresence>
@@ -96,20 +96,22 @@ export default function Workflow() {
 
 export function WorkflowSection() {
   return (
-    <section id="how-i-work" className="section" style={{ paddingTop: 0 }}>
+    <section id="how-i-work" className="section">
       <div className="container">
         <Reveal>
-          <span className="eyebrow mono">07 / How I work</span>
-          <h2 className="h-section">
-            How I handle difficult
-            <br />
-            customer &amp; vendor issues
-          </h2>
-          <p className="lede">
-            Listen → clarify → investigate → act → confirm. The same method behind
-            vendor escalations and content review queues — select a step to see what I
-            actually do at each stage.
-          </p>
+          <div className="section-head">
+            <span className="eyebrow mono">07 / How I work</span>
+            <h2 className="h-section">
+              How I handle difficult
+              <br />
+              customer &amp; vendor issues
+            </h2>
+            <p className="lede">
+              Listen → clarify → investigate → act → confirm. The same method behind
+              vendor escalations and content review queues — select a step to see what I
+              actually do at each stage.
+            </p>
+          </div>
         </Reveal>
         <Reveal>
           <Workflow />

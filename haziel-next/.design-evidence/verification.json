@@ -1,0 +1,17 @@
+{
+  "default_theme": "light",
+  "body_bg_1440": "rgb(250, 246, 239)",
+  "font_display_loaded": true,
+  "font_sans_loaded": true,
+  "font_mono_loaded": true,
+  "announce_text": "Open to work · Davao City",
+  "scrollspy_active_after_skills": "Skills",
+  "theme_after_toggle": "dark",
+  "theme_toggle_aria_pressed": "true",
+  "copy_btn_label_before": "Copy Email Address",
+  "copy_btn_label_after": "Copied to clipboard",
+  "menu_btn_visible_375": "flex",
+  "menu_aria_expanded_after_click": "true",
+  "drawer_visible": true,
+  "menu_aria_expanded_after_link": "false"
+}

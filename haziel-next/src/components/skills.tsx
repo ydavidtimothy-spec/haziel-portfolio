@@ -41,32 +41,38 @@ const GROUPS: { title: string; desc: string; items: string[] }[] = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="section" style={{ paddingTop: 0 }}>
+    <section id="skills" className="section section--band">
       <div className="container">
         <Reveal>
-          <span className="eyebrow mono">03 / Skills</span>
-          <h2 className="h-section">What I&rsquo;m good at</h2>
-          <p className="lede">From the resume and day-to-day support work.</p>
+          <div className="section-head">
+            <span className="eyebrow mono">03 / Skills</span>
+            <h2 className="h-section">What I&rsquo;m good at</h2>
+            <p className="lede">From the resume and day-to-day support work.</p>
+          </div>
         </Reveal>
-        <div className="card-grid-3">
-          {GROUPS.map((g, i) => (
-            <div key={g.title} className={`info-card${i === 2 ? " mod" : ""}`}>
-              <div className="card-index mono">0{i + 1}</div>
-              <h3 className="card-title">{g.title}</h3>
-              <p className="card-text">{g.desc}</p>
-                <div className="skill-rows">
+        <Reveal>
+          <div className="skill-groups">
+            {GROUPS.map((g, i) => (
+              <div key={g.title} className={`skill-group${i === 2 ? " mod" : ""}`}>
+                <div className="skill-group-head">
+                  <span className="skill-group-index mono">0{i + 1}</span>
+                  <h3 className="skill-group-title">
+                    {i === 2 && <span className="mod-dot" aria-hidden="true" />}
+                    {g.title}
+                  </h3>
+                  <p className="skill-group-desc">{g.desc}</p>
+                </div>
+                <div className="skill-row">
                   {g.items.map((item) => (
-                    <div key={item} className="skill-row">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true" style={{ color: "var(--accent)", flexShrink: 0 }}>
-                        <path d="M20 6L9 17l-5-5" />
-                      </svg>
+                    <span key={item} className="skill-item">
                       {item}
-                    </div>
+                    </span>
                   ))}
                 </div>
               </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

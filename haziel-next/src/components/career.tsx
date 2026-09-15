@@ -30,20 +30,25 @@ const ITEMS = [
 
 export default function Career() {
   return (
-    <section id="career" className="section" style={{ paddingTop: 0 }}>
+    <section id="career" className="section">
       <div className="container">
         <Reveal>
-          <span className="eyebrow mono">04 / Career</span>
-          <h2 className="h-section">Work and education</h2>
-          <p className="lede">Work history and schooling exactly as listed on the resume.</p>
+          <div className="section-head">
+            <span className="eyebrow mono">04 / Career</span>
+            <h2 className="h-section">Work and education</h2>
+            <p className="lede">Work history and schooling exactly as listed on the resume.</p>
+          </div>
         </Reveal>
         <Reveal>
           <div className="timeline">
-            {ITEMS.map((item) => (
+            {ITEMS.map((item, i) => (
               <div key={item.role} className="timeline-item">
-                <p className="timeline-role">{item.role}</p>
-                <div className="timeline-meta">{item.meta}</div>
-                <p className="timeline-text">{item.text}</p>
+                <div className="timeline-mark mono">0{i + 1}</div>
+                <div>
+                  <p className="timeline-role">{item.role}</p>
+                  <div className="timeline-meta">{item.meta}</div>
+                  <p className="timeline-text">{item.text}</p>
+                </div>
               </div>
             ))}
           </div>

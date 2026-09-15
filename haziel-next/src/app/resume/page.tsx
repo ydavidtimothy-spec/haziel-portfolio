@@ -18,12 +18,12 @@ export default function ResumePage() {
             </Link>
           </div>
           <h1 className="h-section">Haziel Nablo</h1>
-          <p className="lede" style={{ marginBottom: 24 }}>
+          <p className="resume-lede">
             Customer Service &amp; Content Moderation · Agdao, Davao City, Philippines
             <br />
             hazielnablo19@gmail.com · +63 935 198 0042
           </p>
-          <div className="no-print" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <div className="resume-actions no-print">
             <PrintButton />
             <Link href="/Haziel-Nablo-Resume.pdf" className="btn btn-secondary">
               Download PDF with Photo
@@ -31,7 +31,7 @@ export default function ResumePage() {
           </div>
         </div>
       </section>
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section">
         <div className="container">
           <div className="resume-sheet">
             <h2>Professional Summary</h2>

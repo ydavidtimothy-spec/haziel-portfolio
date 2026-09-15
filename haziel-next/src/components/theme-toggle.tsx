@@ -1,38 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "hn-theme";
 
-function applyTheme(theme: "light" | "dark") {
-  if (theme === "light") {
-    document.documentElement.setAttribute("data-theme", "light");
-  } else {
-    document.documentElement.removeAttribute("data-theme");
-  }
+type Theme = "light" | "dark";
+
+function applyTheme(theme: Theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+}
+
+/* The theme lives on <html data-theme> (set pre-hydration by the inline script
+   in layout.tsx). We read it as an external store instead of mirroring it in
+   component state, which avoids both hydration mismatches and setState-in-effect. */
+function subscribe(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+  return () => observer.disconnect();
+}
+
+function getSnapshot(): Theme {
+  return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+}
+
+function getServerSnapshot(): Theme {
+  return "light";
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-  useEffect(() => {
-    try {
-      setTheme(localStorage.getItem(STORAGE_KEY) === "light" ? "light" : "dark");
-    } catch {
-      setTheme("dark");
-    }
-  }, []);
-
-  function toggle() {
-    const next = theme === "light" ? "dark" : "light";
-    setTheme(next);
+  const toggle = useCallback(() => {
+    const next: Theme = getSnapshot() === "dark" ? "light" : "dark";
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {
       /* storage unavailable — theme still applies for this visit */
     }
     applyTheme(next);
-  }
+  }, []);
 
   return (
     <button
@@ -41,12 +50,12 @@ export default function ThemeToggle() {
       onClick={toggle}
       aria-label="Toggle light and dark theme"
       title="Toggle theme"
-      aria-pressed={theme === "light"}
+      aria-pressed={theme === "dark"}
     >
       <svg
         className="icon-sun"
-        width="16"
-        height="16"
+        width="17"
+        height="17"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -58,8 +67,8 @@ export default function ThemeToggle() {
       </svg>
       <svg
         className="icon-moon"
-        width="16"
-        height="16"
+        width="17"
+        height="17"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"

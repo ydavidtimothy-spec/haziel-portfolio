@@ -17,13 +17,17 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    buildMasks();
     initTheme();
     initDrawer();
     initReveal();
+    initSectionRules();
     initCountUp();
     initScrollSpy();
     initCopyEmail();
     initWorkflow();
+    initScrollProgress();
+    initParallax();
     initPrint();
   });
 
@@ -96,6 +100,25 @@
     });
   }
 
+  /* ------------------------------------------------------------- Mask rise ---
+     Wraps each heading in a .rise clip so it can rise out of a mask instead of
+     simply fading. Purely presentational — with JS off the headings render
+     normally. The wrapper is a sibling inserted around the heading; content,
+     copy and section structure are untouched. */
+  function buildMasks() {
+    each(
+      document.querySelectorAll(".h-section, .hero-title, .contact-title"),
+      function (heading) {
+        var parent = heading.parentNode;
+        if (!parent || parent.classList.contains("rise")) return;
+        var clip = document.createElement("div");
+        clip.className = "rise";
+        parent.insertBefore(clip, heading);
+        clip.appendChild(heading);
+      }
+    );
+  }
+
   /* ---------------------------------------------------------------- Reveal ---
      IntersectionObserver adds .is-visible; children stagger via the
      --reveal-delay custom property set inline in the markup. */
@@ -126,6 +149,37 @@
     });
   }
 
+  /* ---------------------------------------------------------- Section rules ---
+     Reveals each band's 1px top rule (drawn by a ::before pseudo-element) as the
+     band enters — transform: scaleX, never width. */
+  function initSectionRules() {
+    var sections = document.querySelectorAll(".section");
+    if (!sections.length) return;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      each(sections, function (s) {
+        s.classList.add("is-inview");
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-inview");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0 }
+    );
+
+    each(sections, function (s) {
+      observer.observe(s);
+    });
+  }
+
   /* -------------------------------------------------------------- Count-up ---
      Animates the hero stat from 0 to its data-count-to value once it scrolls
      into view. Reduced motion jumps straight to the final number. */
@@ -139,12 +193,15 @@
         el.textContent = String(to);
         return;
       }
-      var duration = 900;
+      /* ~2.2s with a soft ease-in-out. Four discrete values on a cubic ease-out
+         bunched 0→3 into the first ~37% of the run and then stalled; a gentle
+         in-out spreads the ticks evenly so the count reads rather than flurries. */
+      var duration = 2200;
       var start = null;
       function tick(ts) {
         if (start === null) start = ts;
         var p = Math.min((ts - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
+        var eased = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; /* easeInOutQuad */
         el.textContent = String(Math.round(to * eased));
         if (p < 1) requestAnimationFrame(tick);
         else el.textContent = String(to);
@@ -273,9 +330,11 @@
       var bodies = root.querySelectorAll("[data-step-panel]");
       if (!btns.length || btns.length !== bodies.length) return;
 
+      /* The active panel carries .is-active. Inactive panels stay laid out and
+         only their visibility swaps, so the container height never changes. */
       var active = 0;
       each(bodies, function (b, i) {
-        if (!b.hasAttribute("hidden")) active = i;
+        if (b.classList.contains("is-active")) active = i;
       });
 
       /* Match the CSS exit duration (--dur-exit) so the incoming panel starts
@@ -302,9 +361,9 @@
         var incoming = bodies[next];
 
         function swap() {
-          outgoing.setAttribute("hidden", "");
+          outgoing.classList.remove("is-active");
           outgoing.classList.remove("is-swapping");
-          incoming.removeAttribute("hidden");
+          incoming.classList.add("is-active");
           active = next;
           if (focus) btns[next].focus();
           if (reduceMotion) return;
@@ -340,6 +399,104 @@
           }
         });
       });
+    });
+  }
+
+  /* ------------------------------------------------------ Scroll progress ---
+     A 1px reading-progress line that rides the header rule. Scroll is read
+     inside requestAnimationFrame and the scrollable distance is measured on
+     resize — never per frame. Skipped entirely under reduced motion. */
+  function initScrollProgress() {
+    if (reduceMotion) return;
+    var navBar = document.querySelector(".nav-bar");
+    if (!navBar) return;
+
+    var bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    bar.setAttribute("aria-hidden", "true");
+    navBar.appendChild(bar);
+
+    var max = 1;
+    function measure() {
+      max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    }
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var p = y <= 0 ? 0 : Math.min(y / max, 1);
+      bar.style.transform = "scaleX(" + p.toFixed(4) + ")";
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    measure();
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", function () {
+      measure();
+      onScroll();
+    });
+  }
+
+  /* ------------------------------------------------- Portrait parallax ---
+     Small desktop-only parallax on the hero portrait: the image shifts a few
+     pixels toward the cursor inside its fixed frame. transform only, gated to
+     fine pointers, disabled under reduced motion. */
+  function initParallax() {
+    if (reduceMotion || !window.matchMedia) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    var portrait = document.querySelector(".hero-portrait");
+    var photo = portrait && portrait.querySelector(".portrait-photo");
+    if (!portrait || !photo) return;
+
+    var rect = null;
+    var px = 0;
+    var py = 0;
+    var ticking = false;
+    var MAX = 3.5;
+
+    function apply() {
+      ticking = false;
+      photo.style.transform =
+        "translate3d(" + px.toFixed(2) + "px," + py.toFixed(2) + "px,0) scale(1.04)";
+    }
+    function schedule() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(apply);
+    }
+
+    portrait.addEventListener(
+      "pointermove",
+      function (e) {
+        if (!rect) rect = portrait.getBoundingClientRect();
+        var dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+        var dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+        px = Math.max(-1, Math.min(1, dx)) * MAX;
+        py = Math.max(-1, Math.min(1, dy)) * MAX;
+        schedule();
+      },
+      { passive: true }
+    );
+
+    portrait.addEventListener(
+      "pointerleave",
+      function () {
+        px = 0;
+        py = 0;
+        schedule();
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", function () {
+      rect = null;
     });
   }
 

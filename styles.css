@@ -63,14 +63,17 @@
   --shadow-2: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-3: 0 8px 16px 0 rgba(51, 51, 51, 0.04);
 
-  /* Motion — named properties only. Two curves on purpose: --ease leans in at
-     the start (fine for hover/colour, where the eye already waits), while
-     --ease-out front-loads motion so an entrance is legible in its first frame. */
+  /* Motion — transform / opacity / filter only, never anything that triggers
+     layout. Entrances are always ease-out; --ease-follow adds a little
+     overshoot so a small move reads as "responding" rather than "snapping". */
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --dur: 150ms;
-  --dur-glow: 170ms; /* brand hover/tap glow cross-fade + scale */
-  --dur-exit: 100ms; /* outgoing panels leave faster than they arrive */
+  --ease-follow: cubic-bezier(0.34, 1.56, 0.64, 1); /* slight overshoot */
+  --dur: 150ms; /* UI / panel enter */
+  --dur-press: 120ms; /* press feedback (100–160ms) */
+  --dur-brand: 200ms; /* brand hover scale + rule (UI layer, <250ms) */
+  --dur-reveal: 520ms; /* entrance reveals (400–600ms) */
+  --dur-exit: 100ms; /* outgoing panels leave faster than they arrive (~70%) */
 
   /* Rhythm (4px base unit) */
   --py-band: 128px;
@@ -247,9 +250,32 @@ img {
   scroll-margin-top: var(--header-space);
 }
 
-/* Full-width horizontal rules between stacked bands */
+/* Full-width horizontal rules between stacked bands. The visible 1px is drawn by
+   a pseudo-element so it can wipe in (transform: scaleX) as the band enters; the
+   border itself is kept transparent so the box geometry is unchanged. */
 .section + .section {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid transparent;
+}
+
+.section + .section::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.js .section + .section::before {
+  transform: scaleX(0);
+  transition: transform var(--dur-reveal) var(--ease-out);
+}
+
+.js .section + .section.is-inview::before {
+  transform: scaleX(1);
 }
 
 /* Corner registration sparkles pinned to ruled-column corners */
@@ -350,8 +376,23 @@ img {
 
 /* ---------- Header bar: opaque, 56px, hairline bottom ---------- */
 .nav-bar {
+  position: relative;
   background: var(--page-bg);
   border-bottom: 1px solid var(--border);
+}
+
+/* Reading progress — a 1px line that rides the header rule itself. Monochrome,
+   transform-driven (never width), and created by JS only when motion is allowed. */
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--text-strong);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
 }
 
 .nav-island {
@@ -386,9 +427,8 @@ img {
   transition: color var(--dur) var(--ease);
 }
 
-/* Brand mark — the plain teardrop with the "lit" glow mark stacked on top of
-   it. Both marks share one fixed 26px box, so nothing can shift; the wrapper
-   carries the scale so the two marks move and cross-fade as a single object. */
+/* Brand mark — the plain teardrop in a fixed 26px box. Because the box never
+   changes size, the hover scale can't shift anything around it. */
 .brand-mark {
   position: relative;
   display: block;
@@ -397,11 +437,10 @@ img {
   flex-shrink: 0;
   transform: scale(1);
   transform-origin: center;
-  transition: transform var(--dur-glow) var(--ease-out);
+  transition: transform var(--dur-brand) var(--ease-follow);
 }
 
-.nav-logo,
-.nav-logo-glow {
+.nav-logo {
   position: absolute;
   inset: 0;
   display: block;
@@ -409,48 +448,63 @@ img {
   height: 100%;
 }
 
-/* The glow mark sits over the plain mark and cross-fades in — never a hard swap. */
-.nav-logo-glow {
-  opacity: 0;
-  transition: opacity var(--dur-glow) var(--ease-out);
-}
-
-/* The supplied mark is light (#F8F8F8); flip it so it reads on the paper theme.
-   Scoped to the plain mark ONLY — the glow asset carries its own purple
-   gradient and neon-blue glow, so inverting it would wreck the colours. */
-html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
+/* The supplied mark is light (#F8F8F8); flip it so it reads on the paper theme. */
+html:not([data-theme="dark"]) .nav-logo {
   filter: invert(1);
 }
 
-/* Tap and keyboard light the brand up independently of hover. :focus-visible
-   keeps the global focus ring, so these rules only add the glow. */
-.nav-brand:active,
-.nav-brand:focus-visible {
-  color: var(--accent);
+/* Wordmark — sits at --text and steps to the strongest ink on hover, with a 1px
+   rule that scales in from the left. Same device the nav links use, so the brand
+   joins the existing interaction family instead of inventing a new one. */
+.brand-word {
+  position: relative;
+  display: inline-block;
+  color: var(--text);
+  transition: color var(--dur-brand) var(--ease-out);
 }
 
+.brand-word::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: var(--text-strong);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-brand) var(--ease-out);
+}
+
+/* Tap and keyboard carry the effect independently of hover. :focus-visible
+   keeps the global focus ring, so these rules only add the state. */
 .nav-brand:active .brand-mark,
 .nav-brand:focus-visible .brand-mark {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
-.nav-brand:active .nav-logo-glow,
-.nav-brand:focus-visible .nav-logo-glow {
-  opacity: 1;
+.nav-brand:active .brand-word,
+.nav-brand:focus-visible .brand-word {
+  color: var(--text-strong);
 }
 
-/* Real pointers only: touch fires :hover on tap and would leave the glow stuck. */
+.nav-brand:active .brand-word::after,
+.nav-brand:focus-visible .brand-word::after {
+  transform: scaleX(1);
+}
+
+/* Real pointers only: touch fires :hover on tap and would leave it stuck. */
 @media (hover: hover) and (pointer: fine) {
-  .nav-brand:hover {
-    color: var(--accent);
-  }
-
   .nav-brand:hover .brand-mark {
-    transform: scale(1.04);
+    transform: scale(1.05);
   }
 
-  .nav-brand:hover .nav-logo-glow {
-    opacity: 1;
+  .nav-brand:hover .brand-word {
+    color: var(--text-strong);
+  }
+
+  .nav-brand:hover .brand-word::after {
+    transform: scaleX(1);
   }
 }
 
@@ -519,7 +573,7 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
   cursor: pointer;
   box-shadow: var(--shadow-1);
   transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease);
+    border-color var(--dur) var(--ease), transform var(--dur-press) var(--ease-out);
 }
 
 .theme-toggle:active {
@@ -553,7 +607,11 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
   cursor: pointer;
   box-shadow: var(--shadow-1);
   transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease);
+    border-color var(--dur) var(--ease), transform var(--dur-press) var(--ease-out);
+}
+
+.menu-btn:active {
+  transform: scale(0.98);
 }
 
 /* Mobile drawer — overlays below the header, transform + opacity only */
@@ -624,7 +682,7 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
   text-decoration: none;
   cursor: pointer;
   transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease);
+    border-color var(--dur) var(--ease), transform var(--dur-press) var(--ease-out);
 }
 
 .btn-primary {
@@ -651,6 +709,14 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
 
 .copy-label {
   display: inline-block;
+}
+
+/* The label swaps to "Copied to clipboard" on click; reserve the button's width
+   so the swap can never reflow the action row (same rule as the step panels:
+   a box must not resize when its content changes). */
+.btn[data-copy-email] {
+  min-width: 214px;
+  white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -1440,9 +1506,12 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
   color: var(--text-strong);
 }
 
+/* The container is a grid in which all five panels occupy ONE cell. That cell is
+   therefore always as tall as the tallest panel — from first paint — so moving
+   between steps can never change the box height. */
 .step-panel {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   min-height: 460px;
   padding: 40px 36px;
   background: var(--surface);
@@ -1451,23 +1520,27 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
   box-shadow: var(--shadow-3);
 }
 
+/* Every panel shares grid cell 1 / 1. visibility:hidden (never display:none and
+   never the hidden attribute) keeps the box's space reserved while taking the
+   inactive panels out of the accessibility tree. */
 .step-panel-body {
+  grid-area: 1 / 1;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  opacity: 1;
+  visibility: hidden;
+  opacity: 0;
   transition: opacity var(--dur) var(--ease-out); /* enter ~150ms */
+}
+
+.step-panel-body.is-active {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Exit is deliberately quicker than the enter — the panel is already leaving. */
 .step-panel-body.is-swapping {
   opacity: 0;
   transition-duration: var(--dur-exit); /* exit ~100ms */
-}
-
-/* display:flex above would otherwise beat the UA [hidden] rule */
-.step-panel-body[hidden] {
-  display: none;
 }
 
 .step-panel-title {
@@ -1514,9 +1587,10 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
 }
 
 .sim-label {
+  grid-area: 2 / 1;
   display: inline-block;
-  align-self: flex-start;
-  margin-top: auto;
+  justify-self: start;
+  align-self: end;
   padding: 6px 14px;
   font-family: var(--font-mono);
   font-size: 12px;
@@ -1828,7 +1902,9 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
 }
 
 /* ==========================================================================
-   Scroll reveal (JS adds .is-visible) — transform + opacity only
+   Scroll reveal — transform + opacity only. Entrances ease-out; a group
+   staggers through --reveal-delay and per-section --head-step. Nothing here
+   can trigger layout.
    ========================================================================== */
 .js .reveal {
   opacity: 0;
@@ -1836,13 +1912,123 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
 }
 
 .reveal {
-  transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
+  transition: opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* --- Headings rise out of a clipped mask ------------------------------------
+   JS wraps each section / hero / gallery heading in a .rise clip. The heading
+   starts translated below the clip and rises into place, so it reads as a mask
+   wipe rather than a plain fade. The clip's padding + negative margin give the
+   mask a little bleed (so ascenders/descenders are never trimmed) with no net
+   change to the box the heading occupies. */
+.rise {
+  overflow: hidden;
+  padding: 8px 0 14px;
+  margin: -8px 0 -14px;
+}
+
+.rise > .h-section,
+.rise > .hero-title,
+.rise > .contact-title {
+  transition: transform var(--dur-reveal) var(--ease-out),
+    opacity var(--dur-reveal) var(--ease-out);
+}
+
+.js .rise > .h-section,
+.js .rise > .hero-title,
+.js .rise > .contact-title {
+  opacity: 0;
+  transform: translateY(115%);
+}
+
+.js .reveal.is-visible .rise > .h-section,
+.js .reveal.is-visible .rise > .hero-title,
+.js .reveal.is-visible .rise > .contact-title {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Section-header choreography: eyebrow → heading → lede ------------------
+   The header block itself holds still; its parts arrive in sequence, spaced by
+   --head-step (varied per section below) so the rhythm never feels metronomic. */
+.js .section-head.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.js .section-head.reveal > .eyebrow,
+.js .section-head.reveal > .lede {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.section-head.reveal > .eyebrow,
+.section-head.reveal > .lede {
+  transition: opacity 440ms var(--ease-out), transform 440ms var(--ease-out);
+}
+
+.section-head.reveal > .eyebrow {
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.section-head.reveal > .rise > .h-section {
+  transition-delay: calc(var(--reveal-delay, 0ms) + var(--head-step, 55ms));
+}
+
+.section-head.reveal > .lede {
+  transition-delay: calc(var(--reveal-delay, 0ms) + var(--head-step, 55ms) * 2);
+}
+
+.js .section-head.reveal.is-visible > .eyebrow,
+.js .section-head.reveal.is-visible > .lede {
+  opacity: 1;
+  transform: none;
+}
+
+/* Per-section cadence — the step varies so the rhythm isn't uniform. */
+#about .section-head { --head-step: 45ms; }
+#experience .section-head { --head-step: 60ms; }
+#skills .section-head { --head-step: 50ms; }
+#career .section-head { --head-step: 65ms; }
+#why-hire .section-head { --head-step: 55ms; }
+#recognition .section-head { --head-step: 70ms; }
+#how-i-work .section-head { --head-step: 60ms; }
+
+/* --- Skill chips cascade in sequence --------------------------------------- */
+.js .skill-group.reveal .skill-item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.skill-group.reveal .skill-item {
+  transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
+}
+
+.skill-group.reveal.is-visible .skill-item {
+  opacity: 1;
+  transform: none;
+}
+
+.skill-group.reveal .skill-item:nth-child(1) { transition-delay: calc(var(--reveal-delay, 0ms) + 0ms); }
+.skill-group.reveal .skill-item:nth-child(2) { transition-delay: calc(var(--reveal-delay, 0ms) + 45ms); }
+.skill-group.reveal .skill-item:nth-child(3) { transition-delay: calc(var(--reveal-delay, 0ms) + 90ms); }
+.skill-group.reveal .skill-item:nth-child(4) { transition-delay: calc(var(--reveal-delay, 0ms) + 135ms); }
+.skill-group.reveal .skill-item:nth-child(5) { transition-delay: calc(var(--reveal-delay, 0ms) + 180ms); }
+.skill-group.reveal .skill-item:nth-child(6) { transition-delay: calc(var(--reveal-delay, 0ms) + 225ms); }
+
+/* --- Portrait parallax — subtle, desktop pointers only, motion allowed ------ */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .portrait-photo {
+    transform: translate3d(0, 0, 0) scale(1.04);
+    transition: transform 180ms var(--ease-out);
+  }
 }
 
 /* ==========================================================================
@@ -2014,10 +2200,23 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
     scroll-behavior: auto;
   }
 
-  .js .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  /* Reveals land immediately in their final state — no translate, no mask. */
+  .js .reveal,
+  .js .section-head.reveal > .eyebrow,
+  .js .section-head.reveal > .lede,
+  .js .skill-group.reveal .skill-item,
+  .js .rise > .h-section,
+  .js .rise > .hero-title,
+  .js .rise > .contact-title {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Section rules are simply present — no wipe. */
+  .js .section + .section::before {
+    transform: scaleX(1) !important;
+    transition: none !important;
   }
 
   .mobile-drawer,
@@ -2029,7 +2228,8 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
   .menu-btn,
   .nav-brand,
   .brand-mark,
-  .nav-logo-glow {
+  .brand-word,
+  .brand-word::after {
     transition: none !important;
   }
 
@@ -2037,8 +2237,13 @@ html:not([data-theme="dark"]) .nav-logo:not(.nav-logo-glow) {
     transform: none;
   }
 
-  /* Brand: swap straight to the glow — no fade, no scale. */
+  /* Brand: no scale; the rule and the colour swap land instantly. */
   .brand-mark {
+    transform: none !important;
+  }
+
+  /* Portrait parallax is never set up and no fallback transform is applied. */
+  .portrait-photo {
     transform: none !important;
   }
 

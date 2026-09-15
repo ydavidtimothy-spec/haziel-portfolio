@@ -56,7 +56,7 @@
   }
   .pair {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     margin-bottom: 40px;
   }
@@ -109,6 +109,11 @@
     padding: 1px 5px;
     border-radius: 3px;
   }
+  /* four cards need more room than three — step down to two before the
+     size row (26 + 64 + 120px) gets squeezed inside a single card */
+  @media (max-width: 1310px) {
+    .pair { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 900px) {
     .pair { grid-template-columns: 1fr; }
   }
@@ -117,7 +122,7 @@
 <body>
 <div class="wrap">
   <p class="eyebrow">Logo comparison</p>
-  <h1>Three marks, side by side</h1>
+  <h1>Four marks, side by side</h1>
   <p class="lede">Each shown at the nav size (26px), a mid size (64px) and large (120px), on the paper theme and on dark. The name-lock at the bottom of each card is the real-world test — that is the size that actually ships.</p>
 
   <h2>Paper theme · #fcfcfc</h2>
@@ -151,6 +156,16 @@
         <figure><img src="logo-nablo-bubble.svg" width="120" height="120" alt="" style="filter:invert(1)"><figcaption>120px</figcaption></figure>
       </div>
       <div class="namesize"><img src="logo-nablo-bubble.svg" width="26" height="26" alt="" style="filter:invert(1)"><span>Haziel Nablo</span></div>
+    </div>
+    <div class="card">
+      <h3>4 · Y variant — logo-nablo-y.svg</h3>
+      <p>The captain's mark — Y for Yoro. Bubble and letterform only, same construction as option 3.</p>
+      <div class="sizes">
+        <figure><img src="logo-nablo-y.svg" width="26" height="26" alt="" style="filter:invert(1)"><figcaption>26px</figcaption></figure>
+        <figure><img src="logo-nablo-y.svg" width="64" height="64" alt="" style="filter:invert(1)"><figcaption>64px</figcaption></figure>
+        <figure><img src="logo-nablo-y.svg" width="120" height="120" alt="" style="filter:invert(1)"><figcaption>120px</figcaption></figure>
+      </div>
+      <div class="namesize"><img src="logo-nablo-y.svg" width="26" height="26" alt="" style="filter:invert(1)"><span>Haziel Nablo</span></div>
     </div>
   </div>
 
@@ -186,6 +201,16 @@
       </div>
       <div class="namesize"><img src="logo-nablo-bubble.svg" width="26" height="26" alt=""><span>Haziel Nablo</span></div>
     </div>
+    <div class="card dark">
+      <h3>4 · Y variant — logo-nablo-y.svg</h3>
+      <p>The captain's mark — Y for Yoro. Native state, no filter.</p>
+      <div class="sizes">
+        <figure><img src="logo-nablo-y.svg" width="26" height="26" alt=""><figcaption>26px</figcaption></figure>
+        <figure><img src="logo-nablo-y.svg" width="64" height="64" alt=""><figcaption>64px</figcaption></figure>
+        <figure><img src="logo-nablo-y.svg" width="120" height="120" alt=""><figcaption>120px</figcaption></figure>
+      </div>
+      <div class="namesize"><img src="logo-nablo-y.svg" width="26" height="26" alt=""><span>Haziel Nablo</span></div>
+    </div>
   </div>
 
   <div class="notes">
@@ -194,8 +219,10 @@
       <li><strong>1 · Current.</strong> One flat shape: teardrop with the N cut out to transparent, so the N always takes the background colour. Viewbox <code>0 0 512 512</code>, with a backing tile. This is what is live now.</li>
       <li><strong>2 · Alternative.</strong> Three stacked shapes — white teardrop <code>#FFFFFF</code>, black circle <code>#141414</code>, white N <code>#FFFFFF</code>. The circle gives the N a ground to sit on, so it holds up small.</li>
       <li><strong>3 · Bubble + N.</strong> The circle is removed, leaving the teardrop and the N. Because the N was white and the teardrop is white, the N had to be recoloured to <code>#141414</code> to stay visible — otherwise it would vanish. Two shapes, no middle layer.</li>
-      <li><strong>Viewbox.</strong> The alternative and the bubble version are <code>0 0 114.9 115</code> and carry no background tile, so they need a dark surface beneath them. The current mark has its own tile.</li>
-      <li><strong>On the paper theme</strong> all three are inverted by CSS, which reverses every value. Worth comparing against the dark column, since a mark can look right on one ground and wrong on the other.</li>
+      <li><strong>4 · Y variant.</strong> The captain's mark — the letterform for <strong>Yoro</strong>. Same construction as option 3: white teardrop <code>#FFFFFF</code> plus a dark letterform <code>#141414</code>, two shapes, no middle layer. The Y is drawn in the N's hand — 9.2-unit monoline weight, 4.6-unit rounded-cap terminals, the same ink box as the N (<code>x 35.7→77.5</code>, <code>y 32.44→83</code>), so cap height, weight and optical centring carry over unchanged when the N is swapped out.</li>
+      <li><strong>Viewbox.</strong> The alternative, the bubble version and the Y variant are <code>0 0 114.9 115</code> and carry no background tile, so they need a dark surface beneath them. The current mark has its own tile.</li>
+      <li><strong>On the paper theme</strong> all four are inverted by CSS, which reverses every value. Worth comparing against the dark column, since a mark can look right on one ground and wrong on the other.</li>
+      <li><strong>Name-lock.</strong> Every card keeps the same nameplate text on purpose — <em>Haziel Nablo</em> — so the only variable across the four is the mark itself.</li>
     </ul>
   </div>
 </div>

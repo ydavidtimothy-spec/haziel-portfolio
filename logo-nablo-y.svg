@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 114.9 115">
+  <style type="text/css">
+.cls-1 {fill:#FFFFFF;}
+.cls-3 {fill:#141414;}
+  </style>
+  <!-- bubble: verbatim from logo-nablo-bubble.svg -->
+  <path class="cls-1" d="m114.5 58c0-31-24.5-58.2-56.9-57.6-13.9 0-26.5 4.9-36.6 13.8-11 9.4-19.8 23.3-20.7 41.4v2.4c0 29.1 21.9 56.5 57.3 56.5h56.9v-56.5z"/>
+  <!-- Y for Yoro: monoline weight 9.2, rounded-cap terminals (r 4.6), same ink box
+       as the N (x 35.7-77.5, y 32.44-83), sharp mitred crotch and arm/stem junctions. -->
+  <path class="cls-3" d="M 52 59.113 L 36.702 39.906 A 4.6 4.6 0 0 1 43.898 34.174 L 56.6 50.118 L 69.302 34.174 A 4.6 4.6 0 0 1 76.498 39.906 L 61.2 59.113 V 78.4 A 4.6 4.6 0 0 1 52 78.4 Z"/>
+</svg>

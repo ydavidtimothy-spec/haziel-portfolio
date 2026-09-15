@@ -1,78 +1,97 @@
 {
+  "fontsNetwork": {
+    "ok": true,
+    "status": 200
+  },
   "homeInitial": {
     "title": "Haziel Nablo — Customer Support & Vendor Escalations Specialist",
-    "fonts": 9,
+    "bodyFont": "Geist, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+    "bodySize": "16px",
+    "bodyLH": "19.2px",
+    "bodyColor": "rgb(51, 51, 51)",
+    "bodyBg": "rgb(252, 252, 252)",
+    "containerMax": "1280px",
+    "containerBorderLeft": "1px solid rgb(235, 235, 235)",
+    "containerBorderRight": "1px solid rgb(235, 235, 235)",
+    "containerOffsetLeft": 80,
+    "containerWidth": 1280,
+    "navHeight": 56,
+    "headerBarHeight": 57,
     "revealTotal": 33,
-    "revealVisibleTop": 0,
-    "heroLines": "Customer\nSupport &\nTrust & Safety\nModeration",
-    "announce": "OPEN TO WORK · DAVAO CITY GET IN TOUCH →",
-    "navLinks": [
-      "About",
-      "Experience",
-      "Skills",
-      "Career",
-      "Why Hire",
-      "Honors",
-      "How I Work"
-    ],
-    "statValue": "4",
     "themeAttr": null,
     "toggleAria": "true",
-    "sections": [
-      "about",
-      "experience",
-      "skills",
-      "career",
-      "why-hire",
-      "recognition",
-      "how-i-work",
-      "contact"
+    "h1Lines": "Customer | Support & | Trust & Safety | Moderation",
+    "eyebrow": "CUSTOMER SERVICE & CONTENT MODERATION",
+    "hSectionSample": "Steady, flexible, and easy to work with",
+    "hSectionFont": "Geist, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+    "hSectionLH": "56px",
+    "hSectionSize": "56px",
+    "eyebrowFont": "\"Geist Mono\", ui-monospace, SFMono-Regular, Menlo, monospace",
+    "isMonoEyebrow": true
+  },
+  "fontsLoaded": {
+    "count": 11,
+    "geist": true,
+    "geistMono": true,
+    "families": [
+      "Geist 100 900",
+      "Geist 100 900",
+      "Geist 100 900",
+      "Geist 100 900",
+      "Geist 100 900",
+      "Geist Mono 100 900",
+      "Geist Mono 100 900",
+      "Geist Mono 100 900",
+      "Geist Mono 100 900",
+      "Geist Mono 100 900",
+      "Geist Mono 100 900"
     ]
   },
-  "headerLine": [
-    "96:A.nav-link",
-    "120:NAV.nav-island",
-    "134:DIV.nav-bar",
-    "136:DIV.nav-bar",
-    "150:SECTION.hero"
-  ],
-  "countUp": {
-    "value": "4",
-    "visible": null,
-    "statVisible": true
+  "homeFull": "home-full-1440.png",
+  "workflowVisibility": {
+    "laidOutPanels": [
+      "wf-panel-3"
+    ],
+    "panelHeight": 460
   },
-  "afterSkillsScroll": {
-    "skillsGroupVisible": true,
-    "activeNav": "Skills",
-    "activeNavAria": "true"
+  "countUp": "4",
+  "scrollspy": {
+    "active": "Skills",
+    "aria": "true",
+    "skillsVisible": true
   },
-  "scrollspyCareer": "Career",
-  "scrollspyContact": "Honors",
-  "copy": {
+  "copyEmail": {
     "before": "Copy Email Address",
     "after": "Copied to clipboard",
     "restored": "Copy Email Address"
   },
-  "workflow": true,
-  "workflowState": {
-    "activeBtn": "01LISTEN",
-    "btn1Aria": "true",
-    "visiblePanel": "wf-panel-1",
-    "hiddenCount": 4,
-    "bodyHasSwappingClass": false
+  "workflow": {
+    "hiddenBefore": true,
+    "afterClickVisible": "wf-panel-1",
+    "activeBtn": "01 LISTEN",
+    "ariaSelected": "true",
+    "hiddenCount": 4
   },
-  "themeDark": {
+  "themeToggle": {
     "attr": "dark",
     "stored": "dark",
     "aria": "false",
-    "canvas": "rgb(22, 18, 12)"
+    "bg": "rgb(12, 12, 12)"
   },
-  "themePersist": "dark",
-  "themeLight": null,
-  "mobile": {
-    "menuBtnVisible": "flex",
-    "navLinksHidden": "none",
-    "announceLinkHidden": "none"
+  "themePersist": {
+    "attr": "dark",
+    "stored": "dark",
+    "bg": "rgb(12, 12, 12)"
+  },
+  "darkContainer": {
+    "border": "1px rgb(36, 36, 36)",
+    "max": "1280px"
+  },
+  "at768": {
+    "containerBorderLeft": "0px",
+    "containerWidth": 768,
+    "menuBtn": "flex",
+    "navLinks": "none"
   },
   "drawerOpen": {
     "open": true,
@@ -80,48 +99,53 @@
     "visibility": "visible",
     "opacity": "1"
   },
-  "drawerClosed": {
+  "drawerClose": {
     "open": false,
     "aria": "false"
   },
   "reducedMotion": {
-    "mediaMatches": true,
-    "revealVisibleWithoutScroll": true,
-    "statValue": "4",
+    "matches": true,
+    "revealVisible": true,
     "revealOpacity": "1"
   },
   "resume": {
     "h1": "Haziel Nablo",
     "printBtn": "Print / Save as PDF",
     "pdfHref": "Haziel-Nablo-Resume.pdf",
+    "hasNoPrint": true,
     "headings": [
-      "Professional Summary",
-      "Professional Experience — Conectys · Concentrix",
-      "Professional Experience — Ibex Global Solutions",
-      "Education",
-      "Honors & Certifications",
-      "Skills"
-    ],
-    "hasNoPrint": true
+      "PROFESSIONAL SUMMARY",
+      "PROFESSIONAL EXPERIENCE — CONECTYS · CONCENTRIX",
+      "PROFESSIONAL EXPERIENCE — IBEX GLOBAL SOLUTIONS",
+      "EDUCATION",
+      "HONORS & CERTIFICATIONS",
+      "SKILLS"
+    ]
+  },
+  "printMedia": {
+    "header": "none",
+    "footer": "none",
+    "noPrint": "none",
+    "containerBorder": "0px"
   },
   "howIWork": {
     "h1": "How I handle difficult customer & vendor issues",
     "activeNav": "How I Work",
     "steps": [
-      "01LISTEN",
-      "02CLARIFY",
-      "03INVESTIGATE",
-      "04ACT",
-      "05CONFIRM"
+      "LISTEN",
+      "CLARIFY",
+      "INVESTIGATE",
+      "ACT",
+      "CONFIRM"
     ]
   },
   "fileProtocol": {
     "title": "Haziel Nablo — Customer Support & Vendor Escalations Specialist",
-    "heroLines": "Customer\nSupport &\nTrust & Safety\nModeration",
-    "stylesheetApplied": "rgb(255, 90, 78)",
-    "navLinks": 7,
-    "revealVisibleAtLoad": 2,
-    "jsFlag": true,
+    "h1": "Customer | Support & | Trust & Safety | Moderation",
+    "containerBorder": "1px rgb(235, 235, 235)",
+    "bodyBg": "rgb(252, 252, 252)",
+    "js": true,
+    "geist": true,
     "portraitLoaded": true
   },
   "consoleErrors": []

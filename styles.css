@@ -2101,8 +2101,9 @@ html:not([data-theme="dark"]) .nav-logo {
     --px-band: 20px;
   }
 
-  /* Phone: the hero finally stacks — copy first, then the portrait, still
-     left-aligned on the type spine. */
+  /* Phone: the hero finally stacks — copy first, then the portrait. The copy
+     stays on the left type spine, but the portrait centres, so it sits under
+     the stacked buttons rather than hugging the left rule. */
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -2110,7 +2111,7 @@ html:not([data-theme="dark"]) .nav-logo {
   }
 
   .hero-portrait {
-    justify-self: start;
+    justify-self: center;
     max-width: 220px;
   }
 

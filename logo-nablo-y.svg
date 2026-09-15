@@ -6,10 +6,11 @@
   <!-- bubble: verbatim from logo-nablo-bubble.svg -->
   <path class="cls-1" d="m114.5 58c0-31-24.5-58.2-56.9-57.6-13.9 0-26.5 4.9-36.6 13.8-11 9.4-19.8 23.3-20.7 41.4v2.4c0 29.1 21.9 56.5 57.3 56.5h56.9v-56.5z"/>
   <!-- Y for Yoro: drawn in the N's hand, not by mathematics. Same monoline weight
-       (9.2) and rounded terminal radius (4.6) — but every edge is a slightly-bowed
-       cubic Bezier, the terminals are Bezier-drawn and uneven (asymmetric caps),
-       and each of the three junctions (left arm/stem, right arm/stem, crotch)
-       carries a small stepped notch so the joints crack the way the N's do.
-       Ink box unchanged: x 35.7-77.5, y 32.44-83, matching the N. -->
-  <path class="cls-3" d="M 36.702 39.906 C 36.085 39.13 35.7 38.308 35.7 37.32 C 35.7 34.627 37.367 32.44 40.06 32.44 C 41.35 32.44 43.097 33.167 43.9 34.176C 47.201 39.043 50.856 43.631 54.862 47.94C 55.456 49.212 56.202 50.388 57.1 51.468C 57.765 50.22 58.282 48.914 58.649 47.549C 62.552 43.371 66.103 38.913 69.302 34.174 C 70.112 33.156 71.596 32.44 72.9 32.44 C 75.618 32.44 77.5 34.562 77.5 37.28 C 77.5 38.227 77.089 39.163 76.5 39.904C 72.452 45.869 67.975 51.489 63.069 56.767C 62.351 56.319 61.576 56.022 60.744 55.873C 60.697 57.736 60.849 59.583 61.2 61.413C 61.52 67.075 61.52 72.738 61.2 78.4 C 61.2 80.991 59.191 83 56.6 83 C 54.136 83 52.1 80.864 52.1 78.4C 52.3 72.638 52.3 66.875 52 61.113C 52.064 59.371 52.325 57.658 52.784 55.976C 51.894 56.344 50.968 56.555 50.006 56.61C 45.141 51.385 40.707 45.817 36.702 39.906 Z"/>
+       (9.2) and rounded terminal radius (4.6) - but every edge is a slightly-bowed
+       cubic Bezier, the terminals are Bezier-drawn and uneven (asymmetric caps,
+       flattened the way the N's single-cubic caps are), and each of the three
+       junctions (left arm/stem, right arm/stem, crotch) carries a small stepped
+       notch so the joints crack the way the N's do. Ink box unchanged:
+       x 35.7-77.5, y 32.44-83, matching the N. -->
+  <path class="cls-3" d="M 36.702 39.906 C 36.085 39.13 35.7 38.308 35.7 37.32 C 35.7 35.084 37.824 32.44 40.06 32.44 C 41.322 32.44 43.115 33.189 43.9 34.176C 47.201 39.043 50.856 43.631 54.862 47.94C 55.456 49.212 56.202 50.388 57.1 51.468C 57.765 50.22 58.282 48.914 58.649 47.549C 62.552 43.371 66.103 38.913 69.302 34.174 C 70.103 33.167 71.61 32.44 72.9 32.44 C 75.161 32.44 77.5 35.019 77.5 37.28 C 77.5 38.216 77.083 39.171 76.5 39.904C 72.452 45.869 67.975 51.489 63.069 56.767C 62.351 56.319 61.576 56.022 60.744 55.873C 60.697 57.736 60.849 59.583 61.2 61.413C 61.52 67.075 61.52 72.738 61.2 78.4 C 61.2 80.864 59.064 83 56.6 83 C 54.212 83 52.1 80.788 52.1 78.4C 52.3 72.638 52.3 66.875 52 61.113C 52.064 59.371 52.325 57.658 52.784 55.976C 51.894 56.344 50.968 56.555 50.006 56.61C 45.141 51.385 40.707 45.817 36.702 39.906 Z"/>
 </svg>

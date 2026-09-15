@@ -2049,14 +2049,12 @@ html:not([data-theme="dark"]) .nav-logo {
     display: none;
   }
 
+  /* Tablet keeps the hero's two-column composition. Collapsing it to a single
+     track here (the previous behaviour) dropped the portrait out of the right
+     column and left the copy stranded against a full-width empty gutter for
+     every width from 761px to 1079px. Only the gap tightens. */
   .hero-grid {
-    grid-template-columns: 1fr;
     gap: 40px;
-  }
-
-  .hero-portrait {
-    justify-self: start;
-    max-width: 220px;
   }
 
   .exp-row {
@@ -2103,8 +2101,17 @@ html:not([data-theme="dark"]) .nav-logo {
     --px-band: 20px;
   }
 
+  /* Phone: the hero finally stacks — copy first, then the portrait, still
+     left-aligned on the type spine. */
   .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
     padding: 80px 20px 56px;
+  }
+
+  .hero-portrait {
+    justify-self: start;
+    max-width: 220px;
   }
 
   .announce-inner {

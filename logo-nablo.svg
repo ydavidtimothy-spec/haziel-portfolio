@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="281" height="281" viewBox="0 0 281 281" fill="none" role="img" aria-label="Haziel Nablo">
+  <title>Haziel Nablo</title>
+  <path
+    d="M140.069 0C217.427 0.000220786 280.138 62.7116 280.138 140.069V280.138H140.069C62.7116 280.138 0.000220844 217.427 0 140.069C0 62.7114 62.7114 0 140.069 0Z"
+    fill="#F8F8F8"
+    mask="url(#n-knockout-light)"
+  />
+  <defs>
+    <mask id="n-knockout-light">
+      <rect width="281" height="281" fill="white" />
+      <path
+        d="M 87.5 206.6 L 87.5 73.5 L 192.6 206.6 L 192.6 73.5"
+        fill="none"
+        stroke="black"
+        stroke-width="33.3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </mask>
+  </defs>
+</svg>

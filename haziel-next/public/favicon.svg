@@ -1,20 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Haziel Nablo">
-  <title>Haziel Nablo</title>
-  <rect width="512" height="512" rx="115" fill="#212121" />
-  <path
-    d="M 256 96
-       A 160 160 0 0 1 416 256
-       L 416 416
-       L 256 416
-       A 160 160 0 0 1 256 96 Z"
-    fill="#FFFFFF"
-  />
-  <path
-    d="M 196 332 L 196 180 L 316 332 L 316 180"
-    fill="none"
-    stroke="#212121"
-    stroke-width="38"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
+<svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_1_286)">
+    <rect width="50.2724" height="50.2724" rx="11.3755" fill="#F8F8F8"/>
+    <path
+      d="M25.1806 9.49414C33.844 9.49415 40.8671 16.5172 40.8671 25.1806V40.8671H25.1806C16.5173 40.8671 9.49415 33.844 9.49414 25.1806C9.49414 16.5172 16.5172 9.49414 25.1806 9.49414Z"
+      fill="#333333"
+      mask="url(#n-knockout-small)"
+    />
+  </g>
+  <defs>
+    <mask id="n-knockout-small">
+      <rect width="51" height="51" fill="white"/>
+      <path
+        d="M 19.3 32.6 L 19.3 17.7 L 31.1 32.6 L 31.1 17.7"
+        fill="none"
+        stroke="black"
+        stroke-width="3.75"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </mask>
+    <clipPath id="clip0_1_286">
+      <rect width="50.2724" height="50.2724" rx="11.3755" fill="white"/>
+    </clipPath>
+  </defs>
 </svg>

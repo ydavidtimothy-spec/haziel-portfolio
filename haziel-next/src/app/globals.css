@@ -668,7 +668,7 @@ html:not([data-theme="dark"]) .nav-logo {
   position: relative;
   justify-self: end;
   width: 100%;
-  max-width: 340px;
+  max-width: 248px;
 }
 
 .portrait-frame {
@@ -683,9 +683,10 @@ html:not([data-theme="dark"]) .nav-logo {
 .portrait-photo {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center 14%;
+  object-position: center;
 }
 
 .portrait-meta {
@@ -1670,7 +1671,7 @@ html:not([data-theme="dark"]) .nav-logo {
   }
   .hero-portrait {
     justify-self: start;
-    max-width: 300px;
+    max-width: 220px;
   }
   .hero-specimen {
     font-size: 160px;

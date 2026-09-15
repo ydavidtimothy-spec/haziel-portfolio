@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   title: "Haziel Nablo — Customer Support & Vendor Escalations Specialist",
   description:
     "Portfolio of Haziel Nablo, Customer Service Representative from Davao City. Ibex Global Solutions chat support and vendor escalations. Top Agent and Chat Warrior Awardee 2023.",
+  icons: { icon: "/favicon.svg" },
 };
 
 const themeInit = `(function(){try{var t=localStorage.getItem('hn-theme');document.documentElement.setAttribute('data-theme', t==='dark'?'dark':'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;

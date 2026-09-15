@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Haziel Nablo">
+  <title>Haziel Nablo</title>
+  <rect width="512" height="512" rx="115" fill="#212121" />
+  <path
+    d="M 256 96
+       A 160 160 0 0 1 416 256
+       L 416 416
+       L 256 416
+       A 160 160 0 0 1 256 96 Z"
+    fill="#FFFFFF"
+  />
+  <path
+    d="M 196 332 L 196 180 L 316 332 L 316 180"
+    fill="none"
+    stroke="#212121"
+    stroke-width="38"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

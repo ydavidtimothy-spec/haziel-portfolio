@@ -44,7 +44,7 @@ export default function Navbar() {
     <header className="nav-bar">
       <div className="container nav-inner">
         <Link href="/" className="nav-brand" aria-label="Haziel Nablo home">
-          <img src="/logo-hn-sm.svg" alt="" width={30} height={30} className="nav-logo" />
+          <img src="/logo-nablo.svg" alt="" width={30} height={30} className="nav-logo" />
           Haziel Nablo
         </Link>
 

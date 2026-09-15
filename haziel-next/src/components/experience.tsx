@@ -21,7 +21,9 @@ export default function Experience() {
         <Reveal>
           <div className="section-head">
             <span className="eyebrow mono">02 / Experience</span>
-            <h2 className="h-section">Content moderation → escalations → chat support</h2>
+            <h2 className="h-section">
+              Content moderation <span className="h-muted">→ escalations → chat support</span>
+            </h2>
             <p className="lede">
               Three chapters, newest first: trust &amp; safety review queues,
               then complex cases, then frontline volume.

@@ -67,7 +67,7 @@ export default function Workflow() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.15, ease: [0.4, 0, 0.2, 1] }}
             >
               <div className="step-panel-title mono">0{active + 1} / {step.name.toUpperCase()}</div>
               <h3 className="step-panel-name">{step.name}</h3>
@@ -104,7 +104,7 @@ export function WorkflowSection() {
             <h2 className="h-section">
               How I handle difficult
               <br />
-              customer &amp; vendor issues
+              <span className="h-muted">customer &amp; vendor issues</span>
             </h2>
             <p className="lede">
               Listen → clarify → investigate → act → confirm. The same method behind

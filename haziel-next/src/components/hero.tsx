@@ -4,16 +4,19 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import CountUp from "@/components/bits/count-up";
 
-const ease = [0.16, 1, 0.3, 1] as const;
+const ease = [0.4, 0, 0.2, 1] as const;
 
 export default function Hero() {
   return (
     <section className="hero">
       <div className="container hero-grid">
+        <div className="hero-specimen" aria-hidden="true">
+          Aa
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease }}
+          transition={{ duration: 0.5, ease }}
         >
           <p className="hero-label">HAZIEL NABLO</p>
           <span className="eyebrow mono">Customer Service &amp; Content Moderation</span>
@@ -41,7 +44,7 @@ export default function Hero() {
           className="hero-portrait"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.12, ease }}
+          transition={{ duration: 0.5, delay: 0.12, ease }}
         >
           <div className="portrait-frame">
             <img

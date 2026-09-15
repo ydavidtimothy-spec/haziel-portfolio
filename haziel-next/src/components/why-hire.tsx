@@ -30,7 +30,9 @@ export default function WhyHire() {
         <Reveal>
           <div className="section-head">
             <span className="eyebrow mono">05 / Why hire me</span>
-            <h2 className="h-section">What I bring to your support team</h2>
+            <h2 className="h-section">
+              What I bring <span className="h-muted">to your support team</span>
+            </h2>
           </div>
         </Reveal>
         <Reveal>

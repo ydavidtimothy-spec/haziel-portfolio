@@ -25,7 +25,9 @@ export default function Recognition() {
         <Reveal>
           <div className="section-head">
             <span className="eyebrow mono">06 / Recognition</span>
-            <h2 className="h-section">Honors &amp; certifications</h2>
+            <h2 className="h-section">
+              Honors <span className="h-muted">&amp; certifications</span>
+            </h2>
             <p className="lede">Awards and NCII holdings transcribed from the resume — nothing added.</p>
           </div>
         </Reveal>

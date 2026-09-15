@@ -46,7 +46,9 @@ export default function Skills() {
         <Reveal>
           <div className="section-head">
             <span className="eyebrow mono">03 / Skills</span>
-            <h2 className="h-section">What I&rsquo;m good at</h2>
+            <h2 className="h-section">
+              What I&rsquo;m <span className="h-muted">good at</span>
+            </h2>
             <p className="lede">From the resume and day-to-day support work.</p>
           </div>
         </Reveal>

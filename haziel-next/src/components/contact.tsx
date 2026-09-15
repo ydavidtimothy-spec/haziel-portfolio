@@ -10,7 +10,9 @@ export default function Contact() {
           <span className="eyebrow mono">08 / Contact</span>
           <div className="contact-grid">
             <div>
-              <h2 className="contact-title">Looking for steady customer &amp; vendor support?</h2>
+              <h2 className="contact-title">
+                Looking for <span className="h-muted">steady customer &amp; vendor support?</span>
+              </h2>
               <p className="lede">
                 Available for Customer Service, Vendor Support, Escalations, Retention,
                 and Content Moderation roles.

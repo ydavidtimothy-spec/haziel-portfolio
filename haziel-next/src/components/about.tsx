@@ -25,7 +25,9 @@ export default function About() {
         <Reveal>
           <div className="section-head">
             <span className="eyebrow mono">01 / About</span>
-            <h2 className="h-section">Steady, flexible, and easy to work with</h2>
+            <h2 className="h-section">
+              Steady, flexible, and <span className="h-muted">easy to work with</span>
+            </h2>
             <p className="lede">
               “Being flexible enough to deal with a range of clients and customers. Balancing
               multiple tasks and responding to customers in a timely manner. Maintaining a

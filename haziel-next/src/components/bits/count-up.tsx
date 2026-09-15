@@ -12,7 +12,7 @@ type Props = {
   duration?: number;
 };
 
-export default function CountUp({ to, duration = 1.4 }: Props) {
+export default function CountUp({ to, duration = 1.1 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const value = useMotionValue(0);
@@ -20,7 +20,7 @@ export default function CountUp({ to, duration = 1.4 }: Props) {
 
   useEffect(() => {
     if (!inView) return;
-    const controls = animate(value, to, { duration, ease: [0.16, 1, 0.3, 1] });
+    const controls = animate(value, to, { duration, ease: [0.4, 0, 0.2, 1] });
     return () => controls.stop();
   }, [inView, value, to, duration]);
 

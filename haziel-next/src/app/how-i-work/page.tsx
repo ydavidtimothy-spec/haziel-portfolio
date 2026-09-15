@@ -18,7 +18,9 @@ export default function HowIWorkPage() {
             ← Back to Portfolio
           </Link>
           <span className="eyebrow mono">How I work — sample flow</span>
-          <h1 className="h-section">How I handle difficult customer &amp; vendor issues</h1>
+          <h1 className="h-section">
+            How I handle difficult <span className="h-muted">customer &amp; vendor issues</span>
+          </h1>
           <p className="lede">
             Listen → clarify → investigate → act → confirm. Based on vendor support,
             escalations, and Threads moderation work — written the way I&rsquo;d explain it in an interview.

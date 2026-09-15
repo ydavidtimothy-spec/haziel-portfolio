@@ -35,7 +35,9 @@ export default function Career() {
         <Reveal>
           <div className="section-head">
             <span className="eyebrow mono">04 / Career</span>
-            <h2 className="h-section">Work and education</h2>
+            <h2 className="h-section">
+              Work <span className="h-muted">and education</span>
+            </h2>
             <p className="lede">Work history and schooling exactly as listed on the resume.</p>
           </div>
         </Reveal>
